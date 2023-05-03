@@ -18,7 +18,7 @@
 			
 			<!-- URL -->
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/projetbasket"/>
-			<property name="hibernate.connection.user" value="root@localhost"/>
+			<property name="hibernate.connection.user" value="root"/>
 			<property name="hibernate.connection.password" value=""/>
 			
 			<!-- JPA contrôle la structure de la base -->
