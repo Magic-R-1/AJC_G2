@@ -34,7 +34,7 @@ public class Equipe {
 	
 	//@Column(name="match")
 	@Transient
-	private Set<Match> matchs;
+	private Set<BasketMatch> matchs;
 	
 	//@Column(name="stadium")
 	@Transient
@@ -115,11 +115,11 @@ public class Equipe {
 		this.joueur = joueur;
 	}
 
-	public Set<Match> getMatchs() {
+	public Set<BasketMatch> getMatchs() {
 		return matchs;
 	}
 
-	public void setMatchs(Set<Match> matchs) {
+	public void setMatchs(Set<BasketMatch> matchs) {
 		this.matchs = matchs;
 	}
 
