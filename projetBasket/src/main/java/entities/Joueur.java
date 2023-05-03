@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -43,7 +41,7 @@ public class Joueur {
 	private Poste poste;
 	@Transient
 	private Set<AptitudePhysique> aptitudesPhysiques;
-		
+	
 	public Joueur() {
 	}
 
