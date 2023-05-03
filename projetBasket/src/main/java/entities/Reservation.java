@@ -10,13 +10,13 @@ public class Reservation {
 	private double prix;
 	private Integer quantite;
 	private LocalDate dateReservation;
-	private List<Match> matchs = new ArrayList(); 
+	private List<BasketMatch> matchs = new ArrayList(); 
 	private Compte compte;
 
 	
 
 
-	public Reservation(Integer id, double prix, Integer quantite, LocalDate dateReservation, List<Match> matchs,
+	public Reservation(Integer id, double prix, Integer quantite, LocalDate dateReservation, List<BasketMatch> matchs,
 			Compte compte) {
 		this.id = id;
 		this.prix = prix;
@@ -67,12 +67,12 @@ public class Reservation {
 	}
 
 
-	public List<Match> getMatchs() {
+	public List<BasketMatch> getMatchs() {
 		return matchs;
 	}
 
 
-	public void setMatchs(List<Match> matchs) {
+	public void setMatchs(List<BasketMatch> matchs) {
 		this.matchs = matchs;
 	}
 
