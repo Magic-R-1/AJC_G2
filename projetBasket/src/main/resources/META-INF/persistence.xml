@@ -3,33 +3,30 @@
 	xmlns="http://java.sun.com/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-
-	<persistence-unit name="projetBasket" transaction-type="RESOURCE_LOCAL">
-		
-		<!-- l'implémentation de JPA utilise -->
+	<persistence-unit name="projetbasket" transaction-type="RESOURCE_LOCAL">
+		<!-- implementation de jpa utilise -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		
 		<properties>
-			<!-- La suite de la configuration fonctionne uniquement avec Hibernate -->
-			
-			<!-- Configuration des Drivers du JDBC -->
+			<!-- la suite de la config fonctionne uniquement avec hibernate -->
+			<!-- configuration driver du jdbc -->
 			<property name="hibernate.connection.driver" value="com.mysql.cj.jdbc.Driver"/>
-			
-			<!-- URL -->
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:8889/projetBasket"/>
+			<!-- url -->
+			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/projetbasket"/>
 			<property name="hibernate.connection.user" value="root"/>
-			<property name="hibernate.connection.password" value="root123"/>
+			<property name="hibernate.connection.password" value=""/>
 			
-			<!-- JPA contrôle la structure de la base -->
-			<property name="hibernate.hbm2ddl.auto" value="create"/> <!-- Valide = Contrôle de la structure de la base | Create = Drop puis Create table de nos entités | Update = Controle et voit si il manque des choses dans la base-->
+			<!-- jpa controle la structure de la base de donnee -->
+			<!--  validate=>controle -->
+			<!--  create=>drop ,create table de vos entittes -->
+			<!--  update=>controle, si il manque des choses dans la base en sont ajoutees -->
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
 			
-			<!-- Affichage des requêtes -->
-			<property name="hibernate.show_sql" value="false"/> <!-- True pour afficher des logs des requêtes, mais pas utile, beaucoup trop d'informations -->
-			<property name="hibernate.format_sql" value="true"/> <!-- formater les requêtes SQL des logs ci-dessus si jamais en true -->
-			
+			<!-- affichage des requetes
+			ne sert a rien à part pourrir l'ecran -->
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
 		</properties>
-		
 	</persistence-unit>
-
+	
 </persistence>
