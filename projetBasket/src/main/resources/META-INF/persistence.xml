@@ -11,9 +11,9 @@
 			<!-- configuration driver du jdbc -->
 			<property name="hibernate.connection.driver" value="com.mysql.cj.jdbc.Driver"/>
 			<!-- url -->
-			<property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/projetbasket"/>
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:8889/projetbasket"/>
 			<property name="hibernate.connection.user" value="root"/>
-			<property name="hibernate.connection.password" value=""/>
+			<property name="hibernate.connection.password" value="root123@"/>
 			
 			<!-- jpa controle la structure de la base de donnee -->
 			<!--  validate=>controle -->
