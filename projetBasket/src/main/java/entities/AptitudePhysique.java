@@ -1,13 +1,32 @@
 package entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="physical_ability")
 public class AptitudePhysique {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column(name="speed")
 	private int vitesse;
+	@Column(name="endurance")
 	private int endurance;
+	@Column(name="strength")
 	private int force;
+	@Column(name="jump")
 	private int detente;
+	@Column(name="agility")
 	private int agilite;
+	
+	public AptitudePhysique() {
+	}
 	
 	public AptitudePhysique(int vitesse, int endurance, int force, int detente, int agilite) {
 		super();

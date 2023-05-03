@@ -6,15 +6,15 @@ import javax.persistence.Persistence;
 public class JpaContext {
 
 	private static EntityManagerFactory entityManagerFactory = null;
-	private static DaoAchat daoAchat = new DaoAchatJpaImpl();
+	private static DaoJoueur daoJoueur = new DaoJoueurImpl();
 
-	public static DaoAchat getDaoAchat() {
-		return daoAchat;
+	public static DaoJoueur getDaoJoueur() {
+		return daoJoueur;
 	}
 
 	public static EntityManagerFactory getEntityManagerFactory() {
 		if (entityManagerFactory == null) {
-			entityManagerFactory = Persistence.createEntityManagerFactory("eshop_olivier");
+			entityManagerFactory = Persistence.createEntityManagerFactory("projetBasket");
 		}
 		return entityManagerFactory;
 	}
