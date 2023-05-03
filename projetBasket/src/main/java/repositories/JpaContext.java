@@ -6,23 +6,19 @@ import javax.persistence.Persistence;
 public class JpaContext {
 
 	private static EntityManagerFactory entityManagerFactory = null;
-	private static DaoEquipe daoEquipe = new DaoEquipeJpaImpl();
-	private static DaoStade doaStade = new DaoStadeJpaImpl();
-	
-	
+	private static DaoPersonnel daoPersonnel = new DaoPersonnelJpaImpl();
+	private static DaoReservation daoReservation = new DaoReservationJpaImpl();
 
-
-	public static DaoEquipe getDaoEquipe() {
-		return daoEquipe;
+	public static DaoPersonnel getDaoPersonnel() {
+		return daoPersonnel;
 	}
-	
-	public static DaoStade getDaoStade() {
-		return doaStade;
+	public static DaoReservation getDaoReservation() {
+		return daoReservation;
 	}
 
 	public static EntityManagerFactory getEntityManagerFactory() {
 		if (entityManagerFactory == null) {
-			entityManagerFactory = Persistence.createEntityManagerFactory("projetbasket");
+			entityManagerFactory = Persistence.createEntityManagerFactory("projetBasket");
 		}
 		return entityManagerFactory;
 	}
