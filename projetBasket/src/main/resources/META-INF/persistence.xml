@@ -5,7 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
-	<persistence-unit name="projetBasket" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="projetbasket" transaction-type="RESOURCE_LOCAL">
 		
 		<!-- l'implémentation de JPA utilise -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -17,9 +17,9 @@
 			<property name="hibernate.connection.driver" value="com.mysql.cj.jdbc.Driver"/>
 			
 			<!-- URL -->
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:8889/projetBasket"/>
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/projetbasket"/>
 			<property name="hibernate.connection.user" value="root"/>
-			<property name="hibernate.connection.password" value="root"/>
+			<property name="hibernate.connection.password" value=""/>
 			
 			<!-- JPA contrôle la structure de la base -->
 			<property name="hibernate.hbm2ddl.auto" value="create"/> <!-- Valide = Contrôle de la structure de la base | Create = Drop puis Create table de nos entités | Update = Controle et voit si il manque des choses dans la base-->

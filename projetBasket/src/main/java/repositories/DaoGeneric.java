@@ -15,5 +15,4 @@ public interface DaoGeneric<T, K> {
 	T findByKey(K key);
 
 	List<T> findAll();
-	
 }

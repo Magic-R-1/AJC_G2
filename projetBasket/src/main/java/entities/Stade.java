@@ -1,11 +1,39 @@
 package entities;
 
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="stadium")
+
 public class Stade {
 
+	
+	@Id
+	@Column(name="id_stadium")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column(name="stadium_name")
 	private String nom;
+	
+	
+	@Column(name="stadium_capacity")
 	private int capacite;
+	
+	@Column(name="stadium_city")
 	private String ville;
 	
+	
+	public Stade() {
+		
+	}
 	
 	public Stade(String nom, int capacite, String ville) {
 		this.nom = nom;
@@ -43,11 +71,34 @@ public class Stade {
 		this.ville = ville;
 	}
 
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	@Override
-	public String toString() {
-		return "Stade [nom=" + nom + ", capacity=" + capacite + ", ville=" + ville + "]";
+	public int hashCode() {
+		return Objects.hash(id);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Stade other = (Stade) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	
+
 	
 	
 	
