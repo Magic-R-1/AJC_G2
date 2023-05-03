@@ -26,9 +26,10 @@ public class Reservation {
 	private Integer quantite;
 	@Column(name = "reservation_date")
 	private LocalDate dateReservation;
+
 	
 	@Transient
-	private Set<Match> MatchReservation;
+	private Set<BasketMatch> MatchReservation;
 	//private List<Match> matchs = new ArrayList<Match>(); 
 	@Transient
 	private Compte compte;
@@ -37,8 +38,8 @@ public class Reservation {
 		super();
 	}
 
-	public Reservation(double prix, Integer quantite, LocalDate dateReservation, Set<Match> matchReservation,
-			Compte compte) {
+
+	public Reservation(double prix, Integer quantite, LocalDate dateReservation, Set<BasketMatch> matchReservation, Compte compte) {
 		super();
 		this.prix = prix;
 		this.quantite = quantite;
@@ -79,13 +80,17 @@ public class Reservation {
 		this.dateReservation = dateReservation;
 	}
 
-	public Set<Match> getMatchReservation() {
+
+	public Set<BasketMatch> getMatchReservation() {
 		return MatchReservation;
 	}
 
-	public void setMatchReservation(Set<Match> matchReservation) {
+	public void setMatchReservation(Set<BasketMatch> matchReservation) {
 		MatchReservation = matchReservation;
 	}
+
+
+	
 
 	public Compte getCompte() {
 		return compte;
