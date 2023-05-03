@@ -6,12 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.Joueur;
+import entities.AptitudePhysique;
 
-class DaoJoueurImpl implements DaoJoueur{
+class DaoAptitudePhysiqueImpl implements DaoAptitudePhysique {
+
 
 	@Override
-	public void insert(Joueur obj) {
+	public void insert(AptitudePhysique obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -25,10 +26,10 @@ class DaoJoueurImpl implements DaoJoueur{
 	}
 	
 	@Override
-	public Joueur update(Joueur obj) {
+	public AptitudePhysique update(AptitudePhysique obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		Joueur joueur = null;
+		AptitudePhysique joueur = null;
 		tx.begin();
 		try {
 			joueur = em.merge(obj);
@@ -41,7 +42,7 @@ class DaoJoueurImpl implements DaoJoueur{
 	}
 	
 	@Override
-	public void delete(Joueur obj) {
+	public void delete(AptitudePhysique obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -60,7 +61,7 @@ class DaoJoueurImpl implements DaoJoueur{
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		try {
-			em.remove(em.find(Joueur.class, key));
+			em.remove(em.find(AptitudePhysique.class, key));
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
@@ -69,20 +70,21 @@ class DaoJoueurImpl implements DaoJoueur{
 	}
 
 	@Override
-	public Joueur findByKey(Integer key) {
+	public AptitudePhysique findByKey(Integer key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		Joueur joueurs = em.find(Joueur.class, key);
+		AptitudePhysique aptitudePhysiques = em.find(AptitudePhysique.class, key);
 		em.close();
-		return joueurs;
+		return aptitudePhysiques;
 	}
 
 	@Override
-	public List<Joueur> findAll() {
+	public List<AptitudePhysique> findAll() {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Joueur> query = em.createQuery("from Joueur",Joueur.class);
-		List<Joueur> joueurs = query.getResultList();
+		TypedQuery<AptitudePhysique> query = em.createQuery("from AptitudePhysique",AptitudePhysique.class);
+		List<AptitudePhysique> aptitudePhysiques = query.getResultList();
 		em.close();
-		return joueurs;
+		return aptitudePhysiques;
 	}
+	
 	
 }

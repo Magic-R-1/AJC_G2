@@ -25,10 +25,8 @@ public class Equipe {
 	@Column(name="team_franchise")
 	private String franchise;
 	
-
 	@Column(name="team_city")
 	private String ville;
-	
 	
 	//@Column(name="player")
 	@Transient

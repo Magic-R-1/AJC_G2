@@ -17,9 +17,9 @@
 			<property name="hibernate.connection.driver" value="com.mysql.cj.jdbc.Driver"/>
 			
 			<!-- URL -->
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/projetbasket"/>
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:8889/projetbasket"/>
 			<property name="hibernate.connection.user" value="root"/>
-			<property name="hibernate.connection.password" value=""/>
+			<property name="hibernate.connection.password" value="root"/>
 			
 			<!-- JPA contrôle la structure de la base -->
 			<property name="hibernate.hbm2ddl.auto" value="create"/> <!-- Valide = Contrôle de la structure de la base | Create = Drop puis Create table de nos entités | Update = Controle et voit si il manque des choses dans la base-->
