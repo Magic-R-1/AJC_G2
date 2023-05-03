@@ -1,7 +1,13 @@
-/target
-
+#maven
+#dossier /target pas besoin de le traiter
+target/
+#eclipse
 .classpath
 .project
-.DS_Store
 .settings/
-persistence.xml
+#vscode
+.vscode/
+#System files
+.DS_Store
+Thumbs.db
+_MACOSX
