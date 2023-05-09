@@ -1,7 +1,7 @@
 package repositories;
 
-import entities.BasketMatch;
+import entities.Confrontation;
 
-public interface DaoBasketMatch extends DaoGeneric<BasketMatch, Long> {
+public interface DaoBasketMatch extends DaoGeneric<Confrontation, Long> {
 
 }

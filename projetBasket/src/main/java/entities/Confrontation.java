@@ -6,41 +6,47 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 
 @Entity 
-@Table(name = "basketMatch")
-public class BasketMatch {
+@Table(name = "confrontation")
+public class Confrontation {
 	
 	@Id
-	@Column(name = "BasketMatch_id")
+	@Column(name = "confrontation_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	@Column(name = "BasketMatch_date")
+	@Column(name = "confrontation_date")
     private LocalDate date;
-	@Column(name = "BasketMatch_duree")
+	@Column(name = "confrontation_duree")
     private int duree;
-	@Column(name = "BasketMatch_home_score")
+	@Column(name = "confrontation_home_score")
     private int scoreDomicile;
-	@Column(name = "BasketMatch_away_score")
+	@Column(name = "confrontation_away_score")
     private int scoreVisiteur;
-    
-	//@ManyToOne
-	//@JoinColumn(name="match_arbitre_id",foreignKey = @ForeignKey(name="match_arbitre_id_fk"))
-	//private Arbitre arbitre;
-    
-	public BasketMatch() {
+	@ManyToOne
+	@JoinColumn(name="confrontation_referee_id", foreignKey = @ForeignKey(name="confrontation_referee_id_fk"))
+	private Arbitre arbitre;
+	@ManyToOne
+	@JoinColumn(name="confrontation_team_id", foreignKey = @ForeignKey(name="confrontation_team_id_fk"))
+	private Equipe equipe;
+	
+	
+	public Confrontation() {
 		
 	}
 
 
 
-	public BasketMatch(Long id, LocalDate date, int duree, int scoreDomicile, int scoreVisiteur) {
+	public Confrontation(Long id, LocalDate date, int duree, int scoreDomicile, int scoreVisiteur) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -129,7 +135,7 @@ public class BasketMatch {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BasketMatch other = (BasketMatch) obj;
+		Confrontation other = (Confrontation) obj;
 		return Objects.equals(id, other.id);
 	}
 

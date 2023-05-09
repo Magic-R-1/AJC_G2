@@ -1,52 +1,59 @@
 package entities;
 
-
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "Reservation")
+@Table(name = "booking")
 public class Reservation {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "reservation_id")
-	private Long id;
-	@Column(name = "reservation_prix")
-	private double prix;
-	@Column(name = "total_reservation")
-	private Integer quantite;
-	@Column(name = "reservation_date")
-	private LocalDate dateReservation;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_id")
+    private Long id;
+    @Column(name = "booking_price")
+    private double prix;
+    @Column(name = "booking_quantity")
+    private Integer quantite;
+    @Column(name = "booking_date")
+    private LocalDate dateReservation;
 
-	
-	@Transient
-	private Set<BasketMatch> MatchReservation;
-	//private List<Match> matchs = new ArrayList<Match>(); 
-	@Transient
-	private Compte compte;
-	
+    @ManyToOne
+    @JoinColumn(name="booking_confrontation_id", foreignKey = @ForeignKey(name="booking_confrontation_id_fk"))
+    private Confrontation confrontation; 
+    
+    @ManyToOne
+    @JoinColumn(name="booking_compte_id", foreignKey = @ForeignKey(name="booking_compte_id_fk"))
+    private Compte compte;
+    
 	public Reservation() {
-		super();
 	}
 
+	
 
-	public Reservation(double prix, Integer quantite, LocalDate dateReservation, Set<BasketMatch> matchReservation, Compte compte) {
-		super();
+	public Reservation(double prix, Integer quantite, LocalDate dateReservation, Confrontation confrontation,
+			Compte compte) {
 		this.prix = prix;
 		this.quantite = quantite;
 		this.dateReservation = dateReservation;
-		MatchReservation = matchReservation;
+		this.confrontation = confrontation;
 		this.compte = compte;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -80,17 +87,19 @@ public class Reservation {
 		this.dateReservation = dateReservation;
 	}
 
-
-	public Set<BasketMatch> getMatchReservation() {
-		return MatchReservation;
-	}
-
-	public void setMatchReservation(Set<BasketMatch> matchReservation) {
-		MatchReservation = matchReservation;
-	}
-
-
 	
+
+	public Confrontation getConfrontation() {
+		return confrontation;
+	}
+
+
+
+	public void setConfrontation(Confrontation confrontation) {
+		this.confrontation = confrontation;
+	}
+
+
 
 	public Compte getCompte() {
 		return compte;
@@ -117,17 +126,7 @@ public class Reservation {
 		return Objects.equals(id, other.id);
 	}
 
-	
-	
-
-	
     
-
-
-	
-	
-	
-	
-	
+    
 	
 }

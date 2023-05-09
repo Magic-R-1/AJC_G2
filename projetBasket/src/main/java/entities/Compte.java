@@ -1,33 +1,42 @@
 package entities;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity 
-@Table(name = "compte")
+@Table(name = "account")
 public abstract class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="compte_id")
+	@Column(name="account_id")
 	protected Integer id;
-	@Column(name="compte_login")
+	@Column(name="account_login")
 	protected String login;
-	@Column(name="compte_password")
+	@Column(name="account_password")
 	protected String password;	
-	@Column(name="compte_last_name")
+	@Column(name="account_last_name")
 	private String nom;
-	@Column(name="compte_first_name")
+	@Column(name="account_first_name")
 	private String prenom;
-	@Column(name="compte_email")
+	@Column(name="account_email")
 	protected String email;
-	@Column(name="compte_statut")
+	@Column(name="account_status")
 	private StatutRole statutRole;
+	@OneToMany(mappedBy="compte")
+	@Column(name="bookings")
+	private Set<Reservation> reservations;
+	@OneToOne(mappedBy="compte")
+	@Column(name="team")
+	private Equipe equipe;
 	
 	public Compte() {
 		

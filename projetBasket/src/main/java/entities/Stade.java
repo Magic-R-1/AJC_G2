@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,13 +17,12 @@ public class Stade {
 
 	
 	@Id
-	@Column(name="id_stadium")
+	@Column(name="stadium_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name="stadium_name")
 	private String nom;
-	
 	
 	@Column(name="stadium_capacity")
 	private int capacite;
@@ -30,6 +30,9 @@ public class Stade {
 	@Column(name="stadium_city")
 	private String ville;
 	
+	@OneToOne(mappedBy="stade")
+	@Column(name="team")
+	private Equipe equipe;
 	
 	public Stade() {
 		

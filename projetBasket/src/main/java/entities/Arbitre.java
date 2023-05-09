@@ -1,18 +1,20 @@
 package entities;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 
 @Entity 
-@Table(name = "arbitre")
+@Table(name = "referee")
 public class Arbitre {
 	
 	@Id
@@ -25,11 +27,12 @@ public class Arbitre {
     private String prenom;
 	@Column(name = "referee_seniority")
     private int anciennete;
-	@Column(name = "referee_nationality")
+	@Column(name = "referee_citizenship")
     private String nationalite;
     
-	//@OneToMany(mappedBy = "arbitre")
-	//private Set<BasketMatch> basketmatchs;
+	@OneToMany(mappedBy = "arbitre")
+	@Column(name = "officiated_games")
+	private Set<Confrontation> confrontations;
 	
 	
 	public Arbitre() {

@@ -5,67 +5,70 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-
 
 @Entity
 @Table(name="team")
 public class Equipe {
 	
 	@Id
-	@Column(name = "id_team")
+	@Column(name = "team_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
+	private Long id;
 	@Column(name="team_franchise")
 	private String franchise;
-	
 	@Column(name="team_city")
 	private String ville;
 	
-	//@Column(name="player")
-	@Transient
+	@OneToMany(mappedBy="equipe")
+	@Column(name="players")
 	private Set<Joueur> joueur;
 	
-	//@Column(name="match")
-	@Transient
-	private Set<BasketMatch> matchs;
+	@OneToMany(mappedBy="equipe")
+	@Column(name="confrontations")
+	private Set<Confrontation> confrontations;
 	
-	//@Column(name="stadium")
-	@Transient
+	@OneToOne
+	@JoinColumn(name="team_stadium_id", foreignKey = @ForeignKey(name="team_stadium_id_fk"))
 	private Stade stade;
 	
-	//@Column(name="people")
-	@Transient
-	private Personne personne;
+	@OneToMany(mappedBy="equipe")
+	@Column(name="staff")
+	private Set<Personnel> personnel;
 	
+	@OneToOne
+	@JoinColumn(name="team_account_id", foreignKey = @ForeignKey(name="team_account_id_fk"))
+	private Compte compte;
 	
 	public Equipe() {
 		
 	}
 	
-	public Equipe(String franchise, String ville, Stade stade, Personne personne) {
+	public Equipe(String franchise, String ville, Set<Joueur> joueur, Set<Confrontation> confrontations, Stade stade,
+			Set<Personnel> personnel, Compte compte) {
 		this.franchise = franchise;
 		this.ville = ville;
+		this.joueur = joueur;
+		this.confrontations = confrontations;
 		this.stade = stade;
-		this.personne = personne;
-		
-		
+		this.personnel = personnel;
+		this.compte = compte;
 	}
 
-
-	public Personne getPersonne() {
-		return personne;
+	public Set<Personnel> getPersonne() {
+		return personnel;
 	}
 
-
-	public void setPersonne(Personne personne) {
-		this.personne = personne;
+	public void setPersonne(Set<Personnel> personne) {
+		this.personnel = personne;
 	}
 
 
@@ -99,11 +102,11 @@ public class Equipe {
 	}
 	
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -115,12 +118,12 @@ public class Equipe {
 		this.joueur = joueur;
 	}
 
-	public Set<BasketMatch> getMatchs() {
-		return matchs;
+	public Set<Confrontation> getMatchs() {
+		return confrontations;
 	}
 
-	public void setMatchs(Set<BasketMatch> matchs) {
-		this.matchs = matchs;
+	public void setMatchs(Set<Confrontation> confrontations) {
+		this.confrontations = confrontations;
 	}
 
 	@Override

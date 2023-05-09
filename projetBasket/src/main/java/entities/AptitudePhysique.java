@@ -2,9 +2,12 @@ package entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +15,7 @@ import javax.persistence.Table;
 public class AptitudePhysique {
 
 	@Id
+	@Column(name = "physical_ability_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name="speed")
@@ -24,6 +28,9 @@ public class AptitudePhysique {
 	private int detente;
 	@Column(name="agility")
 	private int agilite;
+	@OneToOne
+	@JoinColumn(name="physical_ability_player_id", foreignKey = @ForeignKey(name="physical_ability_player_id_fk"))
+	private Joueur joueur;
 	
 	public AptitudePhysique() {
 	}

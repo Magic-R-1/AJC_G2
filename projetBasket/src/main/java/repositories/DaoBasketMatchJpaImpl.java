@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.BasketMatch;
+import entities.Confrontation;
 
 public class DaoBasketMatchJpaImpl implements DaoBasketMatch{
 	@Override
-	public void insert(BasketMatch obj) {
+	public void insert(Confrontation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -24,10 +24,10 @@ public class DaoBasketMatchJpaImpl implements DaoBasketMatch{
 	}
 
 	@Override
-	public BasketMatch update(BasketMatch obj) {
+	public Confrontation update(Confrontation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		BasketMatch basketMatch = null;
+		Confrontation basketMatch = null;
 		tx.begin();
 		try {
 			basketMatch = em.merge(obj);
@@ -40,7 +40,7 @@ public class DaoBasketMatchJpaImpl implements DaoBasketMatch{
 	}
 
 	@Override
-	public void delete(BasketMatch obj) {
+	public void delete(Confrontation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -59,7 +59,7 @@ public class DaoBasketMatchJpaImpl implements DaoBasketMatch{
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		try {
-			em.remove(em.find(BasketMatch.class, key));
+			em.remove(em.find(Confrontation.class, key));
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
@@ -68,18 +68,18 @@ public class DaoBasketMatchJpaImpl implements DaoBasketMatch{
 	}
 
 	@Override
-	public BasketMatch findByKey(Long key) {
+	public Confrontation findByKey(Long key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		BasketMatch basketMatch = em.find(BasketMatch.class, key);
+		Confrontation basketMatch = em.find(Confrontation.class, key);
 		em.close();
 		return basketMatch;
 	}
 
 	@Override
-	public List<BasketMatch> findAll() {
+	public List<Confrontation> findAll() {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		TypedQuery<BasketMatch> query = em.createQuery("from Match",BasketMatch.class);
-		List<BasketMatch> basketMatchs = query.getResultList();
+		TypedQuery<Confrontation> query = em.createQuery("from Match",Confrontation.class);
+		List<Confrontation> basketMatchs = query.getResultList();
 		em.close();
 		return basketMatchs;
 	}
