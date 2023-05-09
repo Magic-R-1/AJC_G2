@@ -1,4 +1,4 @@
-package repositories;
+package repositoriesByHand;
 
 import java.util.List;
 
@@ -6,50 +6,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.Confrontation;
+import entities.Reservation;
 
-public class DaoBasketMatchJpaImpl implements DaoBasketMatch{
+public class DaoReservationJpaImpl implements DaoReservation{
 	@Override
-	public void insert(Confrontation obj) {
+	public void insert(Reservation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		try {
-			em.persist(obj);
-			tx.commit();
-		} catch (Exception ex) {
-			tx.rollback();
-		}
+		em.persist(obj);
+		tx.commit();
 		em.close();
 	}
 
 	@Override
-	public Confrontation update(Confrontation obj) {
+	public Reservation update(Reservation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		Confrontation basketMatch = null;
 		tx.begin();
-		try {
-			basketMatch = em.merge(obj);
-			tx.commit();
-		} catch (Exception ex) {
-			tx.rollback();
-		}
+		obj = em.merge(obj);
+		tx.commit();
 		em.close();
-		return basketMatch;
+		return obj;
 	}
 
 	@Override
-	public void delete(Confrontation obj) {
+	public void delete(Reservation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		try {
-			em.remove(em.merge(obj));
-			tx.commit();
-		} catch (Exception ex) {
-			tx.rollback();
-		}
+		em.remove(em.merge(obj));
+		tx.commit();
 		em.close();
 	}
 
@@ -58,30 +45,25 @@ public class DaoBasketMatchJpaImpl implements DaoBasketMatch{
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		try {
-			em.remove(em.find(Confrontation.class, key));
-			tx.commit();
-		} catch (Exception ex) {
-			tx.rollback();
-		}
+		em.remove(em.find(Reservation.class, key));
+		tx.commit();
 		em.close();
 	}
 
 	@Override
-	public Confrontation findByKey(Long key) {
+	public Reservation findByKey(Long key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		Confrontation basketMatch = em.find(Confrontation.class, key);
+		Reservation Reservation = em.find(Reservation.class, key);
 		em.close();
-		return basketMatch;
+		return Reservation;
 	}
 
 	@Override
-	public List<Confrontation> findAll() {
+	public List<Reservation> findAll() {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Confrontation> query = em.createQuery("from Match",Confrontation.class);
-		List<Confrontation> basketMatchs = query.getResultList();
+		TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
+		List<Reservation> Reservations = query.getResultList();
 		em.close();
-		return basketMatchs;
+		return Reservations;
 	}
-
 }

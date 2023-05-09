@@ -1,4 +1,4 @@
-package repositories;
+package repositoriesByHand;
 
 import java.util.List;
 
@@ -6,12 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.Stade;
+import entities.Joueur;
 
-public class DaoStadeJpaImpl implements DaoStade{
+class DaoJoueurImpl implements DaoJoueur{
 
 	@Override
-	public void insert(Stade obj) {
+	public void insert(Joueur obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -22,27 +22,26 @@ public class DaoStadeJpaImpl implements DaoStade{
 			tx.rollback();
 		}
 		em.close();
-		
 	}
-
+	
 	@Override
-	public Stade update(Stade obj) {
+	public Joueur update(Joueur obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		Stade stade = null;
+		Joueur joueur = null;
 		tx.begin();
 		try {
-			stade = em.merge(obj);
+			joueur = em.merge(obj);
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
 		}
 		em.close();
-		return stade;
+		return joueur;
 	}
-
+	
 	@Override
-	public void delete(Stade obj) {
+	public void delete(Joueur obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -54,14 +53,14 @@ public class DaoStadeJpaImpl implements DaoStade{
 		}
 		em.close();
 	}
-
+	
 	@Override
 	public void deleteByKey(Integer key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		try {
-			em.remove(em.find(Stade.class, key));
+			em.remove(em.find(Joueur.class, key));
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
@@ -70,20 +69,20 @@ public class DaoStadeJpaImpl implements DaoStade{
 	}
 
 	@Override
-	public Stade findByKey(Integer key) {
+	public Joueur findByKey(Integer key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		Stade stades = em.find(Stade.class, key);
+		Joueur joueurs = em.find(Joueur.class, key);
 		em.close();
-		return stades;
+		return joueurs;
 	}
 
 	@Override
-	public List<Stade> findAll() {
+	public List<Joueur> findAll() {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Stade> query = em.createQuery("from Stade", Stade.class);
-		List<Stade> stades = query.getResultList();
+		TypedQuery<Joueur> query = em.createQuery("from Joueur",Joueur.class);
+		List<Joueur> joueurs = query.getResultList();
 		em.close();
-		return stades;
+		return joueurs;
 	}
-
+	
 }

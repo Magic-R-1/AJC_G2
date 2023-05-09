@@ -1,4 +1,4 @@
-package repositories;
+package repositoriesByHand;
 
 import java.util.List;
 
@@ -6,38 +6,50 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.Personnel;
+import entities.Arbitre;
 
-
-public class DaoPersonnelJpaImpl implements DaoPersonnel{
+public class DaoArbitreJpaImpl implements DaoArbitre{
 	@Override
-	public void insert(Personnel obj) {
+	public void insert(Arbitre obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.persist(obj);
-		tx.commit();
+		try {
+			em.persist(obj);
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		}
 		em.close();
 	}
 
 	@Override
-	public Personnel update(Personnel obj) {
+	public Arbitre update(Arbitre obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
+		Arbitre arbitre = null;
 		tx.begin();
-		obj = em.merge(obj);
-		tx.commit();
+		try {
+			arbitre = em.merge(obj);
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		}
 		em.close();
-		return obj;
+		return arbitre;
 	}
 
 	@Override
-	public void delete(Personnel obj) {
+	public void delete(Arbitre obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.remove(em.merge(obj));
-		tx.commit();
+		try {
+			em.remove(em.merge(obj));
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		}
 		em.close();
 	}
 
@@ -46,25 +58,30 @@ public class DaoPersonnelJpaImpl implements DaoPersonnel{
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.remove(em.find(Personnel.class, key));
-		tx.commit();
+		try {
+			em.remove(em.find(Arbitre.class, key));
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		}
 		em.close();
 	}
 
 	@Override
-	public Personnel findByKey(Long key) {
+	public Arbitre findByKey(Long key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		Personnel Personnel = em.find(Personnel.class, key);
+		Arbitre arbitre = em.find(Arbitre.class, key);
 		em.close();
-		return Personnel;
+		return arbitre;
 	}
 
 	@Override
-	public List<Personnel> findAll() {
+	public List<Arbitre> findAll() {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Personnel> query = em.createQuery("from Personnel", Personnel.class);
-		List<Personnel> Personnels = query.getResultList();
+		TypedQuery<Arbitre> query = em.createQuery("from Arbitre",Arbitre.class);
+		List<Arbitre> arbitres = query.getResultList();
 		em.close();
-		return Personnels;
+		return arbitres;
 	}
+
 }

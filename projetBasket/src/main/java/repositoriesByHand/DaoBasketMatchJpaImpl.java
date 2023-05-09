@@ -1,4 +1,4 @@
-package repositories;
+package repositoriesByHand;
 
 import java.util.List;
 
@@ -6,12 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.Joueur;
+import entities.Confrontation;
 
-class DaoJoueurImpl implements DaoJoueur{
-
+public class DaoBasketMatchJpaImpl implements DaoBasketMatch{
 	@Override
-	public void insert(Joueur obj) {
+	public void insert(Confrontation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -23,25 +22,25 @@ class DaoJoueurImpl implements DaoJoueur{
 		}
 		em.close();
 	}
-	
+
 	@Override
-	public Joueur update(Joueur obj) {
+	public Confrontation update(Confrontation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		Joueur joueur = null;
+		Confrontation basketMatch = null;
 		tx.begin();
 		try {
-			joueur = em.merge(obj);
+			basketMatch = em.merge(obj);
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
 		}
 		em.close();
-		return joueur;
+		return basketMatch;
 	}
-	
+
 	@Override
-	public void delete(Joueur obj) {
+	public void delete(Confrontation obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -53,14 +52,14 @@ class DaoJoueurImpl implements DaoJoueur{
 		}
 		em.close();
 	}
-	
+
 	@Override
-	public void deleteByKey(Integer key) {
+	public void deleteByKey(Long key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		try {
-			em.remove(em.find(Joueur.class, key));
+			em.remove(em.find(Confrontation.class, key));
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
@@ -69,20 +68,20 @@ class DaoJoueurImpl implements DaoJoueur{
 	}
 
 	@Override
-	public Joueur findByKey(Integer key) {
+	public Confrontation findByKey(Long key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		Joueur joueurs = em.find(Joueur.class, key);
+		Confrontation basketMatch = em.find(Confrontation.class, key);
 		em.close();
-		return joueurs;
+		return basketMatch;
 	}
 
 	@Override
-	public List<Joueur> findAll() {
+	public List<Confrontation> findAll() {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Joueur> query = em.createQuery("from Joueur",Joueur.class);
-		List<Joueur> joueurs = query.getResultList();
+		TypedQuery<Confrontation> query = em.createQuery("from Match",Confrontation.class);
+		List<Confrontation> basketMatchs = query.getResultList();
 		em.close();
-		return joueurs;
+		return basketMatchs;
 	}
-	
+
 }

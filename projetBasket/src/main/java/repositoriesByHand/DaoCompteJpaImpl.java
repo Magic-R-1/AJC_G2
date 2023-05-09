@@ -1,4 +1,4 @@
-package repositories;
+package repositoriesByHand;
 
 import java.util.List;
 
@@ -6,12 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.Equipe;
+import entities.Compte;
 
-public class DaoEquipeJpaImpl implements DaoEquipe{
-
+public class DaoCompteJpaImpl implements DaoCompte{
 	@Override
-	public void insert(Equipe obj) {
+	public void insert(Compte obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -25,23 +24,23 @@ public class DaoEquipeJpaImpl implements DaoEquipe{
 	}
 
 	@Override
-	public Equipe update(Equipe obj) {
+	public Compte update(Compte obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
-		Equipe equipe = null;
+		Compte compte = null;
 		tx.begin();
 		try {
-			equipe = em.merge(obj);
+			compte = em.merge(obj);
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
 		}
 		em.close();
-		return equipe;
+		return compte;
 	}
 
 	@Override
-	public void delete(Equipe obj) {
+	public void delete(Compte obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -55,12 +54,12 @@ public class DaoEquipeJpaImpl implements DaoEquipe{
 	}
 
 	@Override
-	public void deleteByKey(Integer key) {
+	public void deleteByKey(Long key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		try {
-			em.remove(em.find(Equipe.class, key));
+			em.remove(em.find(Compte.class, key));
 			tx.commit();
 		} catch (Exception ex) {
 			tx.rollback();
@@ -69,20 +68,20 @@ public class DaoEquipeJpaImpl implements DaoEquipe{
 	}
 
 	@Override
-	public Equipe findByKey(Integer key) {
+	public Compte findByKey(Long key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		Equipe equipes = em.find(Equipe.class, key);
+		Compte compte = em.find(Compte.class, key);
 		em.close();
-		return equipes;
+		return compte;
 	}
 
 	@Override
-	public List<Equipe> findAll() {
+	public List<Compte> findAll() {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Equipe> query = em.createQuery("from Equipe", Equipe.class);
-		List<Equipe> equipes = query.getResultList();
+		TypedQuery<Compte> query = em.createQuery("from Compte",Compte.class);
+		List<Compte> comptes = query.getResultList();
 		em.close();
-		return equipes;
+		return comptes;
 	}
 
 }

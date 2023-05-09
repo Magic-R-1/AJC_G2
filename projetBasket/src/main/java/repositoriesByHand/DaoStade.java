@@ -1,4 +1,4 @@
-package repositories;
+package repositoriesByHand;
 
 import entities.Stade;
 

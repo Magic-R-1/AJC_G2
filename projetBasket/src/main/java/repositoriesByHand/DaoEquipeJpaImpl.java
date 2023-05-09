@@ -1,4 +1,4 @@
-package repositories;
+package repositoriesByHand;
 
 import java.util.List;
 
@@ -6,64 +6,83 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import entities.Reservation;
+import entities.Equipe;
 
-public class DaoReservationJpaImpl implements DaoReservation{
+public class DaoEquipeJpaImpl implements DaoEquipe{
+
 	@Override
-	public void insert(Reservation obj) {
+	public void insert(Equipe obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.persist(obj);
-		tx.commit();
+		try {
+			em.persist(obj);
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		}
 		em.close();
 	}
 
 	@Override
-	public Reservation update(Reservation obj) {
+	public Equipe update(Equipe obj) {
+		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		Equipe equipe = null;
+		tx.begin();
+		try {
+			equipe = em.merge(obj);
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		}
+		em.close();
+		return equipe;
+	}
+
+	@Override
+	public void delete(Equipe obj) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		obj = em.merge(obj);
-		tx.commit();
+		try {
+			em.remove(em.merge(obj));
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		}
 		em.close();
-		return obj;
 	}
 
 	@Override
-	public void delete(Reservation obj) {
+	public void deleteByKey(Integer key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.remove(em.merge(obj));
-		tx.commit();
+		try {
+			em.remove(em.find(Equipe.class, key));
+			tx.commit();
+		} catch (Exception ex) {
+			tx.rollback();
+		}
 		em.close();
 	}
 
 	@Override
-	public void deleteByKey(Long key) {
+	public Equipe findByKey(Integer key) {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		em.remove(em.find(Reservation.class, key));
-		tx.commit();
+		Equipe equipes = em.find(Equipe.class, key);
 		em.close();
+		return equipes;
 	}
 
 	@Override
-	public Reservation findByKey(Long key) {
+	public List<Equipe> findAll() {
 		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		Reservation Reservation = em.find(Reservation.class, key);
+		TypedQuery<Equipe> query = em.createQuery("from Equipe", Equipe.class);
+		List<Equipe> equipes = query.getResultList();
 		em.close();
-		return Reservation;
+		return equipes;
 	}
 
-	@Override
-	public List<Reservation> findAll() {
-		EntityManager em = JpaContext.getEntityManagerFactory().createEntityManager();
-		TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
-		List<Reservation> Reservations = query.getResultList();
-		em.close();
-		return Reservations;
-	}
 }

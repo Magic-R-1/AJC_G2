@@ -1,4 +1,4 @@
-package repositories;
+package repositoriesByHand;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

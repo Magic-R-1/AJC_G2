@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -45,8 +46,7 @@ public class Joueur {
 	@ManyToOne
     @JoinColumn(name="player_team_id", foreignKey = @ForeignKey(name="player_team_id_fk"))
 	private Equipe equipe;
-	@OneToOne(mappedBy="joueur")
-	@Column(name="physical_ability")
+	@Embedded
 	private AptitudePhysique aptitudesPhysiques;
 	
 	public Joueur() {
