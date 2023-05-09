@@ -8,29 +8,28 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 
-import entities.Arbitre;
-import entities.Joueur;
+import entities.Compte;
 
-public interface JoueurRepository extends JpaRepository<Joueur, Long> {
-
-	@Transactional
-	@Modifying
-	public void insert(Joueur joueur);
+public interface CompteRepository extends JpaRepository<Compte, Long> {
 	
 	@Transactional
 	@Modifying
-	public void update(Joueur joueur);
+	public void insert(Compte compte);
 	
 	@Transactional
 	@Modifying
-	public void delete(Joueur joueur);
+	public void update(Compte compte);
+	
+	@Transactional
+	@Modifying
+	public void delete(Compte compte);
 	
 	@Transactional
 	@Modifying
 	public void deleteByKey(Long key);
 	
-	public Optional<Joueur> findByKey(Long key);
+	public Optional<Compte> findByKey(Long key);
 	
-	public List<Joueur> findAll();
-	
+	public List<Compte> findAll();
+
 }
