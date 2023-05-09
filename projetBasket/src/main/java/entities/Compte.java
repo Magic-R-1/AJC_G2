@@ -18,7 +18,7 @@ public abstract class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="account_id")
-	protected Integer id;
+	protected Long id;
 	@Column(name="account_login")
 	protected String login;
 	@Column(name="account_password")
@@ -41,7 +41,7 @@ public abstract class Compte {
 	public Compte() {
 		
 	}
-	public Compte(Integer id, String login, String password, String nom, String prenom, String email,
+	public Compte(Long id, String login, String password, String nom, String prenom, String email,
 			StatutRole statutRole) {
 		super();
 		this.id = id;
@@ -52,10 +52,10 @@ public abstract class Compte {
 		this.email = email;
 		this.statutRole = statutRole;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getLogin() {

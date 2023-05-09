@@ -14,15 +14,15 @@ public interface JoueurRepository extends JpaRepository<Joueur, Long> {
 
 	@Transactional
 	@Modifying
-	public void insert(Joueur arbitre);
+	public void insert(Joueur joueur);
 	
 	@Transactional
 	@Modifying
-	public void update(Joueur arbitre);
+	public void update(Joueur joueur);
 	
 	@Transactional
 	@Modifying
-	public void delete(Joueur arbitre);
+	public void delete(Joueur joueur);
 	
 	@Transactional
 	@Modifying

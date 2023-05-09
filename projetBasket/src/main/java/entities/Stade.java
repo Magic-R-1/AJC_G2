@@ -19,7 +19,7 @@ public class Stade {
 	@Id
 	@Column(name="stadium_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name="stadium_name")
 	private String nom;
@@ -75,11 +75,11 @@ public class Stade {
 	}
 
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
