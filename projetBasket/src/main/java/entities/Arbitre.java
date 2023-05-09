@@ -40,9 +40,8 @@ public class Arbitre {
 	}
 
 
-	public Arbitre(Long id, String nom, String prenom, int anciennete, String nationalite) {
+	public Arbitre(String nom, String prenom, int anciennete, String nationalite) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.anciennete = anciennete;

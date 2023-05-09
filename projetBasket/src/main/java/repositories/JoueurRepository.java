@@ -11,25 +11,5 @@ import org.springframework.data.jpa.repository.Modifying;
 import entities.Joueur;
 
 public interface JoueurRepository extends JpaRepository<Joueur, Long> {
-
-	@Transactional
-	@Modifying
-	public void insert(Joueur joueur);
-	
-	@Transactional
-	@Modifying
-	public void update(Joueur joueur);
-	
-	@Transactional
-	@Modifying
-	public void delete(Joueur joueur);
-	
-	@Transactional
-	@Modifying
-	public void deleteByKey(Long key);
-	
-	public Optional<Joueur> findByKey(Long key);
-	
-	public List<Joueur> findAll();
 	
 }

@@ -17,15 +17,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement  //pour la gestion des transactions
-@ComponentScan("projetbasket.services")
-@EnableJpaRepositories("projetbasket.repositories")
+@ComponentScan("services")
+@EnableJpaRepositories("repositories")
 public class JpaConfig {
 
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource=new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/projetbasket");
+		dataSource.setUrl("jdbc:mysql://localhost:8889/projetbasket");
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 		return dataSource;
@@ -35,10 +35,10 @@ public class JpaConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(BasicDataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean emf=new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource);
-		emf.setPackagesToScan("projetbasket.entities");
+		emf.setPackagesToScan("entities");
 		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		Properties properties=new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", "validate");
+		properties.setProperty("hibernate.hbm2ddl.auto", "create");
 		properties.setProperty("hibernate.format_sql","true");
 		properties.setProperty("hibernate.show_sql", "false");
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");

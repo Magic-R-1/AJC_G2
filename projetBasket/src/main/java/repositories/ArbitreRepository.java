@@ -11,26 +11,5 @@ import org.springframework.data.jpa.repository.Modifying;
 import entities.Arbitre;
 
 public interface ArbitreRepository extends JpaRepository<Arbitre, Long> {
-	
-	@Transactional
-	@Modifying
-	public void insert(Arbitre arbitre);
-	
-	@Transactional
-	@Modifying
-	public void update(Arbitre arbitre);
-	
-	@Transactional
-	@Modifying
-	public void delete(Arbitre arbitre);
-	
-	@Transactional
-	@Modifying
-	public void deleteByKey(Long key);
-	
-	public Optional<Arbitre> findByKey(Long key);
-
-
-	public List<Arbitre> findAll();
 
 }

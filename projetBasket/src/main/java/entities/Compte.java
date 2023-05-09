@@ -35,7 +35,6 @@ public abstract class Compte {
 	@Column(name="bookings")
 	private Set<Reservation> reservations;
 	@OneToOne(mappedBy="compte")
-	@Column(name="team")
 	private Equipe equipe;
 	
 	public Compte() {

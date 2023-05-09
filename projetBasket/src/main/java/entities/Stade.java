@@ -31,7 +31,6 @@ public class Stade {
 	private String ville;
 	
 	@OneToOne(mappedBy="stade")
-	@Column(name="team")
 	private Equipe equipe;
 	
 	public Stade() {
