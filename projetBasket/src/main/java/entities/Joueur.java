@@ -1,11 +1,14 @@
 package entities;
 
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,15 +36,17 @@ public class Joueur {
 	private double taille;
 	@Column(name="player_weight")
 	private double poids;
-	@Column(name="player_age")
-	private int age;
+	@Column(name="player_birth_date")
+	private LocalDate date_naissance;
 	@Column(name="player_jersey_number")
 	private int numeroMaillot;
 	@Column(name="player_wage")
 	private double salaire;
 	@Column(name="player_status")
+	@Enumerated(EnumType.STRING)
 	private Statut statut;
 	@Column(name="player_position")
+	@Enumerated(EnumType.STRING)
 	private Poste poste;
 	@ManyToOne
     @JoinColumn(name="player_team_id", foreignKey = @ForeignKey(name="player_team_id_fk"))
@@ -52,13 +57,15 @@ public class Joueur {
 	public Joueur() {
 	}
 
-	public Joueur(String nom, String prenom, double taille, double poids, int age, int numeroMaillot, double salaire,
-			Statut statut, Poste poste, Equipe equipe, AptitudePhysique aptitudesPhysiques) {
+	
+
+	public Joueur(String nom, String prenom, double taille, double poids, LocalDate date_naissance, int numeroMaillot,
+			double salaire, Statut statut, Poste poste, Equipe equipe, AptitudePhysique aptitudesPhysiques) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.taille = taille;
 		this.poids = poids;
-		this.age = age;
+		this.date_naissance = date_naissance;
 		this.numeroMaillot = numeroMaillot;
 		this.salaire = salaire;
 		this.statut = statut;
@@ -66,6 +73,8 @@ public class Joueur {
 		this.equipe = equipe;
 		this.aptitudesPhysiques = aptitudesPhysiques;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -107,13 +116,19 @@ public class Joueur {
 		this.poids = poids;
 	}
 
-	public int getAge() {
-		return age;
+	
+
+	public LocalDate getDate_naissance() {
+		return date_naissance;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+
+
+	public void setDate_naissance(LocalDate date_naissance) {
+		this.date_naissance = date_naissance;
 	}
+
+
 
 	public int getNumeroMaillot() {
 		return numeroMaillot;

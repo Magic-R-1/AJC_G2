@@ -12,4 +12,6 @@ import entities.Joueur;
 
 public interface JoueurRepository extends JpaRepository<Joueur, Long> {
 	
+	
+	
 }
