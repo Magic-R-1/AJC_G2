@@ -24,7 +24,7 @@ public class Joueur {
 	@Id
 	@Column(name="player_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	@Column(name="player_surname")
 	private String nom;
 	@Column(name="player_name")
@@ -67,11 +67,11 @@ public class Joueur {
 		this.aptitudesPhysiques = aptitudesPhysiques;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

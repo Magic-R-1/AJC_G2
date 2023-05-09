@@ -8,28 +8,29 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 
-import entities.Arbitre;
+import entities.Reservation;
 
-public interface ArbitreRepository extends JpaRepository<Arbitre, Long> {
+public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+	@Transactional
+	@Modifying
+	public void insert(Reservation arbitre);
 	
 	@Transactional
 	@Modifying
-	public void insert(Arbitre arbitre);
+	public void update(Reservation arbitre);
 	
 	@Transactional
 	@Modifying
-	public void update(Arbitre arbitre);
-	
-	@Transactional
-	@Modifying
-	public void delete(Arbitre arbitre);
+	public void delete(Reservation arbitre);
 	
 	@Transactional
 	@Modifying
 	public void deleteByKey(Long key);
 	
-	public Optional<Arbitre> findByKey(Long key);
-
-	public List<Arbitre> findAll();
+	public Optional<Reservation> findByKey(Long key);
+	
+	public List<Reservation> findAll();
 
 }
+
+
