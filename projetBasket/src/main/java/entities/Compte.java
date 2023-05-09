@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity 
 @Table(name = "account")
-public abstract class Compte {
+public class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="account_id")
@@ -40,10 +40,10 @@ public abstract class Compte {
 	public Compte() {
 		
 	}
-	public Compte(Long id, String login, String password, String nom, String prenom, String email,
+	public Compte( String login, String password, String nom, String prenom, String email,
 			StatutRole statutRole) {
 		super();
-		this.id = id;
+		
 		this.login = login;
 		this.password = password;
 		this.nom = nom;
