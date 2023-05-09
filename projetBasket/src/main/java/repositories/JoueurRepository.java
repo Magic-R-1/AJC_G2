@@ -9,27 +9,28 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 
 import entities.Arbitre;
+import entities.Joueur;
 
-public interface ArbitreRepository extends JpaRepository<Arbitre, Long> {
+public interface JoueurRepository extends JpaRepository<Joueur, Long> {
+
+	@Transactional
+	@Modifying
+	public void insert(Joueur arbitre);
 	
 	@Transactional
 	@Modifying
-	public void insert(Arbitre arbitre);
+	public void update(Joueur arbitre);
 	
 	@Transactional
 	@Modifying
-	public void update(Arbitre arbitre);
-	
-	@Transactional
-	@Modifying
-	public void delete(Arbitre arbitre);
+	public void delete(Joueur arbitre);
 	
 	@Transactional
 	@Modifying
 	public void deleteByKey(Long key);
 	
-	public Optional<Arbitre> findByKey(Long key);
+	public Optional<Joueur> findByKey(Long key);
 	
-	public List<Arbitre> findAll();
-
+	public List<Joueur> findAll();
+	
 }
