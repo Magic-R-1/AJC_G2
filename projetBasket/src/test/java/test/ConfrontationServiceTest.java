@@ -18,7 +18,7 @@ class ConfrontationServiceTest {
 	@Test
 	void test() {
 		
-		Confrontation confrontation = new Confrontation(LocalDate.parse("2023-05-09"), 120, 3, 2);
+		Confrontation confrontation = new Confrontation(LocalDate.parse("2023-05-09"), 120, 3, 2, null, null, null);
 
 		confrontationRepo.save(confrontation);
 		
