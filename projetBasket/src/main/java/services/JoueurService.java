@@ -1,6 +1,7 @@
 package services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,18 @@ public class JoueurService {
 //	public List<Joueur> rechercherJoueurParAge(int ageDebut, int ageFin) {
 //        return joueurRepo.findByAgeBetween(ageDebut, ageFin);
 //    }
+
+	public Joueur modifierTailleJoueur(Long joueurId, int nouvelleTaille) {
+        Optional<Joueur> joueurOptional = joueurRepo.findById(joueurId);
+
+        if (joueurOptional.isPresent()) {
+            Joueur joueur = joueurOptional.get();
+            joueur.setTaille(nouvelleTaille);
+            return joueurRepo.save(joueur);
+        } else {
+            throw new IllegalArgumentException("Joueur non trouvé avec l'ID : " + joueurId);
+        }
+    }
 	
 	public List<Joueur> rechercherJoueurParPoste(Poste poste) {
         return joueurRepo.findByPoste(poste);

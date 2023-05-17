@@ -1,23 +1,23 @@
-package test;
+package test.repositories;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import entities.Arbitre;
-import repositories.ArbitreRepository;
+import entities.Stade;
+import repositories.StadeRepository;
 
 @SpringJUnitConfig(configurations.JpaConfig.class)
-class ArbitreServiceTest {
+class StadeRepositoryTest {
 
 	@Autowired
- ArbitreRepository arbitreRepo;
+	StadeRepository stadeRepo;
 	
 	@Test
 	void test() {
 		
-		Arbitre arbitre = new Arbitre("Doe", "John",5, "Français");
-		arbitreRepo.save(arbitre);
+		Stade  Stade = new Stade("SuperChuette", 0, "Paris");
+		stadeRepo.save(Stade);
 		
 	}
 

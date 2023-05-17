@@ -1,6 +1,7 @@
-package test;
+package test.repositories;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,5 @@ class JoueurRepositoryTest {
 		Joueur joueur1 = new Joueur("James","LeBron",206,113,LocalDate.parse("1984-12-30"),6,44000000,Statut.Titulaire,Poste.AilierFort,null,ap1);
 		joueurRepo.save(joueur1);
 	}
-
+	
 }

@@ -82,7 +82,6 @@ public class EquipeService {
 		return equipeRepository.findById(id).orElseThrow(() -> {
 			throw new EquipeException("id inconnu");
 		});
-
 		
 	}
 	

@@ -1,4 +1,4 @@
-package test;
+package test.repositories;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;

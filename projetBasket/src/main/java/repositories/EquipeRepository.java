@@ -18,14 +18,11 @@ import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 
 public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 	   
-	
 	List<Equipe> findByFranchise(String franchise);
 
-	
 	List<Equipe> findByVille(String ville);
 	
 	List<Equipe> findByJoueurNom(String nom);
-	
 	
 	//List<Equipe> findByConfrontation(Confrontation confrontation);
 	

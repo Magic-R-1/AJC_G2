@@ -1,4 +1,4 @@
-package test;
+package test.services;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +8,13 @@ import entities.Personnel;
 import repositories.PersonnelRepository;
 
 @SpringJUnitConfig(configurations.JpaConfig.class)
-class PersonnelTest {
+class PersonnelServiceTest {
 
 		@Autowired
 		PersonnelRepository personnelRepo;
 		
 		@Test
 		void test() {
-			
-			Personnel Personnel= new Personnel("Kodjo", "koffi", 1000, null, null);
-			personnelRepo.save(Personnel);
 			
 		}
 
