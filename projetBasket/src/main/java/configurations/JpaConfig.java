@@ -24,6 +24,7 @@ public class JpaConfig {
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource=new BasicDataSource();
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		
 		if (System.getProperty("os.name").contains("Mac")) {
 			dataSource.setUrl("jdbc:mysql://localhost:8889/projetbasket");

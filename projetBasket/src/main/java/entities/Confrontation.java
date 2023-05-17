@@ -3,6 +3,7 @@ package entities;
 import java.time.LocalDate;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -25,7 +27,7 @@ public class Confrontation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	@Column(name = "confrontation_date")
-    private LocalDate date;
+    private LocalDate dateConfrontation;
 	@Column(name = "confrontation_duree")
     private int duree;
 	@Column(name = "confrontation_home_score")
@@ -38,18 +40,27 @@ public class Confrontation {
 	@ManyToOne
 	@JoinColumn(name="confrontation_team_id", foreignKey = @ForeignKey(name="confrontation_team_id_fk"))
 	private Equipe equipe;
-		
+	@OneToMany(mappedBy="confrontation")
+	@Column(name="bookings_confrontation")
+	private Set<Reservation> reservations;
+	
 	public Confrontation() {
 		
 	}
 
-	public Confrontation(LocalDate date, int duree, int scoreDomicile, int scoreVisiteur) {
+
+	public Confrontation(LocalDate dateConfrontation, int duree, int scoreDomicile, int scoreVisiteur, Arbitre arbitre,
+			Equipe equipe, Set<Reservation> reservations) {
 		super();
-		this.date = date;
+		this.dateConfrontation = dateConfrontation;
 		this.duree = duree;
 		this.scoreDomicile = scoreDomicile;
 		this.scoreVisiteur = scoreVisiteur;
+		this.arbitre = arbitre;
+		this.equipe = equipe;
+		this.reservations = reservations;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -59,12 +70,12 @@ public class Confrontation {
 		this.id = id;
 	}
 
-	public LocalDate getDate() {
-		return date;
+	public LocalDate getDateConfrontation() {
+		return dateConfrontation;
 	}
 
-	public void setDate(LocalDate date) {
-		this.date = date;
+	public void setDateConfrontation(LocalDate dateConfrontation) {
+		this.dateConfrontation = dateConfrontation;
 	}
 
 	public int getDuree() {
@@ -90,6 +101,32 @@ public class Confrontation {
 	public void setScoreVisiteur(int scoreVisiteur) {
 		this.scoreVisiteur = scoreVisiteur;
 	}
+
+	public Arbitre getArbitre() {
+		return arbitre;
+	}
+
+	public void setArbitre(Arbitre arbitre) {
+		this.arbitre = arbitre;
+	}
+
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+
+	public Set<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(Set<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+
 
 	@Override
 	public int hashCode() {
