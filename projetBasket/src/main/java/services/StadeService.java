@@ -1,7 +1,6 @@
 package services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,27 +22,44 @@ public class StadeService {
     private EquipeRepository equipeRepo;
 
     // Trouver tous les stades dans une ville donnée
-    public List<Stade> trouverStadesParVille(String ville) {
+    public List<Stade> findByVille(String ville) {
         return stadeRepo.findByVille(ville);
     }
 
-//    // Trouver tous les stades dont la capacité est supérieure ou égale à une certaine valeur
-//    public List<Stade> trouverStadesParCapacite(int capacite) {
-//        return stadeRepository.findByCapaciteGreaterThanEqual(capacite);
-//    }
-
-//    // Trouver le stade qui a la capacité maximale
-//    public Stade trouverStadeAvecCapaciteMaximale() {
-//        return stadeRepository.findTopByOrderByCapaciteDesc();
-//    }
-
-    // Récupérer un stade en fonction de son nom
-    public Optional<Stade> trouverStadeParNom(String nom) {
-        return stadeRepo.findByNom(nom);
+     public List<Stade> findByCapaciteGreaterThanEqual(int capacite) {
+        return stadeRepo.findByCapaciteGreaterThanEqual(capacite);
     }
 
+
+     private void checkStade (Stade stade) {
+    	 if(stade == null) {
+    		 throw new StadeException("stade null");
+    	 }
+    	 if (stade.getNom() == null || stade.getNom().isEmpty()) {
+    		 throw new StadeException("nom obligatoire");
+    	 }
+     }
+     
+     private void checkId(Long id) {
+    	 if(id ==null) {
+    		 throw new StadeException("id null");
+    	 }
+     }
+     
+     
+     
+     public Stade findByNom(String nom) {
+    	  Stade stade = stadeRepo.findByNom(nom).orElseThrow(() -> {
+    	        throw new StadeException("stade inconnu");
+    	    });
+    	    checkStade(stade);
+
+    	    return stade;
+    	}
+
+
     // Récupérer tous les stades d'une certaine équipe
-    public List<Stade> trouverStadesParEquipe(Equipe equipe) {
+    public List<Stade> findByEquipe(Equipe equipe) {
         return stadeRepo.findByEquipe(equipe);
     }
     
@@ -51,6 +67,7 @@ public class StadeService {
 		return stadeRepo.findAll();
 	}
     
+
     public Stade getById(Long id) {
 		if (id == null) {
 			throw new StadeException("id obligatoire");
@@ -88,10 +105,7 @@ public class StadeService {
 
 	}
 	
-	public void delete(Long id) {
-		this.delete(this.getById(id));
-	}
-    
+
 }
 
 

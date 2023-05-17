@@ -1,5 +1,7 @@
 package test.repositories;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -18,9 +20,11 @@ class EquipeRepositoryTest {
 		
 		Equipe  equipe = new Equipe("Jesaispas", "New York", null, null, null, null, null);
 		equipeRepo.save(equipe);
-		
+		assertNotNull(equipe.getId());
 		
 		
 	}
-
-}
+		
+	}
+	
+	

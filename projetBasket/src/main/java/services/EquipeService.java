@@ -12,6 +12,7 @@ import entities.Confrontation;
 import entities.Equipe;
 import entities.Joueur;
 import entities.Personnel;
+import entities.Poste;
 import entities.Stade;
 import exceptions.EquipeException;
 import repositories.CompteRepository;
@@ -57,9 +58,9 @@ public class EquipeService {
 		return equipeRepository.findByFranchise(franchise);
 	}
 
-//	public List<Equipe> findByConfrontation(Confrontation confrontation){
-//		return equipeRepository.findByConfrontation(confrontation);
-//	}
+	public List<Equipe> findByConfrontations(Confrontation confrontation){
+		return equipeRepository.findByConfrontations(confrontation);
+	}
 	
 	public List<Equipe> findByStade(Stade stade){
 		return equipeRepository.findByStade(stade);
@@ -73,6 +74,29 @@ public class EquipeService {
 		return equipeRepository.findByCompte(compte);
 	}
 	
+	public List<Equipe> findByConfrontations_DateConfrontation(LocalDate dateConfrontation){
+		return equipeRepository.findByConfrontations_DateConfrontation(dateConfrontation);
+	}
+	
+	public List<Equipe> findByJoueur_SalaireGreaterThan(double salaire){
+		return equipeRepository.findByJoueur_SalaireGreaterThan(salaire);
+	}
+	
+	public List<Equipe> findByPersonnel_SalaireLessThan(double salaire){
+		return equipeRepository.findByPersonnel_SalaireLessThan(salaire);
+	}
+	
+	public List<Equipe> findByJoueur_Poste(Poste poste){
+		return equipeRepository.findByJoueur_Poste(poste);
+	}
+	
+	public List<Equipe> findByVilleStartsWith(String prefix){
+		return equipeRepository.findByVilleStartsWith(prefix);
+	}
+	
+	 public List<Equipe> getAll() {
+			return equipeRepository.findAll();
+		}
 
 	public Equipe getById(Long id) {
 	

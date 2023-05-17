@@ -1,5 +1,6 @@
 package repositories;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -13,8 +14,8 @@ import entities.Compte;
 import entities.Confrontation;
 import entities.Equipe;
 import entities.Personnel;
+import entities.Poste;
 import entities.Stade;
-import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 
 public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 	   
@@ -24,14 +25,30 @@ public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 	
 	List<Equipe> findByJoueurNom(String nom);
 	
-	//List<Equipe> findByConfrontation(Confrontation confrontation);
+	List<Equipe> findByConfrontations(Confrontation confrontation);
 	
 	List<Equipe> findByStade(Stade stade);
 	
 	List<Equipe> findByPersonnel(Personnel personnel);
 	
 	List<Equipe> findByCompte(Compte compte);
+	
+	List<Equipe> findByConfrontations_DateConfrontation(LocalDate dateConfrontation);
 
+	List<Equipe> findByJoueur_SalaireGreaterThan(double salaire);
+
+	List<Equipe> findByPersonnel_SalaireLessThan(double salaire);
+
+	List<Equipe> findByJoueur_Poste(Poste poste);
+
+	List<Equipe> findByVilleStartsWith(String prefix);
+
+
+	
+	
+	long count();
+
+	
 //	//Récupérer toutes les équipes dont le compte a effectué une réservation dans un certain intervalle de dates
 //	@Query("SELECT DISTINCT e FROM Equipe e JOIN e.membres m JOIN m.reservations r WHERE r.dateDebut >= :dateDebut AND r.dateFin <= :dateFin AND r.compte = :compte")
 //	List<Equipe> findEquipesByMembreReservationBetweenDates(@Param("dateDebut") LocalDate dateDebut, @Param("dateFin") LocalDate dateFin, @Param("compte") Compte compte);

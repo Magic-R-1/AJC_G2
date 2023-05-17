@@ -23,9 +23,6 @@ public interface StadeRepository extends JpaRepository<Stade, Long>{
 	//Trouver tous les stades dont la capacité est supérieure ou égale à une certaine valeur :
 	List<Stade> findByCapacite(int capacite);
 	
-	
-//	//Trouver le stade qui a la capacité maximale :
-//	Stade findTopByOrderByCapaciteDesc();
 
 	//Récupérer un stade en fonction de son nom :
 	Optional<Stade> findByNom(String nom);
@@ -36,10 +33,15 @@ public interface StadeRepository extends JpaRepository<Stade, Long>{
 	List<Stade> findByEquipe(Equipe equipe);
 
 
-	  @Query("update Stade p set p.equipe=null where p.equipe=:equipe")
+	 @Query("update Stade p set p.equipe=null where p.equipe=:equipe")
 	@Transactional
 	@Modifying
 	void setEquipeToNull(@Param("equipe") Equipe equipe);
+
+
+	List<Stade> findByCapaciteGreaterThanEqual(int capacite);
+
+
 
 
 }

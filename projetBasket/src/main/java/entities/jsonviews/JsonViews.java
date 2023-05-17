@@ -7,5 +7,6 @@ public class JsonViews {
 	
 	public class Stade extends Base {
 	}
-
+	public class StadeWithEquipe extends Stade {
+	}
 }
