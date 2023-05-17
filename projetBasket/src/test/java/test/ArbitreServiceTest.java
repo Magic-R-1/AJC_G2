@@ -11,7 +11,7 @@ import repositories.ArbitreRepository;
 class ArbitreServiceTest {
 
 	@Autowired
-	ArbitreRepository arbitreRepo;
+ ArbitreRepository arbitreRepo;
 	
 	@Test
 	void test() {

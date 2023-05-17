@@ -16,9 +16,9 @@ public class JoueurService {
 	@Autowired
 	private JoueurRepository joueurRepo;
 	
-	public List<Joueur> rechercherJoueurParAge(int ageDebut, int ageFin) {
-        return joueurRepo.findByAgeBetween(ageDebut, ageFin);
-    }
+//	public List<Joueur> rechercherJoueurParAge(int ageDebut, int ageFin) {
+//        return joueurRepo.findByAgeBetween(ageDebut, ageFin);
+//    }
 	
 	public List<Joueur> rechercherJoueurParPoste(Poste poste) {
         return joueurRepo.findByPoste(poste);
@@ -56,8 +56,8 @@ public class JoueurService {
         return joueurRepo.findByAptitudesPhysiquesAgiliteGreaterThanEqual(valeur);
     }
 	
-    public List<Joueur> rechercherJoueurAvecMoyenneAptitudesPhysiquesSupérieureOuEgaleA(int moyenne) {
-        return joueurRepo.findByMoyenneAptitudesPhysiquesGreaterThanEqual(moyenne);
-    }
+//    public List<Joueur> rechercherJoueurAvecMoyenneAptitudesPhysiquesSupérieureOuEgaleA(int moyenne) {
+//        return joueurRepo.findByMoyenneAptitudesPhysiquesGreaterThanEqual(moyenne);
+//    }
     
 }

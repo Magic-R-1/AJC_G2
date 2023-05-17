@@ -34,7 +34,5 @@ public class ArbitreService {
         this.arbitreRepo = arbitreRepository;
     }
 	
-	public List<Arbitre> findByConfrontation(Confrontation confrontation) {
-        return arbitreRepo.findByConfrontation(confrontation);
-    }
+
 }

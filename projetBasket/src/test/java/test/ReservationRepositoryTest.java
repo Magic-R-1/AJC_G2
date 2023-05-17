@@ -8,7 +8,7 @@ import entities.Reservation;
 import repositories.ReservationRepository;
 
 @SpringJUnitConfig(configurations.JpaConfig.class)
-class ReservationTest {
+class ReservationRepositoryTest {
 
 		@Autowired
 		ReservationRepository reservationRepo;

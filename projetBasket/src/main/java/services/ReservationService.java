@@ -82,8 +82,8 @@ public class ReservationService {
 		return reservationRepo.findByConfrontationId(confrontation);
 	}
 	
-	public List<Reservation> findByDateReservation(LocalDate dateReservation) {
-		return reservationRepo.findByDateReservation(dateReservation);
+	public List<Reservation> findBydateReservation(LocalDate dateReservation) {
+		return reservationRepo.findBydateReservation(dateReservation);
 	}
 	
 	public List<Reservation> findByPrix(double prix) {

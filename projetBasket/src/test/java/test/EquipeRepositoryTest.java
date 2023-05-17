@@ -19,6 +19,8 @@ class EquipeRepositoryTest {
 		Equipe  equipe = new Equipe("Jesaispas", "New York", null, null, null, null, null);
 		equipeRepo.save(equipe);
 		
+		
+		
 	}
 
 }

@@ -10,7 +10,7 @@ import entities.Confrontation;
 import repositories.ConfrontationRepository;
 
 @SpringJUnitConfig(configurations.JpaConfig.class)
-class ConfrontationServiceTest {
+class ConfrontationRepositoryTest {
 
 	@Autowired
 	ConfrontationRepository confrontationRepo;

@@ -28,15 +28,15 @@ public class StadeService {
         return stadeRepository.findByVille(ville);
     }
 
-    // Trouver tous les stades dont la capacité est supérieure ou égale à une certaine valeur
-    public List<Stade> trouverStadesParCapacite(int capacite) {
-        return stadeRepository.findByCapaciteGreaterThanEqual(capacite);
-    }
+//    // Trouver tous les stades dont la capacité est supérieure ou égale à une certaine valeur
+//    public List<Stade> trouverStadesParCapacite(int capacite) {
+//        return stadeRepository.findByCapaciteGreaterThanEqual(capacite);
+//    }
 
-    // Trouver le stade qui a la capacité maximale
-    public Stade trouverStadeAvecCapaciteMaximale() {
-        return stadeRepository.findTopByOrderByCapaciteDesc();
-    }
+//    // Trouver le stade qui a la capacité maximale
+//    public Stade trouverStadeAvecCapaciteMaximale() {
+//        return stadeRepository.findTopByOrderByCapaciteDesc();
+//    }
 
     // Récupérer un stade en fonction de son nom
     public Optional<Stade> trouverStadeParNom(String nom) {

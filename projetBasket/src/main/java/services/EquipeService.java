@@ -14,7 +14,12 @@ import entities.Joueur;
 import entities.Personnel;
 import entities.Stade;
 import exceptions.EquipeException;
+import repositories.CompteRepository;
+import repositories.ConfrontationRepository;
 import repositories.EquipeRepository;
+import repositories.JoueurRepository;
+import repositories.PersonnelRepository;
+import repositories.StadeRepository;
 
 @Service
 public class EquipeService {
@@ -22,9 +27,23 @@ public class EquipeService {
 	@Autowired
 	private EquipeRepository equipeRepository;
 	
-	public Equipe findEquipeByNom(String nom) {
-		return equipeRepository.findEquipeByNom(nom);
-	}
+	@Autowired
+	private JoueurRepository joueurRepository;
+	
+	@Autowired
+	private ConfrontationRepository confrontationRepository;
+	
+	
+	@Autowired
+	private StadeRepository stadeRepository;
+	
+	
+	@Autowired
+	private PersonnelRepository personnelRepository;
+	
+	@Autowired
+	private CompteRepository compteRepository;
+	
 	
 	public List<Equipe> findByVille(String ville) {
 		return equipeRepository.findByVille(ville);
@@ -34,53 +53,26 @@ public class EquipeService {
 		return equipeRepository.findByJoueurNom(nom);
 	}
 	
-	 // Trouver toutes les équipes ayant joué une confrontation après une certaine date
-    public List<Equipe> findByConfrontationDateAfter(LocalDate date) {
-        return equipeRepository.findByConfrontationDateAfter(date);
-    }
-	
-	public List<Equipe> findEquipesByMembreReservationBetweenDates(LocalDate dateDebut, LocalDate dateFin, Compte compte) {
-		return equipeRepository.findEquipesByMembreReservationBetweenDates(dateDebut, dateFin, compte);
+	public List<Equipe> findByFranchise(String franchise){
+		return equipeRepository.findByFranchise(franchise);
 	}
-	
-	public List<Equipe> findEquipesByDateCreationBefore(LocalDate date) {
-		return equipeRepository.findEquipesByDateCreationBefore(date);
-	}
-	
-	public List<Equipe> findEquipesByResponsable(Compte compte) {
-		return equipeRepository.findEquipesByResponsable(compte);
-	}
-	
-	public List<Equipe> findEquipesByNomContaining(String nom) {
-		return equipeRepository.findEquipesByNomContaining(nom);
-	}
-	
-	
-	// Trouver toutes les équipes avec leur moyenne d'âge
-    public List<Equipe> trouverEquipesAvecMoyenneAge() {
-        return equipeRepository.trouverEquipesAvecMoyenneAge();
-    }
-    
-    // Trouver toutes les équipes avec leur joueur ayant la plus grande taille
-    public List<Equipe> trouverEquipesAvecJoueurPlusGrand() {
-        return equipeRepository.trouverEquipesAvecJoueurPlusGrand();
-    }
-	
-	public List<Equipe> findAllEquipesWithConfrontation() {
-		return equipeRepository.findAllEquipesWithConfrontation();
-	}
-	
-	public List<Equipe> findAllEquipesWithoutConfrontation() {
-		return equipeRepository.findAllEquipesWithoutConfrontation();
-	}
-	
-	
-	 // Trouver toutes les équipes ayant joué contre une équipe donnée
-    public List<Equipe> findOpponentsOfEquipe(Equipe equipe) {
-        return equipeRepository.findOpponentsOfEquipe(equipe);
-    }
 
-    
+//	public List<Equipe> findByConfrontation(Confrontation confrontation){
+//		return equipeRepository.findByConfrontation(confrontation);
+//	}
+	
+	public List<Equipe> findByStade(Stade stade){
+		return equipeRepository.findByStade(stade);
+	}
+	
+	public List<Equipe> findByPersonnel(Personnel personnel){
+		return equipeRepository.findByPersonnel(personnel);
+	}
+	
+	public List<Equipe> findByCompte(Compte compte){
+		return equipeRepository.findByCompte(compte);
+	}
+	
 
 	public Equipe getById(Long id) {
 	
@@ -118,9 +110,20 @@ public class EquipeService {
 		return equipeRepository.save(equipeEnBase);
 	}
 	
+	public void delete(Equipe equipe) {
+		joueurRepository.setEquipeToNull(equipe);
+		confrontationRepository.setEquipeToNull(equipe);
+		stadeRepository.setEquipeToNull(equipe);
+		personnelRepository.setEquipeToNull(equipe);
+		compteRepository.setEquipeToNull(equipe);
+		
+		equipeRepository.delete(equipe);
+
+	}
 	
-	
-	
+	public void delete(Long id) {
+		this.delete(this.getById(id));
+	}
     
 
 

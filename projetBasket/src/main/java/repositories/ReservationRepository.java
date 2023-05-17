@@ -21,7 +21,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	
 	List<Reservation> findByConfrontationId(Confrontation confrontation);
 	
-	List<Reservation> findByDateReservation(LocalDate dateReservation);
+	List<Reservation> findBydateReservation(LocalDate dateReservation);
 	
 	List<Reservation> findByPrix(double prix);
 	
