@@ -1,4 +1,4 @@
-package test.services;
+package test.repositories;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import entities.Arbitre;
 import repositories.ArbitreRepository;
 
 @SpringJUnitConfig(configurations.JpaConfig.class)
-class ArbitreServiceTest {
+class ArbitreRepositoryTest {
 
 	@Autowired
  ArbitreRepository arbitreRepo;

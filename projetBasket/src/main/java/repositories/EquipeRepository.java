@@ -36,12 +36,9 @@ public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 //	@Query("SELECT DISTINCT e FROM Equipe e JOIN e.membres m JOIN m.reservations r WHERE r.dateDebut >= :dateDebut AND r.dateFin <= :dateFin AND r.compte = :compte")
 //	List<Equipe> findEquipesByMembreReservationBetweenDates(@Param("dateDebut") LocalDate dateDebut, @Param("dateFin") LocalDate dateFin, @Param("compte") Compte compte);
 
-	
 //	//Trouver toutes les équipes avec leur moyenne d'âge :
 //	@Query("SELECT e, AVG(FUNCTION('DATEDIFF', 'YEAR', j.date_naissance, CURRENT_DATE)) FROM Equipe e LEFT JOIN fetch Joueur j ON e.joueurId = j.id GROUP BY e")
 //	Optional<Equipe> findByIdFetchJoueurAge(@Param("id") Long id, @Param("date_naissance") int date_naissance);
-//
-//	
 
 	@Query("update Equipe p set p.stade=null where p.stade=:stade")
 	@Transactional

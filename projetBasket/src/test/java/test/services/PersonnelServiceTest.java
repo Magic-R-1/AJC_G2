@@ -6,16 +6,17 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import entities.Personnel;
 import repositories.PersonnelRepository;
+import services.PersonnelService;
 
 @SpringJUnitConfig(configurations.JpaConfig.class)
 class PersonnelServiceTest {
 
 		@Autowired
-		PersonnelRepository personnelRepo;
+		PersonnelService personnelSrv;
 		
 		@Test
-		void test() {
-			
+		void testUpdateSalaire() {
+			personnelSrv.modifierSalairePersonnel(1L, 1500);
 		}
 
 }
