@@ -18,19 +18,14 @@ public interface JoueurRepository extends JpaRepository<Joueur, Long> {
 //	@Query("SELECT j FROM Joueur j WHERE TIMESTAMPDIFF(YEAR, current_date, j.date_naissance) >= :ageDebut" +
 //	"AND TIMESTAMPDIFF(YEAR, current_date, j.date_naissance) <= :ageFin")
 //	List<Joueur> findByAgeBetween(int ageDebut, int ageFin);
-//	
+
 	List<Joueur> findByPoste(Poste poste);
 	
 	@Query("SELECT j FROM Joueur j WHERE j.taille >= :tailleMini AND j.taille <= :tailleMaxi")
-	List<Joueur> findByTailleBetween(int tailleMini, int tailleMaxi);
+	List<Joueur> findByTailleBetween(@Param("tailleMini") double tailleMini, @Param("tailleMaxi") double tailleMaxi);
 	
 	@Query("SELECT j FROM Joueur j WHERE j.poids >= :poidsMini AND j.poids <= :poidsMaxi")
-	List<Joueur> findByPoidsBetween(int poidsMini, int poidsMaxi);
-	
-	@Modifying
-	@Transactional
-    @Query("UPDATE Joueur j SET j.equipe = :nouvelleEquipe WHERE j.id = :joueurId")
-    void changerEquipe(Long joueurId, Equipe nouvelleEquipe);
+	List<Joueur> findByPoidsBetween(@Param("poidsMini") double poidsMini, @Param("poidsMaxi") double poidsMaxi);
 	
 	// Aptitudes physiques
     List<Joueur> findByAptitudesPhysiquesVitesseGreaterThanEqual(int valeur);
@@ -53,5 +48,4 @@ public interface JoueurRepository extends JpaRepository<Joueur, Long> {
 	@Modifying
 	void setEquipeToNull(@Param("equipe") Equipe equipe);
 
-    
 }

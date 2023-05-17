@@ -27,15 +27,18 @@ public class CompteService {
 			throw new CompteException("login obligatoire");
 		}
 	}
+	
 	private void checkId(Long id) {
 		if (id == null) {
 			throw new CompteException("id null");
 		}
 	}
+	
 	public Compte create(Compte compte) {
 		checkCompte(compte);
 		return compteRepo.save(compte);
 	}
+	
 	public Compte update(Compte compte) {
 		Compte compteEnBase = getById(compte.getId());
 		checkCompte(compte);
@@ -62,16 +65,14 @@ public class CompteService {
 	            .orElseThrow(() -> new CompteException("Aucun compte trouvé avec le statutRole spécifié"));
 	}
 	
-	
 	public List<Compte> getAll() {
 		return compteRepo.findAll();
 	}
 
-	
 	public void delete(Compte compte) {
 		delete(compte.getId());
 	}
-
+	
 	public void delete(Long id) {
 		Compte compte = getById(id);
 		reservationRepo.setCompteToNull(compte);

@@ -6,9 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import entities.Compte;
 import entities.Equipe;
 import entities.Joueur;
 import entities.Poste;
+import exceptions.CompteException;
+import exceptions.JoueurException;
 import repositories.JoueurRepository;
 
 @Service
@@ -21,17 +24,64 @@ public class JoueurService {
 //        return joueurRepo.findByAgeBetween(ageDebut, ageFin);
 //    }
 
-	public Joueur modifierTailleJoueur(Long joueurId, int nouvelleTaille) {
-        Optional<Joueur> joueurOptional = joueurRepo.findById(joueurId);
-
-        if (joueurOptional.isPresent()) {
-            Joueur joueur = joueurOptional.get();
-            joueur.setTaille(nouvelleTaille);
-            return joueurRepo.save(joueur);
-        } else {
-            throw new IllegalArgumentException("Joueur non trouvé avec l'ID : " + joueurId);
-        }
-    }
+	//Crude
+	
+		private void checkJoueur(Joueur joueur) {
+			if (joueur == null) {
+				throw new JoueurException("joueur null");
+			}
+		}
+		
+		private void checkId(Long id) {
+			if (id == null) {
+				throw new CompteException("id null");
+			}
+		}
+		
+		public Joueur getById(Long id) {
+			checkId(id);
+			return joueurRepo.findById(id).orElseThrow(() -> {
+				throw new JoueurException("id inconnu");
+			});
+		}
+		
+		public Joueur create(Joueur joueur) {
+			checkJoueur(joueur);
+			return joueurRepo.save(joueur);
+		}
+		
+		public Joueur update(Joueur joueur) {
+			Joueur joueurEnBase = getById(joueur.getId());
+			checkJoueur(joueur);
+			joueurEnBase.setNom(joueur.getNom());
+			joueurEnBase.setPrenom(joueur.getPrenom());
+			joueurEnBase.setTaille(joueur.getTaille());
+			joueurEnBase.setPoids(joueur.getPoids());
+			joueurEnBase.setDate_naissance(joueur.getDate_naissance());
+			joueurEnBase.setNumeroMaillot(joueur.getNumeroMaillot());
+			joueurEnBase.setSalaire(joueur.getSalaire());
+			joueurEnBase.setStatut(joueur.getStatut());
+			joueurEnBase.setPoste(joueur.getPoste());
+			joueurEnBase.setEquipe(joueur.getEquipe());
+			joueurEnBase.setAptitudesPhysiques(joueur.getAptitudesPhysiques());
+			
+			return joueurRepo.save(joueurEnBase);
+		}
+		
+		public List<Joueur> getAll() {
+			return joueurRepo.findAll();
+		}
+		
+		public void delete(Long id) {
+			Joueur joueur = getById(id);
+			joueurRepo.delete(joueur);
+		}
+		
+		public void delete(Joueur joueur) {
+			delete(joueur.getId());
+		}
+	
+	// Fin du CRUDE
 	
 	public List<Joueur> rechercherJoueurParPoste(Poste poste) {
         return joueurRepo.findByPoste(poste);
@@ -43,10 +93,6 @@ public class JoueurService {
 	
 	public List<Joueur> rechercherJoueurParPoids(int poidsMini, int poidsMaxi) {
         return joueurRepo.findByPoidsBetween(poidsMini, poidsMaxi);
-    }
-	
-	public void changerEquipeJoueur(Long joueurId, Equipe nouvelleEquipe) {
-		joueurRepo.changerEquipe(joueurId, nouvelleEquipe);
     }
 	
 	public List<Joueur> rechercherJoueurAvecVitesseSuperieureOuEgaleA(int valeur) {

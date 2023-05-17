@@ -20,6 +20,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import entities.jsonviews.JsonViews;
+
 @Entity
 @Table(name="player")
 public class Joueur {
@@ -27,37 +31,63 @@ public class Joueur {
 	@Id
 	@Column(name="player_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Joueur.class)
 	private Long id;
+	
 	@Column(name="player_surname")
+	@JsonView(JsonViews.Joueur.class)
 	private String nom;
+	
 	@Column(name="player_name")
+	@JsonView(JsonViews.Joueur.class)
 	private String prenom;
+	
 	@Column(name="player_height")
+	@JsonView(JsonViews.Joueur.class)
 	private double taille;
+	
 	@Column(name="player_weight")
+	@JsonView(JsonViews.Joueur.class)
 	private double poids;
+	
 	@Column(name="player_birth_date")
+	@JsonView(JsonViews.Joueur.class)
 	private LocalDate date_naissance;
+	
 	@Column(name="player_jersey_number")
+	@JsonView(JsonViews.Joueur.class)
 	private int numeroMaillot;
+	
 	@Column(name="player_wage")
+	@JsonView(JsonViews.Joueur.class)
 	private double salaire;
+	
 	@Column(name="player_status")
 	@Enumerated(EnumType.STRING)
+	@JsonView(JsonViews.Joueur.class)
 	private Statut statut;
+	
 	@Column(name="player_position")
 	@Enumerated(EnumType.STRING)
+	@JsonView(JsonViews.Joueur.class)
 	private Poste poste;
+	
 	@ManyToOne
     @JoinColumn(name="player_team_id", foreignKey = @ForeignKey(name="player_team_id_fk"))
+	@JsonView(JsonViews.JoueurWithEquipe.class)
 	private Equipe equipe;
+	
 	@Embedded
+	@JsonView(JsonViews.Joueur.class)
 	private AptitudePhysique aptitudesPhysiques;
 	
 	public Joueur() {
 	}
 
-	
+	public Joueur(String nom, String prenom) {
+		this.nom = nom;
+		this.prenom = prenom;
+	}
 
 	public Joueur(String nom, String prenom, double taille, double poids, LocalDate date_naissance, int numeroMaillot,
 			double salaire, Statut statut, Poste poste, Equipe equipe, AptitudePhysique aptitudesPhysiques) {
@@ -73,8 +103,6 @@ public class Joueur {
 		this.equipe = equipe;
 		this.aptitudesPhysiques = aptitudesPhysiques;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -194,9 +222,5 @@ public class Joueur {
 		Joueur other = (Joueur) obj;
 		return Objects.equals(id, other.id);
 	}
-
-	
-
-	
 	
 }
