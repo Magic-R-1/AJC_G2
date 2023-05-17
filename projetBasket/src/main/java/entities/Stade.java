@@ -10,24 +10,31 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import entities.jsonviews.JsonViews;
+
 @Entity
 @Table(name="stadium")
 
 public class Stade {
 
-	
 	@Id
 	@Column(name="stadium_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Base.class)
 	private Long id;
 	
 	@Column(name="stadium_name")
+	@JsonView(JsonViews.Base.class)
 	private String nom;
 	
 	@Column(name="stadium_capacity")
+	@JsonView(JsonViews.Base.class)
 	private int capacite;
 	
 	@Column(name="stadium_city")
+	@JsonView(JsonViews.Base.class)
 	private String ville;
 	
 	@OneToOne(mappedBy="stade")

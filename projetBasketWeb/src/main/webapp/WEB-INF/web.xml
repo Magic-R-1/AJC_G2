@@ -11,7 +11,7 @@
  		</init-param>
  		<init-param>
  			<param-name>contextConfigLocation</param-name>
- 			<param-value>projetBasket.configuration.WebConfig</param-value>
+ 			<param-value>projetBasket.configurations.WebConfig</param-value>
  		</init-param>
  		<load-on-startup>1</load-on-startup>
  	</servlet>

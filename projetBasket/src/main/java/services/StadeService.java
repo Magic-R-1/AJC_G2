@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import entities.Compte;
 import entities.Equipe;
 import entities.Stade;
 import exceptions.EquipeException;
@@ -18,14 +17,14 @@ import repositories.StadeRepository;
 public class StadeService {
 
     @Autowired
-    private StadeRepository stadeRepository;
+    private StadeRepository stadeRepo;
     
     @Autowired
-    private EquipeRepository equipeRepository;
+    private EquipeRepository equipeRepo;
 
     // Trouver tous les stades dans une ville donnée
     public List<Stade> trouverStadesParVille(String ville) {
-        return stadeRepository.findByVille(ville);
+        return stadeRepo.findByVille(ville);
     }
 
 //    // Trouver tous les stades dont la capacité est supérieure ou égale à une certaine valeur
@@ -40,20 +39,23 @@ public class StadeService {
 
     // Récupérer un stade en fonction de son nom
     public Optional<Stade> trouverStadeParNom(String nom) {
-        return stadeRepository.findByNom(nom);
+        return stadeRepo.findByNom(nom);
     }
 
     // Récupérer tous les stades d'une certaine équipe
     public List<Stade> trouverStadesParEquipe(Equipe equipe) {
-        return stadeRepository.findByEquipe(equipe);
+        return stadeRepo.findByEquipe(equipe);
     }
     
+    public List<Stade> getAll() {
+		return stadeRepo.findAll();
+	}
     
     public Stade getById(Long id) {
 		if (id == null) {
 			throw new StadeException("id obligatoire");
 		}
-		return stadeRepository.findById(id).orElseThrow(() -> {
+		return stadeRepo.findById(id).orElseThrow(() -> {
 			throw new StadeException("id inconnu");
 		});
 	}
@@ -62,7 +64,7 @@ public class StadeService {
 		if (stade.getNom() == null || stade.getNom().isEmpty()) {
 			throw new EquipeException("Nom obligatoire");
 		}
-		return stadeRepository.save(stade);
+		return stadeRepo.save(stade);
 	}
 
 	public Stade create(String nom, int capacite, String ville) {
@@ -76,13 +78,13 @@ public class StadeService {
 		}
 		stadeEnBase.setCapacite(stade.getCapacite());
 		stadeEnBase.setVille(stade.getVille());
-		return stadeRepository.save(stadeEnBase);
+		return stadeRepo.save(stadeEnBase);
 	}
 	
 	
 	public void delete(Stade stade) {
-		equipeRepository.setStadeToNull(stade);
-		stadeRepository.delete(stade);
+		equipeRepo.setStadeToNull(stade);
+		stadeRepo.delete(stade);
 
 	}
 	
