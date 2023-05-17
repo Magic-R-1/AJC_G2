@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity 
 @Table(name = "account")
-public abstract class Compte {
+public class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="account_id")

@@ -46,9 +46,8 @@ public class Confrontation {
 
 
 
-	public Confrontation(Long id, LocalDate date, int duree, int scoreDomicile, int scoreVisiteur) {
+	public Confrontation(LocalDate date, int duree, int scoreDomicile, int scoreVisiteur) {
 		super();
-		this.id = id;
 		this.date = date;
 		this.duree = duree;
 		this.scoreDomicile = scoreDomicile;
