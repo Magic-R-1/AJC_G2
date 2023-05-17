@@ -2,7 +2,6 @@ package repositories;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -13,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 
 import entities.Compte;
 import entities.Equipe;
+import entities.Stade;
 
 public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 	   
@@ -79,5 +79,12 @@ public interface EquipeRepository extends JpaRepository<Equipe, Long> {
 	List<Equipe> findOpponentsOfEquipe(@Param("team") Equipe equipe);
 	
 
+	@Query("update Equipe p set p.stade=null where p.stade=:stade")
+	@Transactional
+	@Modifying
+	void setStadeToNull(@Param("stade") Stade stade);
+	
+	
+	
 	
 }

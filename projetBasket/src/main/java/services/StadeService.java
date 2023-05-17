@@ -6,10 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import entities.Compte;
 import entities.Equipe;
 import entities.Stade;
 import exceptions.EquipeException;
 import exceptions.StadeException;
+import repositories.EquipeRepository;
 import repositories.StadeRepository;
 
 @Service
@@ -17,6 +19,9 @@ public class StadeService {
 
     @Autowired
     private StadeRepository stadeRepository;
+    
+    @Autowired
+    private EquipeRepository equipeRepository;
 
     // Trouver tous les stades dans une ville donnée
     public List<Stade> trouverStadesParVille(String ville) {
@@ -74,11 +79,16 @@ public class StadeService {
 		return stadeRepository.save(stadeEnBase);
 	}
 	
+	
 	public void delete(Stade stade) {
+		equipeRepository.setStadeToNull(stade);
 		stadeRepository.delete(stade);
+
 	}
-    
-    
+	
+	public void delete(Long id) {
+		this.delete(this.getById(id));
+	}
     
 }
 

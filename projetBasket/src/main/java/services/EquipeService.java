@@ -118,9 +118,10 @@ public class EquipeService {
 		return equipeRepository.save(equipeEnBase);
 	}
 	
-	public void delete(Equipe equipe) {
-		equipeRepository.delete(equipe);
-	}
+	
+	
+	
+    
 
 
 	
