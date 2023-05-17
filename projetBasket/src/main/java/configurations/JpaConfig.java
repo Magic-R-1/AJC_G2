@@ -24,10 +24,18 @@ public class JpaConfig {
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource=new BasicDataSource();
-		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/projetbasket");
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
+		
+		if (System.getProperty("os.name").contains("Mac")) {
+			dataSource.setUrl("jdbc:mysql://localhost:8889/projetbasket");
+			dataSource.setUsername("root");
+			dataSource.setPassword("root");
+		}
+		else {
+			dataSource.setUrl("jdbc:mysql://localhost:3306/projetbasket");
+			dataSource.setUsername("root");
+			dataSource.setPassword("");
+		}
+
 		return dataSource;
 	}
 	
