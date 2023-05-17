@@ -4,20 +4,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import entities.Equipe;
-import repositories.EquipeRepository;
+import entities.Stade;
+import repositories.StadeRepository;
 
 @SpringJUnitConfig(configurations.JpaConfig.class)
-class EquipeTest {
+class StadeRepositoryTest {
 
 	@Autowired
-	EquipeRepository equipeRepo;
+	StadeRepository stadeRepo;
 	
 	@Test
 	void test() {
 		
-		Equipe  equipe = new Equipe("Jesaispas", "New York", null, null, null, null, null);
-		equipeRepo.save(equipe);
+		Stade  Stade = new Stade("SuperChuette", 0, "Paris");
+		stadeRepo.save(Stade);
 		
 	}
 

@@ -48,7 +48,6 @@ public class Confrontation {
 		
 	}
 
-
 	public Confrontation(LocalDate dateConfrontation, int duree, int scoreDomicile, int scoreVisiteur, Arbitre arbitre,
 			Equipe equipe, Set<Reservation> reservations) {
 		super();
