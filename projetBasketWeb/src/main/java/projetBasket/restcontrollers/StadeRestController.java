@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import entities.Stade;
-import entities.jsonviews.JsonViews;
-import services.StadeService;
+import projetBasket.entities.Stade;
+import projetBasket.entities.jsonviews.JsonViews;
+import projetBasket.services.StadeService;
 
 @RestController
 @RequestMapping("/api/stade")
@@ -25,5 +25,7 @@ public class StadeRestController {
 	public List<Stade> getAll() {
 		return stadeSrv.getAll();
 	}
+	
+	
 	
 }

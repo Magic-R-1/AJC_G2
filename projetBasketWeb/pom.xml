@@ -2,8 +2,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>formation.soprasteria</groupId>
+	
+	<!--<groupId>formation.soprasteria</groupId>
+	<artifactId>eshopWebService</artifactId>-->
+	
+	<groupId>projetBasket</groupId>
 	<artifactId>projetBasketWeb</artifactId>
+	
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<properties>
@@ -31,16 +36,19 @@
 			<artifactId>projetBasket</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+		<!-- conversion java<=>json -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+		<!-- conversion LocalDate -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
