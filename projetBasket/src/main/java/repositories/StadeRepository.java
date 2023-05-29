@@ -13,6 +13,7 @@ import org.springframework.data.repository.query.Param;
 import entities.Equipe;
 import entities.Stade;
 
+@Transactional
 public interface StadeRepository extends JpaRepository<Stade, Long>{
 	
 	

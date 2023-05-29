@@ -35,23 +35,23 @@ class StadeServiceTest {
 	
 	@Test
 	List<Stade> testFindByVille() {
-		return stadeSrv.findByVille("Los Angeles");
+		return stadeSrv.getByVille("Los Angeles");
 	}
 	
 	
 	@Test
 	List<Stade> testfindByCapaciteGreaterThanEqual() {
-		return stadeSrv.findByCapaciteGreaterThanEqual(0);
+		return stadeSrv.getByCapaciteGreaterThanEqual(0);
 	}
 	
 	@Test
 	void testfindByNom() {
-		stadeSrv.findByNom("Staples");
+		stadeSrv.getByNom("Staples");
 	}
 	
 	@Test
 	List<Stade> testfindByEquipe() {
-		return stadeSrv.findByEquipe(null);
+		return stadeSrv.getByEquipe(null);
 	}
 	
 	@Test

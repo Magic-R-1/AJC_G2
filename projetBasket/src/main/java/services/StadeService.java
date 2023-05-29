@@ -2,6 +2,8 @@ package services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import repositories.EquipeRepository;
 import repositories.StadeRepository;
 
 @Service
+@Transactional
 public class StadeService {
 
     @Autowired
@@ -21,12 +24,12 @@ public class StadeService {
     @Autowired
     private EquipeRepository equipeRepo;
 
-    // Trouver tous les stades dans une ville donnée
-    public List<Stade> findByVille(String ville) {
+   
+    public List<Stade> getByVille(String ville) {
         return stadeRepo.findByVille(ville);
     }
 
-     public List<Stade> findByCapaciteGreaterThanEqual(int capacite) {
+     public List<Stade> getByCapaciteGreaterThanEqual(int capacite) {
         return stadeRepo.findByCapaciteGreaterThanEqual(capacite);
     }
 
@@ -40,15 +43,7 @@ public class StadeService {
     	 }
      }
      
-     private void checkId(Long id) {
-    	 if(id ==null) {
-    		 throw new StadeException("id null");
-    	 }
-     }
-     
-     
-     
-     public Stade findByNom(String nom) {
+     public Stade getByNom(String nom) {
     	  Stade stade = stadeRepo.findByNom(nom).orElseThrow(() -> {
     	        throw new StadeException("stade inconnu");
     	    });
@@ -59,7 +54,7 @@ public class StadeService {
 
 
     // Récupérer tous les stades d'une certaine équipe
-    public List<Stade> findByEquipe(Equipe equipe) {
+    public List<Stade> getByEquipe(Equipe equipe) {
         return stadeRepo.findByEquipe(equipe);
     }
     
@@ -99,10 +94,10 @@ public class StadeService {
 	}
 	
 	
-	public void delete(Stade stade) {
-		equipeRepo.setStadeToNull(stade);
-		stadeRepo.delete(stade);
-
+	public void delete(Long id) {
+		Stade stadeEnBase = getById(id);
+		equipeRepo.setStadeToNull(stadeEnBase);
+		stadeRepo.delete(stadeEnBase);
 	}
 	
 

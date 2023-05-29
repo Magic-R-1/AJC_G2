@@ -2,7 +2,10 @@ package services;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +18,7 @@ import entities.Personnel;
 import entities.Poste;
 import entities.Stade;
 import exceptions.EquipeException;
+import exceptions.StadeException;
 import repositories.CompteRepository;
 import repositories.ConfrontationRepository;
 import repositories.EquipeRepository;
@@ -23,124 +27,289 @@ import repositories.PersonnelRepository;
 import repositories.StadeRepository;
 
 @Service
+@Transactional
 public class EquipeService {
 	
 	@Autowired
-	private EquipeRepository equipeRepository;
+	private EquipeRepository equipeRepo;
 	
 	@Autowired
-	private JoueurRepository joueurRepository;
+	private JoueurRepository joueurRepo;
 	
 	@Autowired
-	private ConfrontationRepository confrontationRepository;
-	
-	
-	@Autowired
-	private StadeRepository stadeRepository;
+	private ConfrontationRepository confrontationRepo;
 	
 	
 	@Autowired
-	private PersonnelRepository personnelRepository;
+	private StadeRepository stadeRepo;
+	
 	
 	@Autowired
-	private CompteRepository compteRepository;
+	private PersonnelRepository personnelRepo;
+	
+	@Autowired
+	private CompteRepository compteRepo;
 	
 	
-	public List<Equipe> findByVille(String ville) {
-		return equipeRepository.findByVille(ville);
-	}
-	
-	public List<Equipe> findByJoueurNom(String nom) {
-		return equipeRepository.findByJoueurNom(nom);
-	}
-	
-	public List<Equipe> findByFranchise(String franchise){
-		return equipeRepository.findByFranchise(franchise);
-	}
-
-	public List<Equipe> findByConfrontations(Confrontation confrontation){
-		return equipeRepository.findByConfrontations(confrontation);
-	}
-	
-	public List<Equipe> findByStade(Stade stade){
-		return equipeRepository.findByStade(stade);
-	}
-	
-	public List<Equipe> findByPersonnel(Personnel personnel){
-		return equipeRepository.findByPersonnel(personnel);
-	}
-	
-	public List<Equipe> findByCompte(Compte compte){
-		return equipeRepository.findByCompte(compte);
-	}
-	
-	public List<Equipe> findByConfrontations_DateConfrontation(LocalDate dateConfrontation){
-		return equipeRepository.findByConfrontations_DateConfrontation(dateConfrontation);
-	}
-	
-	public List<Equipe> findByJoueur_SalaireGreaterThan(double salaire){
-		return equipeRepository.findByJoueur_SalaireGreaterThan(salaire);
-	}
-	
-	public List<Equipe> findByPersonnel_SalaireLessThan(double salaire){
-		return equipeRepository.findByPersonnel_SalaireLessThan(salaire);
-	}
-	
-	public List<Equipe> findByJoueur_Poste(Poste poste){
-		return equipeRepository.findByJoueur_Poste(poste);
-	}
-	
-	public List<Equipe> findByVilleStartsWith(String prefix){
-		return equipeRepository.findByVilleStartsWith(prefix);
-	}
-	
-	 public List<Equipe> getAll() {
-			return equipeRepository.findAll();
+	private void checkEquipe(Equipe equipe) {
+		if (equipe == null) {
+			throw new EquipeException("equipe inconnue");
 		}
-
-	public Equipe getById(Long id) {
-	
-		if (id == null) {
-			throw new EquipeException("id obligatoire");
+		if (equipe.getFranchise() == null || equipe.getFranchise().isEmpty()) {
+			throw new EquipeException("franchise obligatoire");
 		}
-		return equipeRepository.findById(id).orElseThrow(() -> {
-			throw new EquipeException("id inconnu");
-		});
 		
 	}
 	
-	public Equipe create(Equipe equipe) {
-		if (equipe.getFranchise() == null || equipe.getFranchise().isEmpty()) {
-			throw new EquipeException("Franchise obligatoire");
+
+	private void checkId(Long id) {
+		if (id == null) {
+			throw new EquipeException("id null");
 		}
-		return equipeRepository.save(equipe);
 	}
+	
+	
+	public List<Equipe> getByVille(String ville) {
+		return equipeRepo.findByVille(ville);
+	}
+	
+	public List<Equipe> getByJoueurNom(String nom) {
+		return equipeRepo.findByJoueurNom(nom);
+	}
+	
+	public Equipe getByFranchise(String franchise) {
+		Equipe equipe = equipeRepo.findByFranchise(franchise).orElseThrow(() -> {
+  	        throw new EquipeException("equipe inconnu");
+  	    });
+  	    checkEquipe(equipe);
+
+  	    return equipe;
+  	}
+
+
+	public List<Equipe> getByConfrontation(Confrontation confrontation){
+		return equipeRepo.findByConfrontation(confrontation);
+	}
+	
+	public List<Equipe> getByStade(Stade stade){
+		return equipeRepo.findByStade(stade);
+	}
+	
+	public List<Equipe> getByPersonnel(Personnel personnel){
+		return equipeRepo.findByPersonnel(personnel);
+	}
+	
+	public Equipe getByCompte(Compte compte) {
+		Equipe equipe = equipeRepo.findByCompte(compte).orElseThrow(() -> {
+  	        throw new EquipeException("equipe inconnu");
+  	    });
+  	    checkEquipe(equipe);
+
+  	    return equipe;
+  	}
+	
+	
+	public List<Equipe> getByConfrontations_DateConfrontation(LocalDate dateConfrontation){
+		return equipeRepo.findByConfrontation_DateConfrontation(dateConfrontation);
+	}
+	
+	public List<Equipe> getByJoueur_SalaireGreaterThan(double salaire){
+		return equipeRepo.findByJoueur_SalaireGreaterThan(salaire);
+	}
+	
+	public List<Equipe> getByPersonnel_SalaireLessThan(double salaire){
+		return equipeRepo.findByPersonnel_SalaireLessThan(salaire);
+	}
+	
+	public List<Equipe> getByJoueur_Poste(Poste poste){
+		return equipeRepo.findByJoueur_Poste(poste);
+	}
+	
+	
+	 public List<Equipe> getAll() {
+			return equipeRepo.findAll();
+		}
+
+	 public Equipe getById(Long id) {
+			checkId(id);
+			return equipeRepo.findById(id).orElseThrow(() -> {
+				throw new EquipeException("id inconnu");
+			});
+		}
+
+	
+	public Equipe create(Equipe equipe) {
+		checkEquipe(equipe);
+		return equipeRepo.save(equipe);
+	}
+
 
 	public Equipe create(String franchise, String ville, Set <Joueur> joueur, Set <Confrontation> confrontation, Stade stade, Set <Personnel> personnel, Compte compte ) {
 		return this.create(new Equipe(franchise, ville, joueur, confrontation, stade, personnel, compte));
 	}
-	
+
+
 	public Equipe update(Equipe equipe) {
-		Equipe equipeEnBase = this.getById(equipe.getId());
-		if (equipe.getFranchise() != null && !equipe.getFranchise().isEmpty()) {
-			equipeEnBase.setFranchise(equipe.getFranchise());
-		}
-		equipeEnBase.setJoueur(equipe.getJoueur());
-		equipeEnBase.setMatchs(equipe.getMatchs());
-		equipeEnBase.setPersonne(equipe.getPersonne());
-		equipeEnBase.setStade(equipe.getStade());
-		equipeEnBase.setVille(equipe.getVille());
-		return equipeRepository.save(equipeEnBase);
+	    Equipe equipeEnBase = getById(equipe.getId());
+	   
+	    checkEquipe(equipe);
+	    
+	    equipeEnBase.setVille(equipe.getVille());
+	    equipeEnBase.setFranchise(equipe.getFranchise());
+
+
+	    
+	    if (equipe.getJoueur() != null) {
+	        Set<Joueur> joueursEnBase = equipeEnBase.getJoueur();
+	        Set<Joueur> joueursMiseAJour = equipe.getJoueur();
+
+	        
+	        for (Joueur joueurMiseAJour : joueursMiseAJour) {
+	          
+	            Joueur joueurEnBase = getJoueurById(joueursEnBase, joueurMiseAJour.getId());
+
+	            if (joueurEnBase != null) {
+	             
+	                joueurEnBase.setNom(joueurMiseAJour.getNom());
+	               
+	            } else {
+	              
+	                joueursEnBase.add(joueurMiseAJour);
+	            }
+	        }
+
+	      
+	        joueursEnBase.retainAll(joueursMiseAJour);
+
+	        equipeEnBase.setJoueur(joueursEnBase);
+	    }
+	    
+	    
+	    if (equipe.getPersonnel() != null) {
+	        Set<Personnel> personnelsEnBase = equipeEnBase.getPersonnel();
+	        Set<Personnel> personnelsMiseAJour = equipe.getPersonnel();
+
+	      
+	        for (Personnel personnelMiseAJour : personnelsMiseAJour) {
+	           
+	            Personnel personnelEnBase = getPersonnelById(personnelsEnBase, personnelMiseAJour.getId());
+
+	            if (personnelEnBase != null) {
+	                
+	                personnelEnBase.setNom(personnelMiseAJour.getNom());
+	              
+	            } else {
+	               
+	                personnelsEnBase.add(personnelMiseAJour);
+	            }
+	        }
+
+	        
+	        equipeEnBase.setPersonnel(personnelsEnBase);
+	    }
+	    
+	 
+	    if (equipe.getConfrontation() != null) {
+	        Set<Confrontation> confrontationsEnBase = equipeEnBase.getConfrontation();
+	        Set<Confrontation> confrontationsMiseAJour = equipe.getConfrontation();
+
+	     
+	        for (Confrontation confrontationMiseAJour : confrontationsMiseAJour) {
+	         
+	            Confrontation confrontationEnBase = getConfrontationById(confrontationsEnBase, confrontationMiseAJour.getId());
+
+	            if (confrontationEnBase != null) {
+	           
+	                confrontationEnBase.setId(confrontationMiseAJour.getId());
+	        
+	            } else {
+	          
+	                confrontationsEnBase.add(confrontationMiseAJour);
+	            }
+	        }
+
+	        equipeEnBase.setConfrontation(confrontationsEnBase);
+	    }
+
+	
+	    if (equipe.getStade() != null) {
+	        Stade stade = equipeEnBase.getStade();
+	        if (stade == null) {
+	            stade = new Stade();
+	            equipeEnBase.setStade(stade);
+	        }
+	        stade.setNom(equipe.getStade().getNom());
+	        stade.setCapacite(equipe.getStade().getCapacite());
+	        stade.setVille(equipe.getStade().getVille());
+	    }
+
+	  
+	    if (equipe.getCompte() != null) {
+	        Compte compte = equipeEnBase.getCompte();
+	        if (compte == null) {
+	            compte = new Compte();
+	            equipeEnBase.setCompte(compte);
+	        }
+	        compte.setNom(equipe.getCompte().getNom());
+	        compte.setEmail(equipe.getCompte().getEmail());
+	        compte.setLogin(equipe.getCompte().getLogin());
+	        compte.setPassword(equipe.getCompte().getPassword());
+	        compte.setPrenom(equipe.getCompte().getPrenom());
+	        compte.setStatutRole(equipe.getCompte().getStatutRole());
+	        
+	        equipeEnBase.setCompte(compte);
+	    }
+
+	    
+	    
+	    
+	    
+	    return equipeRepo.save(equipeEnBase);
 	}
 	
+	
+
+	// Méthode utilitaire pour obtenir un joueur à partir de son ID
+	private Joueur getJoueurById(Set<Joueur> joueurs, Long id) {
+	    for (Joueur joueur : joueurs) {
+	        if (joueur.getId().equals(id)) {
+	            return joueur;
+	        }
+	    }
+	    return null;
+	}
+	
+	
+	// Méthode utilitaire pour obtenir un membre du personnel à partir de son ID
+	private Personnel getPersonnelById(Set<Personnel> personnels, Long id) {
+	    for (Personnel personnel : personnels) {
+	        if (personnel.getId().equals(id)) {
+	            return personnel;
+	        }
+	    }
+	    return null;
+	}
+
+	// Méthode utilitaire pour obtenir une confrontation à partir de son ID
+	private Confrontation getConfrontationById(Set<Confrontation> confrontations, Long id) {
+	    for (Confrontation confrontation : confrontations) {
+	        if (confrontation.getId().equals(id)) {
+	            return confrontation;
+	        }
+	    }
+	    return null;
+	}
+
+	  
+	
 	public void delete(Equipe equipe) {
-		joueurRepository.setEquipeToNull(equipe);
-		confrontationRepository.setEquipeToNull(equipe);
-		stadeRepository.setEquipeToNull(equipe);
-		personnelRepository.setEquipeToNull(equipe);
-		compteRepository.setEquipeToNull(equipe);
+		joueurRepo.setEquipeToNull(equipe);
+		confrontationRepo.setEquipeToNull(equipe);
+		stadeRepo.setEquipeToNull(equipe);
+		personnelRepo.setEquipeToNull(equipe);
+		compteRepo.setEquipeToNull(equipe);
 		
-		equipeRepository.delete(equipe);
+		equipeRepo.delete(equipe);
 
 	}
 	
