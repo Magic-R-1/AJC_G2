@@ -23,25 +23,17 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		// @formatter:off
-//		return http.antMatcher("/api/**")
-//				.csrf(csrf -> csrf.disable())
-//				.authorizeRequests(requests ->  requests
-//														.antMatchers("/api/commande/**").hasRole("CLIENT")
-//														.anyRequest().hasAnyRole("ADMIN"))
-//				.httpBasic(withDefaults())
-//				.build();
 
 		return http.antMatcher("/api/**")
 						.csrf().disable()
 						.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 						.and()
 						.authorizeRequests()
-							//manque un truc pour angular
-//							.antMatchers(HttpMethod.POST,"/api/client/inscription").anonymous()
-//							.antMatchers(HttpMethod.GET,"/api/auth").authenticated()
-//							.antMatchers("/api/commande").hasRole("CLIENT")
-//							.anyRequest().hasAnyRole("ADMIN")
-							.anyRequest().permitAll()
+							.antMatchers(HttpMethod.OPTIONS).permitAll()
+							.antMatchers(HttpMethod.POST,"/api/compte/inscription").anonymous()
+							.antMatchers(HttpMethod.GET,"/api/auth").authenticated()
+							.antMatchers("/api/StatutRole").hasRole("CLIENT")
+							.anyRequest().hasAnyRole("ADMIN")
 						.and()
 						.httpBasic()
 						.and()

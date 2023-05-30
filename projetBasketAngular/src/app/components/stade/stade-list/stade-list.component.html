@@ -1,0 +1,28 @@
+<h1>Listes des stades</h1>
+<table class="table">
+  <tr>
+    <th>Id :</th>
+    <th>Nom :</th>
+    <th>Capacité :</th>
+    <th>Ville :</th>
+    <th>Equipe :</th>
+  </tr>
+  <tr *ngFor="let stade of stades">
+    <td>{{ stade.id }}</td>
+    <td>{{ stade.nom }}</td>
+    <td>{{ stade.capacite }}</td>
+    <td>{{ stade.ville }}</td>
+    <td>{{ stade.equipe }}</td>
+    <td>
+      <a class="btn btn-outline-primary" routerLink="/stade/edit/{{ stade.id }}"
+        >Editer</a
+      >
+    </td>
+    <td>
+      <button (click)="deleteStade(stade.id!)" class="btn btn-outline-danger">
+        Supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+<a class="btn btn-link" routerLink="/stade/edit">Nouveau stade</a>
