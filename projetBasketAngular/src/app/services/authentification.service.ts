@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthentificationService {
-  private static URL: string = 'http://localhost:8080/projetBasket/api/compte';
+  private static URL: string = 'http://localhost:8080/projetbasket/api/auth';
 
   constructor(private httpClient: HttpClient) {}
 

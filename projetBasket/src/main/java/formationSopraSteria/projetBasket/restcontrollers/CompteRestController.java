@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,11 +34,14 @@ public class CompteRestController {
 	@Autowired
 	private CompteService compteSrv;
 	
+	
+	
 	@GetMapping("")
 	@JsonView(JsonViews.Compte.class)
 	public List<Compte> getAll() {
 		return compteSrv.getAll();
 	}
+	
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.Compte.class)
 	public Compte getById(@PathVariable("id") Long id) {

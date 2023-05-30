@@ -25,11 +25,13 @@
         class="form-control"
       />
     </div>
-    <button type="submit" class="btn">S'inscrire</button>
-    <button type="button" class="btn" (click)="check()">Se connecter</button>
+    <div>
+      <button (click)="check()" class="btn btn-outline-primary">
+        Se connecter
+      </button>
+    </div>
     <button *ngIf="username" (click)="logoff()" class="btn btn-link">
       Déconnexion
     </button>
   </form>
-  <span *ngIf="login">Bonjour {{ username }}</span>
 </div>

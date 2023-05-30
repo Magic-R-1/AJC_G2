@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class EquipeService {
-  private static URL: string = 'http://localhost:8080/basketRest/api/team';
+  private static URL: string = 'http://localhost:8080/projetbasket/api/team';
 
   constructor(private httpClient: HttpClient) {}
 

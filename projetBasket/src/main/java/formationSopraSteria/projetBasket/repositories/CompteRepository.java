@@ -17,6 +17,9 @@ import formationSopraSteria.projetBasket.entities.StatutRole;
 public interface CompteRepository extends JpaRepository<Compte, Long> {
 	List<Compte> findByNom(String nom);
 	List<Compte> findByNomContaining(String nom);
+	
+	Optional<Compte>findByLogin(String login);
+	
 	Optional<Compte> findByStatutRole(StatutRole statutRole);
 
 	  @Query("update Compte p set p.equipe=null where p.equipe=:equipe")

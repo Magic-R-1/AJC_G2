@@ -17,9 +17,8 @@ class CompteServiceTest {
 	CompteService compteSrv;
 	
 	@Test
-	@Disabled
 	void testCreate() {
-		Compte c1 = new Compte("totto", "bobi","tt","rhh","tt",StatutRole.ROLE_ADMIN);
+		Compte c1 = new Compte("admin", "admin",StatutRole.ROLE_ADMIN);
 		compteSrv.create(c1);
 	}
 	

@@ -1,10 +1,14 @@
 package formationSopraSteria.projetBasket.entities;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +17,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import formationSopraSteria.projetBasket.entities.jsonviews.JsonViews;
@@ -20,7 +28,7 @@ import formationSopraSteria.projetBasket.entities.jsonviews.JsonViews;
 @Entity 
 @Table(name = "account")
 
-public class Compte {
+public class Compte implements UserDetails  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="account_id")
@@ -31,7 +39,6 @@ public class Compte {
 	protected String login;
 	@NotBlank(message = "*ne doit pas Ãªtre vide")
 	@Column(name="account_password",nullable = false)
-	@JsonView(JsonViews.Base.class)
 	protected String password;	
 	@Column(name="account_last_name")
 	@JsonView(JsonViews.Base.class)
@@ -44,6 +51,7 @@ public class Compte {
 	protected String email;
 	@Column(name="account_status")
 	@JsonView(JsonViews.Base.class)
+	@Enumerated(EnumType.STRING)
 	private StatutRole statutRole;
 	@OneToMany(mappedBy="compte")
 	@Column(name="bookings")
@@ -54,6 +62,16 @@ public class Compte {
 	public Compte() {
 		
 	}
+	
+	public Compte(String login, String password,
+			StatutRole statutRole) {
+		super();
+		this.login = login;
+		this.password = password;
+		this.statutRole = statutRole;
+	}
+	
+	
 	public Compte( String login, String password, String nom, String prenom, String email,
 			StatutRole statutRole) {
 		super();
@@ -120,6 +138,36 @@ public class Compte {
 			return false;
 		Compte other = (Compte) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Arrays.asList(new SimpleGrantedAuthority(statutRole.toString()));
+	}
+
+	@Override
+	public String getUsername() {
+		return login;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 		
 	

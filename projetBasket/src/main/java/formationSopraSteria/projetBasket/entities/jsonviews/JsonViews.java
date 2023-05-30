@@ -41,6 +41,7 @@ public class JsonViews {
 	public class Compte extends Base {
 	}
 	
+	
 	public class Personnel extends Base {
 	}
     

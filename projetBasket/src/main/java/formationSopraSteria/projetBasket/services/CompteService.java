@@ -3,9 +3,12 @@ package formationSopraSteria.projetBasket.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import formationSopraSteria.projetBasket.entities.Compte;
+import formationSopraSteria.projetBasket.entities.Role;
 import formationSopraSteria.projetBasket.entities.StatutRole;
 import formationSopraSteria.projetBasket.exceptions.CompteException;
 import formationSopraSteria.projetBasket.repositories.CompteRepository;
@@ -18,12 +21,14 @@ public class CompteService {
 	private CompteRepository compteRepo;
 	@Autowired
 	private ReservationRepository reservationRepo;
-		
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	private void checkCompte(Compte compte) {
 		if (compte == null) {
 			throw new CompteException("compte null");
 		}
-		if (compte.getNom() == null || compte.getLogin().isEmpty()) {
+		if (compte.getLogin() == null || compte.getLogin().isEmpty()) {
 			throw new CompteException("login obligatoire");
 		}
 	}
@@ -32,10 +37,15 @@ public class CompteService {
 			throw new CompteException("id null");
 		}
 	}
+	
 	public Compte create(Compte compte) {
 		checkCompte(compte);
+		compte.setPassword(passwordEncoder.encode(compte.getPassword()));
+		System.out.println(compte.getPassword());
 		return compteRepo.save(compte);
 	}
+	
+	
 	public Compte update(Compte compte) {
 		Compte compteEnBase = getById(compte.getId());
 		checkCompte(compte);
@@ -82,4 +92,26 @@ public class CompteService {
 	public List<Compte> getByNom(String nom) {
 		return compteRepo.findByNomContaining(nom);
 	}
+	
+	public Compte getByLogin(String login) {
+		return compteRepo.findByLogin(login).orElseThrow(() -> {
+			throw new UsernameNotFoundException("compte inconnu");
+		});
+	}
+	
+	
+	public Compte createAdmin(String login,String password) {
+		return create(new Compte(login, password, StatutRole.ROLE_ADMIN));
+	}
+	
+	public Compte createClient(String login,String password) {
+		return create(new Compte(login, password, StatutRole.ROLE_CLIENT));
+	}
+	
+	public Compte createGm(String login,String password) {
+		return create(new Compte(login, password, StatutRole.ROLE_GM));
+	}
+	
+	
+	
 }

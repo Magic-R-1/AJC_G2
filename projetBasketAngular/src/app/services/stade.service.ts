@@ -7,7 +7,7 @@ import { Stade } from '../model/stade';
   providedIn: 'root',
 })
 export class StadeService {
-  private static URL: string = 'http://localhost:8080/basketRest/api/stade';
+  private static URL: string = 'http://localhost:8080/projetbasket/api/stade';
 
   constructor(private httpClient: HttpClient) {}
 
