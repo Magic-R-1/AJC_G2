@@ -1,0 +1,59 @@
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        Tente ta chance à ce Quizz
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse show"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <div class="container">
+          <h2>Quizz Basket</h2>
+
+          <div *ngIf="!quizCompleted">
+            <div class="question">
+              <h3>{{ currentQuestion.question }}</h3>
+            </div>
+            <div class="answers">
+              <div
+                *ngFor="let answer of currentQuestion.answers"
+                class="form-check"
+              >
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="answer"
+                  [value]="answer"
+                  [(ngModel)]="selectedAnswer"
+                />
+                <label class="form-check-label">{{ answer }}</label>
+              </div>
+            </div>
+            <button class="btn btn-primary" (click)="nextQuestion()">
+              Suivant
+            </button>
+          </div>
+
+          <div *ngIf="quizCompleted">
+            <h3>Quiz terminé !</h3>
+            <p>Score : {{ score }} / {{ questions.length }}</p>
+            <button class="btn btn-primary" (click)="resetQuiz()">
+              Recommencer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

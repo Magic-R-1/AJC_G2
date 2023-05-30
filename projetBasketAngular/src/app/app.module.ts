@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +13,15 @@ import { StadeListComponent } from './components/stade/stade-list/stade-list.com
 import { EquipeListComponent } from './components/equipe/equipe-list/equipe-list.component';
 import { EquipeEditComponent } from './components/equipe/equipe-edit/equipe-edit.component';
 import { AuthentificationInterceptor } from './interceptors/authentification.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SondageQuizComponent } from './components/sondage-quiz/sondage-quiz.component';
+import { ArticlesComponent } from './components/articles/articles.component';
+import { Actualite1Component } from './components/actualite/actualite1/actualite1.component';
+import { Actualite3Component } from './components/actualite/actualite3/actualite3.component';
+import { Actualite2Component } from './components/actualite/actualite2/actualite2.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NewsletterComponent } from './components/newsletter/newsletter.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +34,22 @@ import { AuthentificationInterceptor } from './interceptors/authentification.int
     StadeListComponent,
     EquipeListComponent,
     EquipeEditComponent,
+    SondageQuizComponent,
+    ArticlesComponent,
+    Actualite1Component,
+    Actualite3Component,
+    Actualite2Component,
+    HeaderComponent,
+    NewsletterComponent,
+    FooterComponent,
   ],
-  imports: [HttpClientModule, BrowserModule, AppRoutingModule, FormsModule],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

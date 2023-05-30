@@ -1,0 +1,124 @@
+.article {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.article-description {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.article-paragraph {
+  margin-bottom: 15px;
+}
+
+.article-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.article-link:hover {
+  text-decoration: underline;
+}
+
+.article-highlight {
+  background-color: #f8f8f8;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.article-highlight-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.article-highlight-description {
+  margin-bottom: 10px;
+}
+
+.article-highlight-note {
+  font-style: italic;
+  color: #777;
+}
+
+.article-note {
+  font-style: italic;
+  color: #777;
+  margin-top: 10px;
+}
+.article-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px; /* Ajout de marges */
+  align-self: flex-start;
+}
+
+.article-frame {
+  background-color: #f9f9f9; /* Couleur de fond différente */
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 40px; /* Ajout de marges */
+}
+
+.article-title {
+  font-size: 24px; /* Taille du titre plus grande */
+  font-weight: bold; /* Gras */
+}
+
+.article-date {
+  font-size: 12px; /* Taille de la date plus petite */
+  color: #777; /* Couleur grise */
+}
+
+.article-divider {
+  border-bottom: 1px solid #ccc; /* Ligne de séparation */
+  margin-bottom: 10px; /* Marge en bas de la ligne */
+  border: 1px solid #cccccc;
+}
+
+.article-content {
+  text-align: justify;
+  margin-top: 20px;
+}
+
+.article-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.container h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.article-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.article-item {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+.article-item a {
+  text-decoration: none;
+  color: #333333;
+}
+
+.container-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

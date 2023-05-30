@@ -1,41 +1,32 @@
 <div class="container">
   <h1 class="title">Bienvenue sur notre site de basket</h1>
 
-  <div class="actualites">
-    <h2>Actualités</h2>
-    <div class="actualites-list">
-      <div class="actualite-item">
-        <img
-          src="assets/actualite1.jpg"
-          alt="Actualité 1"
-          class="actualite-image"
-        />
-        <h3 class="actualite-title">Titre de l'actualité 1</h3>
-        <p class="actualite-description">Description de l'actualité 1</p>
-        <a routerLink="/actualite/1" class="actualite-link">Lire plus</a>
-      </div>
-      <div class="actualite-item">
-        <img
-          src="assets/actualite2.jpg"
-          alt="Actualité 2"
-          class="actualite-image"
-        />
-        <h3 class="actualite-title">Titre de l'actualité 2</h3>
-        <p class="actualite-description">Description de l'actualité 2</p>
-        <a routerLink="/actualite/2" class="actualite-link">Lire plus</a>
-      </div>
-      <div class="actualite-item">
-        <img
-          src="assets/actualite3.jpg"
-          alt="Actualité 3"
-          class="actualite-image"
-        />
-        <h3 class="actualite-title">Titre de l'actualité 3</h3>
-        <p class="actualite-description">Description de l'actualité 3</p>
-        <a routerLink="/actualite/3" class="actualite-link">Lire plus</a>
-      </div>
-    </div>
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Rechercher..."
+      [(ngModel)]="searchTerm"
+    />
+    <button class="search-button" (click)="search()">Rechercher</button>
   </div>
+
+  <div class="last-scores">
+    <h2>Derniers scores</h2>
+    <div class="score-item">
+      <h3 class="score-title">Match 1</h3>
+      <p class="score-description">Équipe A vs Équipe B</p>
+      <p class="score-result">Résultat : Équipe A 90 - Équipe B 85</p>
+    </div>
+    <div class="score-item">
+      <h3 class="score-title">Match 2</h3>
+      <p class="score-description">Équipe C vs Équipe D</p>
+      <p class="score-result">Résultat : Équipe C 75 - Équipe D 80</p>
+    </div>
+    <!-- Ajoutez d'autres scores ici -->
+  </div>
+  <app-articles></app-articles>
 
   <div class="videos">
     <h2>Vidéos de performances</h2>
@@ -65,5 +56,9 @@
         </h3>
       </div>
     </div>
+  </div>
+
+  <div class="sondage-quiz">
+    <app-sondage-quiz></app-sondage-quiz>
   </div>
 </div>

@@ -1,0 +1,28 @@
+.footer {
+  background-color: #f2f2f2;
+  color: #888;
+  padding: 20px;
+  text-align: center;
+  font-size: 11px;
+  display: flex; /* Utilisation de flexbox */
+  justify-content: space-between; /* Alignement des sections */
+}
+.footer-section {
+  width: 48%; /* Largeur fixe pour chaque section */
+}
+.footer-section h3 {
+  margin-top: 0;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.social-icons a {
+  margin: 0 5px;
+}
+
+.social-icons img {
+  width: 30px; /* Largeur souhaitée */
+  height: 30px; /* Hauteur souhaitée */
+}

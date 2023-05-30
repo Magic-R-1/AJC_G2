@@ -1,0 +1,21 @@
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control {
+  width: 80%; /* ajustez la largeur selon vos besoins */
+  font-size: 14px; /* ajustez la taille de la police selon vos besoins */
+}
+
+.btn-custom {
+  background-color: gray; /* Couleur de fond gris */
+  color: white; /* Couleur du texte en blanc */
+  padding: 0.5rem 1rem; /* Espacement interne du bouton */
+  font-size: 12px; /* Taille de la police */
+}
+
+.btn-custom:hover {
+  background-color: darkgray; /* Couleur de fond gris plus foncé au survol */
+}
