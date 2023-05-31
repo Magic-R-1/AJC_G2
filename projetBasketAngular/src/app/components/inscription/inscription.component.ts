@@ -9,7 +9,7 @@ import { AuthentificationService } from 'src/app/services/authentification.servi
   styleUrls: ['./inscription.component.css'],
 })
 export class InscriptionComponent {
-  username!: string;
+  login!: string;
   password!: string;
   displayError = false;
 
@@ -19,12 +19,12 @@ export class InscriptionComponent {
   ) {}
 
   check() {
-    this.authSrv.login(this.username, this.password).subscribe({
+    this.authSrv.login(this.login, this.password).subscribe({
       next: (compte) => {
         this.displayError = false;
         sessionStorage.setItem(
           'token',
-          'Basic ' + btoa(this.username + ':' + this.password)
+          'Basic ' + btoa(this.login + ':' + this.password)
         );
         sessionStorage.setItem('compte', JSON.stringify(compte));
         this.router.navigateByUrl('/home');
@@ -33,16 +33,5 @@ export class InscriptionComponent {
         this.displayError = true;
       },
     });
-  }
-
-  get login() {
-    if (sessionStorage.getItem('compte')) {
-      return JSON.parse(sessionStorage.getItem('compte')!).login;
-    }
-  }
-
-  logoff() {
-    sessionStorage.clear();
-    this.router.navigateByUrl('/home');
   }
 }
