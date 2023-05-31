@@ -22,6 +22,10 @@ import { Actualite2Component } from './components/actualite/actualite2/actualite
 import { HeaderComponent } from './components/header/header.component';
 import { NewsletterComponent } from './components/newsletter/newsletter.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ConfrontationListComponent } from './components/confrontation/confrontation-list/confrontation-list.component';
+import { ConfrontationEditComponent } from './components/confrontation/confrontation-edit/confrontation-edit.component';
+import { ArbitreListComponent } from './components/arbitre/arbitre-list/arbitre-list.component';
+import { ArbitreEditComponent } from './components/arbitre/arbitre-edit/arbitre-edit.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { FooterComponent } from './components/footer/footer.component';
     HeaderComponent,
     NewsletterComponent,
     FooterComponent,
+    ConfrontationListComponent,
+    ConfrontationEditComponent,
+    ArbitreListComponent,
+    ArbitreEditComponent,
   ],
   imports: [
     HttpClientModule,
