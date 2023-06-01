@@ -1,6 +1,12 @@
+import { StatutRole } from './statut-role';
+
 export class Compte {
-  constructor(public login?: string, public role?: string) {
-    this.login = login;
-    this.role = role;
-  }
+  constructor(
+    public login?: string,
+    public password?: string,
+    public nom?: string,
+    public prenom?: string,
+    public statutRole?: StatutRole,
+    public id?: number
+  ) {}
 }

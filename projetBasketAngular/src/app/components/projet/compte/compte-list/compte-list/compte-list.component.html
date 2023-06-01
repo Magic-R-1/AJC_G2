@@ -1,0 +1,42 @@
+<div class="about-container">
+  <h1>La listes des comptes</h1>
+  <div><input [(ngModel)]="filtre" class="form-control" /></div>
+  <table class="table">
+    <tr>
+      <th>Id:</th>
+      <th>Login:</th>
+      <th>Password:</th>
+      <th>Nom:</th>
+      <th>Prenom:</th>
+      <th>Statutrole:</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let compte of compteFiltre()">
+      <td>{{ compte.id }}</td>
+      <td>{{ compte.login }}</td>
+      <td>{{ compte.password }}</td>
+      <td>{{ compte.nom }}</td>
+      <td>{{ compte.prenom }}</td>
+      <td>{{ compte.statutRole }}</td>
+      <td>
+        <a
+          class="btn btn-outline-primary"
+          routerLink="/compte/edit/{{ compte.id }}"
+          >Editer</a
+        >
+      </td>
+      <td>
+        <button
+          (click)="deleteCompte(compte.id!)"
+          class="btn btn-outline-danger"
+        >
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </table>
+  <a class="btn btn-link" routerLink="/compte/edit" routerLinkActive="active"
+    >Nouveau compte</a
+  >
+</div>

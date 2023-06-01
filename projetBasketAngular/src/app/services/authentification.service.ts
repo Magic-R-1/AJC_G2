@@ -1,3 +1,4 @@
+import { StatutRole } from './../model/statut-role';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -20,27 +21,27 @@ export class AuthentificationService {
     });
   }
 
+  private checkRole(statutRole: StatutRole): boolean {
+    if (!this.isLogged()) {
+      return false;
+    }
+    let compte = JSON.parse(sessionStorage.getItem('compte')!) as Compte;
+    return compte.statutRole === statutRole;
+  }
+
   public isAdmin(): boolean {
-    return this.checkRole('ROLE_ADMIN');
+    return this.checkRole(StatutRole.ROLE_ADMIN);
   }
 
   public isLogged(): boolean {
     return sessionStorage.getItem('token') != null;
   }
 
-  private checkRole(role: string): boolean {
-    if (!this.isLogged()) {
-      return false;
-    }
-    let compte = JSON.parse(sessionStorage.getItem('compte')!) as Compte;
-    return compte.role === role;
-  }
-
   public isClient(): boolean {
-    return this.checkRole('ROLE_CLIENT');
+    return this.checkRole(StatutRole.ROLE_CLIENT);
   }
 
   public isGm(): boolean {
-    return this.checkRole('ROLE_GM');
+    return this.checkRole(StatutRole.ROLE_GM);
   }
 }

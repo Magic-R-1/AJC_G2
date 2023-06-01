@@ -1,0 +1,43 @@
+<div class="about-container">
+  <h1>Liste des Confrontations</h1>
+  <table class="table">
+    <tr>
+      <th>Id :</th>
+      <th>Date de Confrontation :</th>
+      <th>Duree :</th>
+      <th>Score Domicile :</th>
+      <th>Score Visiteur :</th>
+      <th>Arbitre :</th>
+      <th>Equipe :</th>
+      <th>Reservation :</th>
+    </tr>
+    <tr *ngFor="let confrontation of confrontations">
+      <td>{{ confrontation.id }}</td>
+      <td>{{ confrontation.dateConfrontation }}</td>
+      <td>{{ confrontation.duree }}</td>
+      <td>{{ confrontation.scoreDomicile }}</td>
+      <td>{{ confrontation.scoreVisiteur }}</td>
+      <td>{{ confrontation.arbitre?.nom }}</td>
+      <td>{{ confrontation.equipe?.franchise }}</td>
+      <td>{{ confrontation.reservation?.dateReservation }}</td>
+      <td>
+        <a
+          class="btn btn-outline-primary"
+          routerLink="/confrontation/edit/{{ confrontation.id }}"
+          >Editer</a
+        >
+      </td>
+      <td>
+        <button
+          (click)="deleteConfrontation(confrontation.id!)"
+          class="btn btn-outline-danger"
+        >
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </table>
+  <a class="btn btn-link" routerLink="/confrontation/edit"
+    >Nouvelle Confrontation</a
+  >
+</div>

@@ -1,7 +1,5 @@
-// import { Confrontation } from './confrontation';
-// import { Personnel } from './personnel';
-// import { Compte } from './compte';
-// import { Stade } from './stade';
+import { Personnel } from './personnel';
+import { Compte } from './compte';
 
 import { Confrontation } from './confrontation';
 import { Joueur } from './joueur';
@@ -14,8 +12,8 @@ export class Equipe {
     public joueur?: Joueur,
     public confrontation?: Confrontation,
     public stade?: Stade,
-    // public personnel?: Personnel,
-    // public compte?: Compte,
+    public personnel?: Personnel,
+    public compte?: Compte,
     public id?: number
   ) {}
 }

@@ -1,0 +1,81 @@
+<div class="about-container">
+  <h1>Edition d'un stade</h1>
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="form-group">
+      <label for="id"> Id:</label>
+      <input
+        id="id"
+        name="id"
+        [(ngModel)]="stade.id"
+        class="form-control"
+        placeholder="numero auto"
+        readonly
+      />
+    </div>
+    <div class="form-group">
+      <label for="nom">Nom :</label>
+      <input
+        id="nom"
+        name="nom"
+        [(ngModel)]="stade.nom"
+        class="form-control"
+        required
+        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
+        #nomCtrl="ngModel"
+      />
+      <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
+        Nom obligatoire
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="capacite">Capacité :</label>
+      <input
+        id="capacite"
+        name="capacite"
+        [(ngModel)]="stade.capacite"
+        class="form-control"
+        required
+        #capaciteCtrl="ngModel"
+      />
+      <div
+        *ngIf="capaciteCtrl.dirty && capaciteCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Capacité obligatoire
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ville">Ville :</label>
+      <input
+        id="ville"
+        name="ville"
+        [(ngModel)]="stade.ville"
+        class="form-control"
+        required
+        #villeCtrl="ngModel"
+      />
+      <div
+        *ngIf="villeCtrl.dirty && villeCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Ville obligatoire
+      </div>
+    </div>
+    <br />
+    <div>
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="btn btn-outline-primary"
+      >
+        Enregistrer
+      </button>
+      <a
+        routerLink="/stade"
+        routerLinkActive="active"
+        class="btn btn-outline-warning"
+        >Annuler</a
+      >
+    </div>
+  </form>
+</div>
