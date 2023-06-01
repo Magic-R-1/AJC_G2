@@ -17,8 +17,8 @@ import { ArbitreEditComponent } from './components/projet/arbitre/arbitre-edit/a
 import { ArbitreListComponent } from './components/projet/arbitre/arbitre-list/arbitre-list.component';
 import { ConfrontationEditComponent } from './components/projet/confrontation/confrontation-edit/confrontation-edit.component';
 import { ConfrontationListComponent } from './components/projet/confrontation/confrontation-list/confrontation-list.component';
-import { JoueurListComponent } from './components/joueur/joueur-list/joueur-list.component';
-import { JoueurEditComponent } from './components/joueur/joueur-edit/joueur-edit.component';
+import { JoueurListComponent } from './components/projet/joueur/joueur-list/joueur-list.component';
+import { JoueurEditComponent } from './components/projet/joueur/joueur-edit/joueur-edit.component';
 import { PersonnelEditComponent } from './components/projet/personnel/personnel-edit/personnel-edit.component';
 import { PersonnelListComponent } from './components/projet/personnel/personnel-list/personnel-list.component';
 import { ReservationEditComponent } from './components/projet/reservation/reservation-edit/reservation-edit.component';

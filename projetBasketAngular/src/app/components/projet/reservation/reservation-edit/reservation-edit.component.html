@@ -50,7 +50,6 @@
       [(ngModel)]="reservation.dateReservation"
       class="form-control"
       type="date"
-      required
       #dateReservationCtrl="ngModel"
     />
     <div
@@ -67,7 +66,6 @@
       name="confrontation"
       [(ngModel)]="reservation.confrontation"
       class="form-control"
-      required
       [compareWith]="compareById"
       #confrontationCtrl="ngModel"
     >
@@ -92,7 +90,6 @@
       name="compte"
       [(ngModel)]="reservation.compte"
       class="form-control"
-      required
       [compareWith]="compareById"
       #compteCtrl="ngModel"
     >

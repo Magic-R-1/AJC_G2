@@ -19,10 +19,7 @@ export class ReservationEditComponent implements OnInit {
   reservation: Reservation = new Reservation();
 
   ngOnInit(): void {
-    let confrontation: Confrontation = new Confrontation();
-    let compte: Compte = new Compte();
     this.reservation = new Reservation();
-    this.reservation.confrontation = confrontation;
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
         this.reservationSrv
@@ -45,12 +42,16 @@ export class ReservationEditComponent implements OnInit {
   ) {}
 
   save() {
+    console.log(this.reservation + '-----');
+
     if (this.reservation.id) {
       this.reservationSrv.update(this.reservation).subscribe((res) => {
+        console.log('bien passé ici 2');
         this.router.navigateByUrl('/reservation');
       });
     } else {
       this.reservationSrv.create(this.reservation).subscribe((res) => {
+        console.log('bien passé ici 3');
         this.router.navigateByUrl('/reservation');
       });
     }

@@ -29,15 +29,15 @@ public class ReservationService {
 		if (reservation.getQuantite() == null || reservation.getQuantite() <= 0) {
 			throw new ReservationException("quantite invalide");
 		}
-		if (reservation.getDateReservation() == null || reservation.getDateReservation().isBefore(LocalDate.now())) {
-			throw new ReservationException("date de réservation invalide");
-		}
-		if (reservation.getConfrontation() == null) {
-			throw new ReservationException("confrontation invalide");
-		}
-		if (reservation.getCompte() == null) {
-			throw new ReservationException("compte invalide");
-		}
+//		if (reservation.getDateReservation() == null || reservation.getDateReservation().isBefore(LocalDate.now())) {
+//			throw new ReservationException("date de réservation invalide");
+//		}
+//		if (reservation.getConfrontation() == null) {
+//			throw new ReservationException("confrontation invalide");
+//		}
+//		if (reservation.getCompte() == null) {
+//			throw new ReservationException("compte invalide");
+//		}
 	}
 	
 	private void checkId(Long id) {
