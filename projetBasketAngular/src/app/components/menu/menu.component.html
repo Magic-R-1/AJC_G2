@@ -133,6 +133,24 @@
   <li class="nav-item" role="presentation">
     <button
       class="nav-link"
+      id="pills-signup-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#pills-signup"
+      type="button"
+      role="tab"
+      aria-controls="pills-signup"
+      aria-selected="false"
+      routerLink="/joueur"
+      routerLinkActive="active"
+      *ngIf="admin"
+    >
+      Joueur
+    </button>
+  </li>
+
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link"
       id="pills-about-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-about"

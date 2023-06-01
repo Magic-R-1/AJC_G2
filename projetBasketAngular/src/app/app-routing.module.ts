@@ -17,6 +17,8 @@ import { ArbitreEditComponent } from './components/projet/arbitre/arbitre-edit/a
 import { ArbitreListComponent } from './components/projet/arbitre/arbitre-list/arbitre-list.component';
 import { ConfrontationEditComponent } from './components/projet/confrontation/confrontation-edit/confrontation-edit.component';
 import { ConfrontationListComponent } from './components/projet/confrontation/confrontation-list/confrontation-list.component';
+import { JoueurListComponent } from './components/joueur/joueur-list/joueur-list.component';
+import { JoueurEditComponent } from './components/joueur/joueur-edit/joueur-edit.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -27,6 +29,9 @@ const routes: Routes = [
   { path: 'team', component: EquipeListComponent },
   // { path: 'team/edit', component: EquipeEditComponent },
   // { path: 'team/edit/:id', component: EquipeEditComponent },
+  { path: 'joueur', component: JoueurListComponent },
+  { path: 'joueur/edit', component: JoueurEditComponent },
+  { path: 'joueur/edit/:id', component: JoueurEditComponent },
   { path: 'compte', component: CompteListComponent },
   { path: 'compte/edit', component: CompteEditComponent },
   { path: 'compte/edit/:id', component: CompteEditComponent },

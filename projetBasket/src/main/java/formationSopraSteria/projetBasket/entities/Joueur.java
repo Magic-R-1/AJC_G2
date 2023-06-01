@@ -2,7 +2,6 @@ package formationSopraSteria.projetBasket.entities;
 
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -15,10 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -56,7 +52,7 @@ public class Joueur {
 	
 	@Column(name="player_jersey_number")
 	@JsonView(JsonViews.Joueur.class)
-	private int numeroMaillot;
+	private int numero_maillot;
 	
 	@Column(name="player_wage")
 	@JsonView(JsonViews.Joueur.class)
@@ -89,14 +85,14 @@ public class Joueur {
 		this.prenom = prenom;
 	}
 
-	public Joueur(String nom, String prenom, double taille, double poids, LocalDate date_naissance, int numeroMaillot,
+	public Joueur(String nom, String prenom, double taille, double poids, LocalDate date_naissance, int numero_maillot,
 			double salaire, Statut statut, Poste poste, Equipe equipe, AptitudePhysique aptitudesPhysiques) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.taille = taille;
 		this.poids = poids;
 		this.date_naissance = date_naissance;
-		this.numeroMaillot = numeroMaillot;
+		this.numero_maillot = numero_maillot;
 		this.salaire = salaire;
 		this.statut = statut;
 		this.poste = poste;
@@ -158,12 +154,12 @@ public class Joueur {
 
 
 
-	public int getNumeroMaillot() {
-		return numeroMaillot;
+	public int getNumero_maillot() {
+		return numero_maillot;
 	}
 
-	public void setNumeroMaillot(int numeroMaillot) {
-		this.numeroMaillot = numeroMaillot;
+	public void setNumero_maillot(int numero_maillot) {
+		this.numero_maillot = numero_maillot;
 	}
 
 	public double getSalaire() {

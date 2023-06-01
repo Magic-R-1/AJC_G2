@@ -55,7 +55,7 @@ public class JoueurService {
 			joueurEnBase.setTaille(joueur.getTaille());
 			joueurEnBase.setPoids(joueur.getPoids());
 			joueurEnBase.setDate_naissance(joueur.getDate_naissance());
-			joueurEnBase.setNumeroMaillot(joueur.getNumeroMaillot());
+			joueurEnBase.setNumero_maillot(joueur.getNumero_maillot());
 			joueurEnBase.setSalaire(joueur.getSalaire());
 			joueurEnBase.setStatut(joueur.getStatut());
 			joueurEnBase.setPoste(joueur.getPoste());

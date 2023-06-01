@@ -3,17 +3,30 @@ package formationSopraSteria.projetBasket.entities;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formationSopraSteria.projetBasket.entities.jsonviews.JsonViews;
+
 @Embeddable //Reviens à faire une table avec @Entity, mais ici avec Embeddable sera directement embarqué dans la classe mère (ici Joueur). Chaque colonne ci-dessous apparaitra dans Joueur.
 public class AptitudePhysique {
 
+	@JsonView(JsonViews.Joueur.class)
 	@Column(name="speed")
 	private int vitesse;
+	
+	@JsonView(JsonViews.Joueur.class)
 	@Column(name="endurance")
 	private int endurance;
+	
+	@JsonView(JsonViews.Joueur.class)
 	@Column(name="strength")
 	private int force;
+	
+	@JsonView(JsonViews.Joueur.class)
 	@Column(name="jump")
 	private int detente;
+	
+	@JsonView(JsonViews.Joueur.class)
 	@Column(name="agility")
 	private int agilite;
 	
