@@ -1,8 +1,9 @@
 .header {
-  background-color: #f9f9f9;
+  background-image: url("src\assets\images\header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 20px;
   text-align: center;
-
   display: flex;
   align-items: center;
   justify-content: space-between;

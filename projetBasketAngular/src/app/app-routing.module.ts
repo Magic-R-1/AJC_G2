@@ -19,6 +19,10 @@ import { ConfrontationEditComponent } from './components/projet/confrontation/co
 import { ConfrontationListComponent } from './components/projet/confrontation/confrontation-list/confrontation-list.component';
 import { JoueurListComponent } from './components/joueur/joueur-list/joueur-list.component';
 import { JoueurEditComponent } from './components/joueur/joueur-edit/joueur-edit.component';
+import { PersonnelEditComponent } from './components/projet/personnel/personnel-edit/personnel-edit.component';
+import { PersonnelListComponent } from './components/projet/personnel/personnel-list/personnel-list.component';
+import { ReservationEditComponent } from './components/projet/reservation/reservation-edit/reservation-edit.component';
+import { ReservationListComponent } from './components/projet/reservation/reservation-list/reservation-list.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -32,6 +36,12 @@ const routes: Routes = [
   { path: 'joueur', component: JoueurListComponent },
   { path: 'joueur/edit', component: JoueurEditComponent },
   { path: 'joueur/edit/:id', component: JoueurEditComponent },
+  { path: 'personnel', component: PersonnelListComponent },
+  { path: 'personnel/edit', component: PersonnelEditComponent },
+  { path: 'personnel/edit/:id', component: PersonnelEditComponent },
+  { path: 'reservation', component: ReservationListComponent },
+  { path: 'reservation/edit', component: ReservationEditComponent },
+  { path: 'reservation/edit/:id', component: ReservationEditComponent },
   { path: 'compte', component: CompteListComponent },
   { path: 'compte/edit', component: CompteEditComponent },
   { path: 'compte/edit/:id', component: CompteEditComponent },

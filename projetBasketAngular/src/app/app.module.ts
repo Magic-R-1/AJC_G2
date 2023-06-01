@@ -29,6 +29,11 @@ import { CompteEditComponent } from './components/projet/compte/compte-edit/comp
 import { CompteListComponent } from './components/projet/compte/compte-list/compte-list/compte-list.component';
 import { JoueurEditComponent } from './components/joueur/joueur-edit/joueur-edit.component';
 import { JoueurListComponent } from './components/joueur/joueur-list/joueur-list.component';
+import { ReservationEditComponent } from './components/projet/reservation/reservation-edit/reservation-edit.component';
+import { ReservationListComponent } from './components/projet/reservation/reservation-list/reservation-list.component';
+import { PersonnelListComponent } from './components/projet/personnel/personnel-list/personnel-list.component';
+import { PersonnelEditComponent } from './components/projet/personnel/personnel-edit/personnel-edit.component';
+import { CustomComponent } from './components/custom/custom.component';
 //import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
 
 @NgModule({
@@ -58,6 +63,11 @@ import { JoueurListComponent } from './components/joueur/joueur-list/joueur-list
     CompteListComponent,
     JoueurEditComponent,
     JoueurListComponent,
+    ReservationEditComponent,
+    ReservationListComponent,
+    PersonnelListComponent,
+    PersonnelEditComponent,
+    CustomComponent,
   ],
   imports: [
     HttpClientModule,

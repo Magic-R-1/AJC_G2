@@ -1,0 +1,42 @@
+<div class="about-container">
+  <h1>Liste du personnel</h1>
+  <div>
+    <input [(ngModel)]="filtre" class="form-control" />
+  </div>
+  <table class="table">
+    <tr>
+      <th>Id:</th>
+      <th>Nom:</th>
+      <th>Prénom:</th>
+      <th>Salaire:</th>
+      <th>Équipe:</th>
+      <th>Rôle:</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let personne of personnelFiltre()">
+      <td>{{ personne.id }}</td>
+      <td>{{ personne.nom }}</td>
+      <td>{{ personne.prenom }}</td>
+      <td>{{ personne.salaire }}</td>
+      <td>{{ personne.equipe }}</td>
+      <td>{{ personne.role_personnel }}</td>
+      <td>
+        <a
+          class="btn btn-outline-primary"
+          routerLink="/personnel/edit/{{ personne.id }}"
+          >Editer</a
+        >
+      </td>
+      <td>
+        <button
+          (click)="deletePersonnel(personne.id!)"
+          class="btn btn-outline-danger"
+        >
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </table>
+  <a class="btn btn-link" routerLink="/personnel/edit">Nouveau personnel</a>
+</div>

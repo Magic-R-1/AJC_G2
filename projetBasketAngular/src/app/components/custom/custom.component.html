@@ -1,0 +1,16 @@
+<body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.getElementsByTagName("a");
+      for (let i = 0; i < links.length; i++) {
+        links[i].addEventListener("mouseover", function () {
+          document.body.style.cursor = "auto";
+        });
+        links[i].addEventListener("mouseout", function () {
+          document.body.style.cursor =
+            "url('src\assets\images\minimal-basketball-ball-pack.png'), auto";
+        });
+      }
+    });
+  </script>
+</body>

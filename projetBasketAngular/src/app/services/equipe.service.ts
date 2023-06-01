@@ -11,7 +11,7 @@ export class EquipeService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getAll(): Observable<Equipe[]> {
+  public getEquipes(): Observable<Equipe[]> {
     return this.httpClient.get<Equipe[]>(EquipeService.URL);
   }
 

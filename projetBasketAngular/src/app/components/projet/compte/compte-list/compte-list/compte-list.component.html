@@ -5,17 +5,15 @@
     <tr>
       <th>Id:</th>
       <th>Login:</th>
-      <th>Password:</th>
       <th>Nom:</th>
       <th>Prenom:</th>
-      <th>Statutrole:</th>
+      <th>Statut Role:</th>
       <th></th>
       <th></th>
     </tr>
     <tr *ngFor="let compte of compteFiltre()">
       <td>{{ compte.id }}</td>
       <td>{{ compte.login }}</td>
-      <td>{{ compte.password }}</td>
       <td>{{ compte.nom }}</td>
       <td>{{ compte.prenom }}</td>
       <td>{{ compte.statutRole }}</td>

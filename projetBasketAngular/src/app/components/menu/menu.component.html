@@ -1,7 +1,7 @@
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link active"
+      class="nav-link active custom-button"
       id="pills-home-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-home"
@@ -17,7 +17,7 @@
   </li>
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-about-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-about"
@@ -33,7 +33,7 @@
   </li>
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-signup-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-signup"
@@ -49,7 +49,7 @@
   </li>
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-signup-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-signup"
@@ -66,7 +66,7 @@
   </li>
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-signup-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-signup"
@@ -82,7 +82,7 @@
   </li>
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-signup-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-signup"
@@ -99,7 +99,7 @@
 
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-signup-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-signup"
@@ -115,7 +115,7 @@
   </li>
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-signup-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-signup"
@@ -132,7 +132,7 @@
 
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-signup-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-signup"
@@ -147,10 +147,44 @@
       Joueur
     </button>
   </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link custom-button"
+      id="pills-signup-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#pills-signup"
+      type="button"
+      role="tab"
+      aria-controls="pills-signup"
+      aria-selected="false"
+      routerLink="/reservation"
+      routerLinkActive="active"
+      *ngIf="admin"
+    >
+      Reservation
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link custom-button"
+      id="pills-signup-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#pills-signup"
+      type="button"
+      role="tab"
+      aria-controls="pills-signup"
+      aria-selected="false"
+      routerLink="/personnel"
+      routerLinkActive="active"
+      *ngIf="admin"
+    >
+      Personnel
+    </button>
+  </li>
 
   <li class="nav-item" role="presentation">
     <button
-      class="nav-link"
+      class="nav-link custom-button"
       id="pills-about-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-about"

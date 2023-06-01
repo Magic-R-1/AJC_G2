@@ -13,7 +13,7 @@ export class EquipeListComponent implements OnInit {
 
   constructor(private equipeSrv: EquipeService) {}
   ngOnInit(): void {
-    this.obsEquipes = this.equipeSrv.getAll();
+    this.obsEquipes = this.equipeSrv.getEquipes();
   }
 
   // delete(id: number) {

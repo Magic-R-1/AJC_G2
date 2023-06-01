@@ -1,0 +1,9 @@
+.custom-button {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.nav-link.active {
+  background-color: darkgray;
+  color: white; /* Couleur du texte en blanc */
+}

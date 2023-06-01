@@ -1,0 +1,5 @@
+/* Définir le curseur personnalisé */
+body {
+  cursor: url("src\assets\images\minimal-basketball-ball-pack.png"), auto;
+  background-color: #f9f9f9; /* Remplacez cette valeur par la couleur de fond souhaitée */
+}
