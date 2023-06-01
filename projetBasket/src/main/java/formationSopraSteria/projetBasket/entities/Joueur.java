@@ -27,50 +27,50 @@ public class Joueur {
 	@Id
 	@Column(name="player_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private Long id;
 	
 	@Column(name="player_surname")
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private String nom;
 	
 	@Column(name="player_name")
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private String prenom;
 	
 	@Column(name="player_height")
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private double taille;
 	
 	@Column(name="player_weight")
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private double poids;
 	
 	@Column(name="player_birth_date")
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private LocalDate date_naissance;
 	
 	@Column(name="player_jersey_number")
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private int numero_maillot;
 	
 	@Column(name="player_wage")
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private double salaire;
 	
 	@Column(name="player_status")
 	@Enumerated(EnumType.STRING)
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private Statut statut;
 	
 	@Column(name="player_position")
 	@Enumerated(EnumType.STRING)
-	@JsonView(JsonViews.Joueur.class)
+	@JsonView(JsonViews.Base.class)
 	private Poste poste;
 	
 	@ManyToOne
     @JoinColumn(name="player_team_id", foreignKey = @ForeignKey(name="player_team_id_fk"))
-	@JsonView(JsonViews.JoueurWithEquipe.class)
+	@JsonView(JsonViews.Joueur.class)
 	private Equipe equipe;
 	
 	@Embedded

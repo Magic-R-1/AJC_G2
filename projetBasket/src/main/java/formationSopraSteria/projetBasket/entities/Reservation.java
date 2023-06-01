@@ -26,22 +26,27 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "booking_id")
     private Long id;
+	
     @Column(name = "booking_price")
     @JsonView(JsonViews.Base.class)
     private double prix;
+    
     @Column(name = "booking_quantity")
     @JsonView(JsonViews.Base.class)
     private Integer quantite;
+    
     @JsonView(JsonViews.Base.class)
     @Column(name = "booking_date")
     private LocalDate dateReservation;
 
     @ManyToOne
     @JoinColumn(name="booking_confrontation_id", foreignKey = @ForeignKey(name="booking_confrontation_id_fk"))
+    @JsonView(JsonViews.Reservation.class)
     private Confrontation confrontation; 
     
     @ManyToOne
     @JoinColumn(name="booking_compte_id", foreignKey = @ForeignKey(name="booking_compte_id_fk"))
+    @JsonView(JsonViews.Reservation.class)
     private Compte compte;
     
 	public Reservation() {

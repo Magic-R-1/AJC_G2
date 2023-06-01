@@ -26,10 +26,13 @@ public class Equipe {
 	@Id
 	@Column(name = "team_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Base.class)
 	private Long id;
+	
 	@Column(name="team_franchise")
 	@JsonView(JsonViews.Base.class)
 	private String franchise;
+	
 	@Column(name="team_city")
 	@JsonView(JsonViews.Base.class)
 	private String ville;
@@ -46,7 +49,7 @@ public class Equipe {
 	
 	@OneToOne
 	@JoinColumn(name="team_stadium_id", foreignKey = @ForeignKey(name="team_stadium_id_fk"))
-	@JsonView(JsonViews.EquipeWithStade.class)
+	@JsonView(JsonViews.Equipe.class)
 	private Stade stade;
 	
 	@OneToMany(mappedBy="equipe")
@@ -56,7 +59,7 @@ public class Equipe {
 	
 	@OneToOne
 	@JoinColumn(name="team_account_id", foreignKey = @ForeignKey(name="team_account_id_fk"))
-	@JsonView(JsonViews.EquipeWithCompte.class)
+	@JsonView(JsonViews.Equipe.class)
 	private Compte compte;
 	
 	

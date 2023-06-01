@@ -13,8 +13,14 @@ public class JsonViews {
 	
 	public class Arbitre extends Base {
 	}
+	public class ArbitreWithConfrontation extends Arbitre {
+	}
+	
+	
 
 	public class Confrontation extends Base {
+	}
+	public class ConfrontationWithReservation extends Confrontation {
 	}
 	
 	public class Stade extends Base {
@@ -39,6 +45,8 @@ public class JsonViews {
 	}
 	
 	public class Compte extends Base {
+	}
+	public class CompteWithReservation extends Compte {
 	}
 	
 	

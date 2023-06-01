@@ -45,6 +45,7 @@ public class Arbitre {
     
 	@OneToMany(mappedBy = "arbitre")
 	@Column(name = "officiated_games")
+	@JsonView(JsonViews.ArbitreWithConfrontation.class)
 	private Set<Confrontation> confrontations;
 	
 	

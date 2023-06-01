@@ -38,7 +38,7 @@ public class Stade {
 	private String ville;
 	
 	@OneToOne(mappedBy="stade")
-	@JsonView(JsonViews.StadeWithEquipe.class)
+	@JsonView(JsonViews.Stade.class)
 	private Equipe equipe;
 	
 	public Stade() {

@@ -32,31 +32,43 @@ public class Compte implements UserDetails  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="account_id")
+	@JsonView(JsonViews.Base.class)
 	protected Long id;
+	
 	@NotBlank(message = "*ne doit pas etre vide")
 	@Column(name="account_login",nullable = false)
 	@JsonView(JsonViews.Base.class)
 	protected String login;
+	
 	@NotBlank(message = "*ne doit pas Ãªtre vide")
 	@Column(name="account_password",nullable = false)
+	@JsonView(JsonViews.Base.class)
 	protected String password;	
+	
 	@Column(name="account_last_name")
 	@JsonView(JsonViews.Base.class)
 	private String nom;
+	
 	@Column(name="account_first_name")
 	@JsonView(JsonViews.Base.class)
 	private String prenom;
+	
 	@Column(name="account_email")
 	@JsonView(JsonViews.Base.class)
 	protected String email;
+	
 	@Column(name="account_status")
 	@JsonView(JsonViews.Base.class)
 	@Enumerated(EnumType.STRING)
 	private StatutRole statutRole;
+	
 	@OneToMany(mappedBy="compte")
 	@Column(name="bookings")
+	@JsonView(JsonViews.CompteWithReservation.class)
 	private Set<Reservation> reservations;
+	
 	@OneToOne(mappedBy="compte")
+	@JsonView(JsonViews.Compte.class)
 	private Equipe equipe;
 	
 	public Compte() {

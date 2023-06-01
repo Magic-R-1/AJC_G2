@@ -135,17 +135,12 @@ public class EquipeService {
 			});
 		}
 
-	
-	public Equipe create(Equipe equipe) {
-		checkEquipe(equipe);
-		return equipeRepo.save(equipe);
-	}
 
-
-	public Equipe create(String franchise, String ville, Set <Joueur> joueur, Set <Confrontation> confrontation, Stade stade, Set <Personnel> personnel, Compte compte ) {
-		return this.create(new Equipe(franchise, ville, joueur, confrontation, stade, personnel, compte));
-	}
-
+	 public Equipe create(Equipe equipe) {
+	        checkEquipe(equipe);
+	        return equipeRepo.save(equipe);
+	    }
+	 
 
 	public Equipe update(Equipe equipe) {
 	    Equipe equipeEnBase = getById(equipe.getId());

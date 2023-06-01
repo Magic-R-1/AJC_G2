@@ -8,7 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import formationSopraSteria.projetBasket.entities.Compte;
-import formationSopraSteria.projetBasket.entities.Role;
 import formationSopraSteria.projetBasket.entities.StatutRole;
 import formationSopraSteria.projetBasket.exceptions.CompteException;
 import formationSopraSteria.projetBasket.repositories.CompteRepository;

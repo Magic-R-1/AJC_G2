@@ -27,20 +27,27 @@ public class Personnel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "staff_id")
 	private Long id;
+	
 	@Column(name = "staff_last_name")
 	@JsonView(JsonViews.Base.class)
 	private String nom;
+	
 	@Column(name = "staff_first_name")
 	@JsonView(JsonViews.Base.class)
 	private String prenom;
+	
 	@Column(name = "staff_salary")
 	@JsonView(JsonViews.Base.class)
 	private double salaire;
+	
 	@ManyToOne
 	@JoinColumn(name="staff_team_id",foreignKey = @ForeignKey(name="staff_team_id_fk"))
+	@JsonView(JsonViews.Personnel.class)
 	private Equipe equipe;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name="role_staff")
+	@JsonView(JsonViews.Base.class)
 	private Role_Personnel role_personnel;
 
 	
