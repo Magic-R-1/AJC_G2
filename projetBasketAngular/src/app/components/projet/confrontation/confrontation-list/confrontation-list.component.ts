@@ -8,7 +8,7 @@ import { ConfrontationService } from 'src/app/services/confrontation.service';
   styleUrls: ['./confrontation-list.component.css'],
 })
 export class ConfrontationListComponent implements OnInit {
-  confrontations!: Confrontation[];
+  confrontations: Confrontation[] = [];
 
   constructor(private confrontationSrv: ConfrontationService) {}
 

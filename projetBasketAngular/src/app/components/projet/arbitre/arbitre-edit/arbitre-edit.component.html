@@ -20,7 +20,6 @@
         [(ngModel)]="arbitre.nom"
         class="form-control"
         required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
         #nomCtrl="ngModel"
       />
       <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
@@ -36,7 +35,6 @@
         [(ngModel)]="arbitre.prenom"
         class="form-control"
         required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
         #prenomCtrl="ngModel"
       />
       <div

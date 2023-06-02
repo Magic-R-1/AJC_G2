@@ -7,7 +7,6 @@
       <th>Prenom :</th>
       <th>Anciennete :</th>
       <th>Nationalite :</th>
-      <th>Confrontation :</th>
     </tr>
     <tr *ngFor="let arbitre of arbitres">
       <td>{{ arbitre.id }}</td>
@@ -15,7 +14,6 @@
       <td>{{ arbitre.prenom }}</td>
       <td>{{ arbitre.anciennete }}</td>
       <td>{{ arbitre.nationalite }}</td>
-      <td>{{ arbitre.confrontation?.dateConfrontation }}</td>
       <td>
         <a
           class="btn btn-outline-primary"
@@ -33,5 +31,5 @@
       </td>
     </tr>
   </table>
-  <app-arbitre-edit></app-arbitre-edit>
+  <a class="btn btn-link" routerLink="/arbitre/edit">Nouvel arbitre</a>
 </div>
