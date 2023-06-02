@@ -16,9 +16,9 @@ export class EquipeListComponent implements OnInit {
     this.obsEquipes = this.equipeSrv.getEquipes();
   }
 
-  // delete(id: number) {
-  //   this.equipeSrv.delete(id).subscribe(() => {
-  //     this.obsEquipes = this.equipeSrv.getAll();
-  //   });
-  // }
+  deleteEquipe(id: number) {
+    this.equipeSrv.deleteById(id).subscribe(() => {
+      this.obsEquipes = this.equipeSrv.getEquipes();
+    });
+  }
 }

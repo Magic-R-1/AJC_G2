@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Arbitre } from 'src/app/model/arbitre';
-import { Confrontation } from 'src/app/model/confrontation';
 import { ArbitreService } from 'src/app/services/arbitre.service';
-import { ConfrontationService } from 'src/app/services/confrontation.service';
 
 @Component({
   selector: 'app-arbitre-edit',
@@ -12,30 +9,24 @@ import { ConfrontationService } from 'src/app/services/confrontation.service';
   styleUrls: ['./arbitre-edit.component.css'],
 })
 export class ArbitreEditComponent implements OnInit {
-  obsConfrontations!: Observable<Confrontation[]>;
-
-  ngOnInit(): void {
-    let confrontation: Confrontation = new Confrontation();
-    this.arbitre = new Arbitre();
-    this.arbitre.confrontation = confrontation;
-    this.activatedRoute.params.subscribe((params) => {
-      if (params['id']) {
-        this.arbitreSrv.getById(params['id']).subscribe((produitJson) => {
-          this.arbitre = produitJson;
-        });
-      }
-    });
-    this.obsConfrontations = this.confrontationSrv.getConfrontations();
-  }
-
-  arbitre: Arbitre = new Arbitre();
+  arbitre!: Arbitre;
 
   constructor(
     private arbitreSrv: ArbitreService,
-    private confrontationSrv: ConfrontationService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    this.arbitre = new Arbitre();
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['id']) {
+        this.arbitreSrv.getById(params['id']).subscribe((res) => {
+          this.arbitre = res;
+        });
+      }
+    });
+  }
 
   save() {
     if (this.arbitre.id) {
@@ -49,13 +40,17 @@ export class ArbitreEditComponent implements OnInit {
     }
   }
 
-  compareById(
-    frsOptionActive: Confrontation,
-    frsSelect: Confrontation
-  ): boolean {
-    if (frsSelect && frsOptionActive) {
-      return frsOptionActive.id === frsSelect.id;
-    }
-    return false;
+  @ViewChild('myModal') myModal!: ElementRef;
+
+  openModal() {
+    this.myModal.nativeElement.classList.add('show');
+    this.myModal.nativeElement.style.display = 'block';
+    document.body.classList.add('modal-open');
+  }
+
+  closeModal() {
+    this.myModal.nativeElement.classList.remove('show');
+    this.myModal.nativeElement.style.display = 'none';
+    document.body.classList.remove('modal-open');
   }
 }

@@ -1,0 +1,14 @@
+.about-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.modal.fade {
+  opacity: 0;
+  transition: opacity 0.15s linear;
+}
+
+.modal.fade.show {
+  opacity: 1;
+}

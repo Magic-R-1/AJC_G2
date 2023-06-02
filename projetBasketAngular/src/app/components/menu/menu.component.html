@@ -34,157 +34,6 @@
   <li class="nav-item" role="presentation">
     <button
       class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/signup"
-      routerLinkActive="active"
-    >
-      Sign Up
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/stade"
-      routerLinkActive="active"
-      *ngIf="admin"
-    >
-      Stade
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/team"
-      routerLinkActive="active"
-    >
-      Equipe
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/compte"
-      routerLinkActive="active"
-    >
-      Compte
-    </button>
-  </li>
-
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/arbitre"
-      routerLinkActive="active"
-    >
-      Arbitre
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/confrontation"
-      routerLinkActive="active"
-    >
-      Confrontation
-    </button>
-  </li>
-
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/joueur"
-      routerLinkActive="active"
-      *ngIf="admin"
-    >
-      Joueur
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/reservation"
-      routerLinkActive="active"
-      *ngIf="admin"
-    >
-      Reservation
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-signup-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-signup"
-      type="button"
-      role="tab"
-      aria-controls="pills-signup"
-      aria-selected="false"
-      routerLink="/personnel"
-      routerLinkActive="active"
-      *ngIf="admin"
-    >
-      Personnel
-    </button>
-  </li>
-
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
       id="pills-about-tab"
       data-bs-toggle="pill"
       data-bs-target="#pills-about"
@@ -192,11 +41,123 @@
       role="tab"
       aria-controls="pills-about"
       aria-selected="false"
-      *ngIf="login"
-      (click)="logoff()"
+      routerLink="/signup"
+      routerLinkActive="active"
     >
-      Déconnexion
+      Se connecter
     </button>
   </li>
-  <span *ngIf="login">bonjour {{ login }}</span>
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <!-- ... Boutons principaux ... -->
+
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link custom-button"
+        id="pills-admin-tab"
+        data-bs-toggle="pill"
+        type="button"
+        role="tab"
+        aria-controls="pills-admin"
+        aria-selected="false"
+        (click)="showAdminMenu = !showAdminMenu"
+      >
+        Espace Admin
+      </button>
+      <ul class="nav nav-pills sub-menu" *ngIf="showAdminMenu">
+        <!-- Sous-catégories du bouton "Espace Admin" -->
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link custom-button"
+            routerLink="/stade"
+            routerLinkActive="active"
+            *ngIf="admin"
+          >
+            Stade
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link custom-button"
+            routerLink="/equipe"
+            routerLinkActive="active"
+          >
+            Equipe
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link custom-button"
+            routerLink="/personnel"
+            routerLinkActive="active"
+          >
+            Personnel
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link custom-button"
+            routerLink="/reservation"
+            routerLinkActive="active"
+          >
+            Réservation
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link custom-button"
+            routerLink="/joueur"
+            routerLinkActive="active"
+          >
+            Joueur
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link custom-button"
+            routerLink="/confrontation"
+            routerLinkActive="active"
+          >
+            Confrontation
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link custom-button"
+            routerLink="/arbitre"
+            routerLinkActive="active"
+          >
+            Arbitre
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link custom-button"
+            routerLink="/compte"
+            routerLinkActive="active"
+          >
+            Compte
+          </button>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ... Autres boutons ... -->
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link custom-button"
+        id="pills-about-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#pills-about"
+        type="button"
+        role="tab"
+        aria-controls="pills-about"
+        aria-selected="false"
+        *ngIf="login"
+        (click)="logoff()"
+      >
+        Déconnexion
+      </button>
+    </li>
+    <span *ngIf="login">bonjour {{ login }}</span>
+  </ul>
 </ul>

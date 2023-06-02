@@ -9,11 +9,7 @@ export class Equipe {
   constructor(
     public franchise?: string,
     public ville?: string,
-    public joueur?: Joueur,
-    public confrontation?: Confrontation,
     public stade?: Stade,
-    public personnel?: Personnel,
-    public compte?: Compte,
     public id?: number
   ) {}
 }

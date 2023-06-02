@@ -1,215 +1,217 @@
-<h1>edition joueur</h1>
-<form (ngSubmit)="save()" #form="ngForm">
-  <div class="form-group">
-    <label for="id">id:</label>
-    <input
-      id="id"
-      name="id"
-      [(ngModel)]="joueur.id"
-      class="form-control"
-      placeholder="numero auto"
-      readonly
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="prenom">prenom:</label>
-    <input
-      id="prenom"
-      name="prenom"
-      [(ngModel)]="joueur.prenom"
-      class="form-control"
-      required
-      pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
-      #prenomCtrl="ngModel"
-    />
-    <div
-      *ngIf="prenomCtrl.dirty && prenomCtrl.invalid"
-      class="alert alert-danger"
-    >
-      prenom obligatoire
+<div class="about-container">
+  <h1>edition joueur</h1>
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="form-group">
+      <label for="id">id:</label>
+      <input
+        id="id"
+        name="id"
+        [(ngModel)]="joueur.id"
+        class="form-control"
+        placeholder="numero auto"
+        readonly
+      />
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="nom">nom:</label>
-    <input
-      id="nom"
-      name="nom"
-      [(ngModel)]="joueur.nom"
-      class="form-control"
-      required
-      pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
-      #nomCtrl="ngModel"
-    />
-    <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
-      nom obligatoire
+    <div class="form-group">
+      <label for="prenom">Prénom:</label>
+      <input
+        id="prenom"
+        name="prenom"
+        [(ngModel)]="joueur.prenom"
+        class="form-control"
+        required
+        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
+        #prenomCtrl="ngModel"
+      />
+      <div
+        *ngIf="prenomCtrl.dirty && prenomCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Prénom obligatoire
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="numero">numero:</label>
-    <input
-      id="numero"
-      name="numero"
-      [(ngModel)]="joueur.numero_maillot"
-      class="form-control"
-      required
-      #numeroCtrl="ngModel"
-    />
-    <div
-      *ngIf="numeroCtrl.dirty && numeroCtrl.invalid"
-      class="alert alert-danger"
-    >
-      numero obligatoire
+    <div class="form-group">
+      <label for="nom">Nom :</label>
+      <input
+        id="nom"
+        name="nom"
+        [(ngModel)]="joueur.nom"
+        class="form-control"
+        required
+        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
+        #nomCtrl="ngModel"
+      />
+      <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
+        Nom obligatoire
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="taille">taille:</label>
-    <input
-      id="taille"
-      name="taille"
-      [(ngModel)]="joueur.taille"
-      class="form-control"
-      #tailleCtrl="ngModel"
-    />
-  </div>
+    <div class="form-group">
+      <label for="numero">Numéro:</label>
+      <input
+        id="numero"
+        name="numero"
+        [(ngModel)]="joueur.numero_maillot"
+        class="form-control"
+        required
+        #numeroCtrl="ngModel"
+      />
+      <div
+        *ngIf="numeroCtrl.dirty && numeroCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Numéro obligatoire
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="poids">poids:</label>
-    <input
-      id="poids"
-      name="poids"
-      [(ngModel)]="joueur.poids"
-      class="form-control"
-      #poidsCtrl="ngModel"
-    />
-  </div>
+    <div class="form-group">
+      <label for="taille">Taille :</label>
+      <input
+        id="taille"
+        name="taille"
+        [(ngModel)]="joueur.taille"
+        class="form-control"
+        #tailleCtrl="ngModel"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="equipe">equipe:</label>
-    <input
-      id="equipe"
-      name="equipe"
-      [(ngModel)]="joueur.equipe"
-      class="form-control"
-      #equipeCtrl="ngModel"
-    />
-  </div>
+    <div class="form-group">
+      <label for="poids">Poids :</label>
+      <input
+        id="poids"
+        name="poids"
+        [(ngModel)]="joueur.poids"
+        class="form-control"
+        #poidsCtrl="ngModel"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="date_naissance">date_naissance:</label>
-    <input
-      type="date"
-      id="date_naissance"
-      name="date_naissance"
-      [(ngModel)]="joueur.date_naissance"
-      class="form-control"
-      #date_naissanceCtrl="ngModel"
-    />
-  </div>
+    <div class="form-group">
+      <label for="equipe">Equipe :</label>
+      <input
+        id="equipe"
+        name="equipe"
+        [(ngModel)]="joueur.equipe"
+        class="form-control"
+        #equipeCtrl="ngModel"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="salaire">salaire:</label>
-    <input
-      id="salaire"
-      name="salaire"
-      [(ngModel)]="joueur.salaire"
-      class="form-control"
-      #salaireCtrl="ngModel"
-    />
-  </div>
+    <div class="form-group">
+      <label for="date_naissance">Date de naissance:</label>
+      <input
+        type="date"
+        id="date_naissance"
+        name="date_naissance"
+        [(ngModel)]="joueur.date_naissance"
+        class="form-control"
+        #date_naissanceCtrl="ngModel"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="statut">statut:</label>
-    <select
-      id="statut"
-      name="statut"
-      [(ngModel)]="joueur.statut"
-      class="form-control"
-      #statutCtrl="ngModel"
-    >
-      <option value="Titulaire">Titulaire</option>
-      <option value="Remplaçant">Remplaçant</option>
-      <option value="Blesse">Blesse</option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="salaire">Salaire :</label>
+      <input
+        id="salaire"
+        name="salaire"
+        [(ngModel)]="joueur.salaire"
+        class="form-control"
+        #salaireCtrl="ngModel"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="poste">poste:</label>
-    <select
-      id="poste"
-      name="poste"
-      [(ngModel)]="joueur.poste"
-      class="form-control"
-      #posteCtrl="ngModel"
-    >
-      <option value="Meneur">Meneur</option>
-      <option value="Arriere">Arriere</option>
-      <option value="AilierShooter">AilierShooter</option>
-      <option value="AilierFort">AilierFort</option>
-      <option value="Pivot">Pivot</option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="statut">Statut :</label>
+      <select
+        id="statut"
+        name="statut"
+        [(ngModel)]="joueur.statut"
+        class="form-control"
+        #statutCtrl="ngModel"
+      >
+        <option value="Titulaire">Titulaire</option>
+        <option value="Remplaçant">Remplaçant</option>
+        <option value="Blesse">Blessé</option>
+      </select>
+    </div>
 
-  <div class="form-group">
-    <label for="aptitudesPhysiques.vitesse">vitesse:</label>
-    <input
-      id="aptitudesPhysiques.vitesse"
-      name="aptitudesPhysiques.vitesse"
-      [(ngModel)]="joueur.aptitudesPhysiques!.vitesse"
-      class="form-control"
-    />
-  </div>
+    <div class="form-group">
+      <label for="poste">Poste :</label>
+      <select
+        id="poste"
+        name="poste"
+        [(ngModel)]="joueur.poste"
+        class="form-control"
+        #posteCtrl="ngModel"
+      >
+        <option value="Meneur">Meneur</option>
+        <option value="Arriere">Arrière</option>
+        <option value="AilierShooter">Ailier-Shooter</option>
+        <option value="AilierFort">Ailier-Fort</option>
+        <option value="Pivot">Pivot</option>
+      </select>
+    </div>
 
-  <div class="form-group">
-    <label for="aptitudesPhysiques.endurance">endurance:</label>
-    <input
-      id="aptitudesPhysiques.endurance"
-      name="aptitudesPhysiques.endurance"
-      [(ngModel)]="joueur.aptitudesPhysiques!.endurance"
-      class="form-control"
-    />
-  </div>
+    <div class="form-group">
+      <label for="aptitudesPhysiques.vitesse">Vitesse :</label>
+      <input
+        id="aptitudesPhysiques.vitesse"
+        name="aptitudesPhysiques.vitesse"
+        [(ngModel)]="joueur.aptitudesPhysiques!.vitesse"
+        class="form-control"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="aptitudesPhysiques.force">force:</label>
-    <input
-      id="aptitudesPhysiques.force"
-      name="aptitudesPhysiques.force"
-      [(ngModel)]="joueur.aptitudesPhysiques!.force"
-      class="form-control"
-    />
-  </div>
+    <div class="form-group">
+      <label for="aptitudesPhysiques.endurance">Endurance:</label>
+      <input
+        id="aptitudesPhysiques.endurance"
+        name="aptitudesPhysiques.endurance"
+        [(ngModel)]="joueur.aptitudesPhysiques!.endurance"
+        class="form-control"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="aptitudesPhysiques.detente">detente:</label>
-    <input
-      id="aptitudesPhysiques.detente"
-      name="aptitudesPhysiques.detente"
-      [(ngModel)]="joueur.aptitudesPhysiques!.detente"
-      class="form-control"
-    />
-  </div>
+    <div class="form-group">
+      <label for="aptitudesPhysiques.force">Force :</label>
+      <input
+        id="aptitudesPhysiques.force"
+        name="aptitudesPhysiques.force"
+        [(ngModel)]="joueur.aptitudesPhysiques!.force"
+        class="form-control"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="aptitudesPhysiques.agilite">agilite:</label>
-    <input
-      id="aptitudesPhysiques.agilite"
-      name="aptitudesPhysiques.agilite"
-      [(ngModel)]="joueur.aptitudesPhysiques!.agilite"
-      class="form-control"
-    />
-  </div>
+    <div class="form-group">
+      <label for="aptitudesPhysiques.detente">Détente :</label>
+      <input
+        id="aptitudesPhysiques.detente"
+        name="aptitudesPhysiques.detente"
+        [(ngModel)]="joueur.aptitudesPhysiques!.detente"
+        class="form-control"
+      />
+    </div>
 
-  <div>
-    <button type="submit" class="btn btn-outline-primary">enregistrer</button>
-    <a
-      routerLink="/joueur"
-      routerLinkActive="active"
-      class="btn btn-outline-warning"
-      >annuler</a
-    >
-  </div>
-</form>
+    <div class="form-group">
+      <label for="aptitudesPhysiques.agilite">Agilité :</label>
+      <input
+        id="aptitudesPhysiques.agilite"
+        name="aptitudesPhysiques.agilite"
+        [(ngModel)]="joueur.aptitudesPhysiques!.agilite"
+        class="form-control"
+      />
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-outline-primary">Enregistrer</button>
+      <a
+        routerLink="/joueur"
+        routerLinkActive="active"
+        class="btn btn-outline-warning"
+        >Annuler</a
+      >
+    </div>
+  </form>
+</div>

@@ -33,7 +33,7 @@ import formationSopraSteria.projetBasket.entities.jsonviews.JsonViews;
 import formationSopraSteria.projetBasket.services.EquipeService;
 
 @RestController
-@RequestMapping("/api/team")
+@RequestMapping("/api/equipe")
 @CrossOrigin(origins ="http://localhost:4200")
 public class EquipeRestController {
 	

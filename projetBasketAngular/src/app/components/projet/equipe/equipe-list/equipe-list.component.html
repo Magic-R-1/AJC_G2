@@ -1,35 +1,29 @@
-<h1>Listes des équipes</h1>
-<table class="table">
-  <tr>
-    <th>Id :</th>
-    <th>Franchise :</th>
-    <th>Joueur :</th>
-    <th>Ville :</th>
-    <th>Confrontation :</th>
-    <th>Stade :</th>
-    <th>Personnel :</th>
-    <th>Compte :</th>
-  </tr>
-  <!-- <tr *ngFor="let e of obsEquipes | async">
-    <td>{{ e.id }}</td>
-    <td>{{ e.franchise }}</td>
-    <td>{{ e.joueur }}</td>
-    <td>{{ e.ville }}</td>
-    <td>{{ e.confrontation }}</td>
-    <td>{{ e.stade }}</td>
-    <td>{{ e.personnel }}</td>
-    <td>{{ e.compte }}</td>
+<div class="about-container">
+  <h1>Listes des équipes</h1>
+  <table class="table">
+    <tr>
+      <th>Id :</th>
+      <th>Franchise :</th>
+      <th>Ville :</th>
+      <th>Stade :</th>
+    </tr>
+    <tr *ngFor="let e of obsEquipes | async">
+      <td>{{ e.id }}</td>
+      <td>{{ e.franchise }}</td>
+      <td>{{ e.ville }}</td>
+      <td>{{ e.stade?.nom }}</td>
 
-    <td>
-      <a class="btn btn-outline-primary" routerLink="/team/edit/{{ e.id }}"
-        >Editer</a
-      >
-    </td>
-    <td>
-       <button (click)="deleteEquipe(e.id!)" class="btn btn-outline-danger">
-        Supprimer
-      </button>
-    </td>
-  </tr> -->
-</table>
-<a class="btn btn-link" routerLink="/team/edit">Nouvelle Equipe</a>
+      <td>
+        <a class="btn btn-outline-primary" routerLink="/equipe/edit/{{ e.id }}"
+          >Editer</a
+        >
+      </td>
+      <td>
+        <button (click)="deleteEquipe(e.id!)" class="btn btn-outline-danger">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </table>
+  <app-equipe-edit></app-equipe-edit>
+</div>

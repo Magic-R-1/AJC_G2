@@ -67,6 +67,7 @@
         type="submit"
         [disabled]="form.invalid"
         class="btn btn-outline-primary"
+        (click)="closeModal()"
       >
         Enregistrer
       </button>
@@ -74,8 +75,10 @@
         routerLink="/stade"
         routerLinkActive="active"
         class="btn btn-outline-warning"
-        >Annuler</a
+        (click)="closeModal()"
       >
+        Annuler
+      </a>
     </div>
   </form>
 </div>

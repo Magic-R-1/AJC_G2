@@ -75,25 +75,6 @@
       />
     </div>
 
-    <div class="form-group">
-      <label for="confrontation">confrontation:</label>
-      <select
-        id="confrontation"
-        [(ngModel)]="arbitre.confrontation"
-        class="form-control"
-        name="confrontation"
-        [compareWith]="compareById"
-        required
-      >
-        <option
-          [ngValue]="confrontation"
-          *ngFor="let confrontation of obsConfrontations | async"
-        >
-          {{ confrontation.dateConfrontation }} {{ confrontation.arbitre }}
-        </option>
-      </select>
-    </div>
-
     <div>
       <button
         type="submit"

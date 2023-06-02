@@ -35,4 +35,7 @@ export class MenuComponent {
     sessionStorage.clear();
     this.router.navigateByUrl('/home');
   }
+
+  // Dans votre composant TypeScript
+  showAdminMenu: boolean = false;
 }
