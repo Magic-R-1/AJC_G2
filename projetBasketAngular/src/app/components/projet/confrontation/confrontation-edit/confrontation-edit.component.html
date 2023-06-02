@@ -1,8 +1,8 @@
 <div class="about-container">
-  <h1>Edition d' une Confrontation</h1>
+  <h1>Édition d'une confrontation</h1>
   <form (ngSubmit)="save()" #form="ngForm">
     <div class="form-group">
-      <label for="id">id:</label>
+      <label for="id">Id:</label>
       <input
         id="id"
         name="id"
@@ -13,7 +13,7 @@
       />
     </div>
     <div class="form-group">
-      <label for="dateConfrontation">dateConfrontation:</label>
+      <label for="dateConfrontation">Date:</label>
       <input
         type="date"
         id="dateConfrontation"
@@ -27,12 +27,12 @@
         *ngIf="dateConfrontationCtrl.dirty && dateConfrontationCtrl.invalid"
         class="alert alert-danger"
       >
-        dateConfrontation obligatoire
+        Date de confrontation obligatoire
       </div>
     </div>
 
     <div class="form-group">
-      <label for="duree">duree:</label>
+      <label for="duree">Durée:</label>
       <input
         id="duree"
         name="duree"
@@ -45,15 +45,31 @@
         *ngIf="dureeCtrl.dirty && dureeCtrl.invalid"
         class="alert alert-danger"
       >
-        duree obligatoire
+        Durée obligatoire
       </div>
     </div>
 
     <div class="form-group">
-      <label for="scoreDomicile">scoreDomicile:</label>
+      <label for="equipe">Équipe domicile:</label>
+      <select
+        id="equipe"
+        [(ngModel)]="confrontation.equipe"
+        class="form-control"
+        name="equipe"
+        [compareWith]="compareById"
+      >
+        <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
+          {{ equipe.ville }} {{ equipe.franchise }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="scoreDomicile">Score domicile:</label>
       <input
         id="scoreDomicile"
         name="scoreDomicile"
+        type="number"
         [(ngModel)]="confrontation.scoreDomicile"
         class="form-control"
         required
@@ -63,15 +79,16 @@
         *ngIf="scoreDomicileCtrl.dirty && scoreDomicileCtrl.invalid"
         class="alert alert-danger"
       >
-        scoreDomicile obligatoire
+        Score domicile obligatoire
       </div>
     </div>
 
     <div class="form-group">
-      <label for="scoreVisiteur">scoreVisiteur:</label>
+      <label for="scoreVisiteur">Score visiteur:</label>
       <input
         id="scoreVisiteur"
         name="scoreVisiteur"
+        type="number"
         [(ngModel)]="confrontation.scoreVisiteur"
         class="form-control"
         required
@@ -81,41 +98,12 @@
         *ngIf="scoreVisiteurCtrl.dirty && scoreVisiteurCtrl.invalid"
         class="alert alert-danger"
       >
-        scoreVisiteur obligatoire
+        Score visiteur obligatoire
       </div>
     </div>
 
     <div class="form-group">
-      <label for="arbitre">arbitre:</label>
-      <select
-        id="arbitre"
-        [(ngModel)]="confrontation.arbitre"
-        class="form-control"
-        name="arbitre"
-        [compareWith]="compareById"
-      >
-        <option [ngValue]="arbitre" *ngFor="let arbitre of obsArbitres | async">
-          {{ arbitre.nom }}
-        </option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="equipe">equipe domicile:</label>
-      <select
-        id="equipe"
-        [(ngModel)]="confrontation.equipe"
-        class="form-control"
-        name="equipe"
-        [compareWith]="compareById"
-      >
-        <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
-          {{ equipe.franchise }} {{ equipe.ville }}
-        </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="equipeVisiteur">equipe visiteur:</label>
+      <label for="equipeVisiteur">Équipe visiteur:</label>
       <select
         id="equipeVisiteur"
         [(ngModel)]="confrontation.equipeVisiteur"
@@ -127,7 +115,22 @@
           [ngValue]="equipeVisiteur"
           *ngFor="let equipeVisiteur of obsEquipesVisiteurs | async"
         >
-          {{ equipeVisiteur.franchise }} {{ equipeVisiteur.ville }}
+          {{ equipeVisiteur.ville }} {{ equipeVisiteur.franchise }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="arbitre">Arbitre:</label>
+      <select
+        id="arbitre"
+        [(ngModel)]="confrontation.arbitre"
+        class="form-control"
+        name="arbitre"
+        [compareWith]="compareById"
+      >
+        <option [ngValue]="arbitre" *ngFor="let arbitre of obsArbitres | async">
+          {{ arbitre.prenom }} {{ arbitre.nom }}
         </option>
       </select>
     </div>
@@ -138,13 +141,13 @@
         [disabled]="form.invalid"
         class="btn btn-outline-primary"
       >
-        enregistrer
+        Enregistrer
       </button>
       <a
         routerLink="/confrontation"
         routerLinkActive="active"
         class="btn btn-outline-warning"
-        >annuler</a
+        >Annuler</a
       >
     </div>
   </form>

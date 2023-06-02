@@ -1,57 +1,71 @@
-<h1>Listes des joueurs</h1>
-<table class="table">
-  <tr>
-    <th>Id :</th>
-    <th>Prénom :</th>
-    <th>Nom :</th>
-    <th>Numéro :</th>
-    <th>Taille :</th>
-    <th>Poids :</th>
-    <th>Équipe :</th>
+<div class="about-container">
+  <h1>Listes des joueurs</h1>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Numéro</th>
+      <th>Équipe</th>
+      <th>Taille</th>
+      <th>Poids</th>
 
-    <th>Date de naissance :</th>
-    <th>Salaire :</th>
-    <th>Statut :</th>
-    <th>Poste :</th>
+      <th>Âge</th>
+      <th>Salaire</th>
+      <th>Statut</th>
+      <th>Poste</th>
 
-    <th>Vitesse :</th>
-    <th>Endurance :</th>
-    <th>Force :</th>
-    <th>Détente :</th>
-    <th>Agilité :</th>
-  </tr>
-  <tr *ngFor="let joueur of joueurs">
-    <td>{{ joueur.id }}</td>
-    <td>{{ joueur.prenom }}</td>
-    <td>{{ joueur.nom }}</td>
-    <td>{{ joueur.numero_maillot }}</td>
-    <td>{{ joueur.taille }}</td>
-    <td>{{ joueur.poids }}</td>
-    <td>{{ joueur.equipe?.franchise }}</td>
+      <th>Vitesse</th>
+      <th>Endurance</th>
+      <th>Force</th>
+      <th>Détente</th>
+      <th>Agilité</th>
+    </tr>
+    <tr *ngFor="let joueur of joueurs">
+      <td>{{ joueur.id }}</td>
+      <td>{{ joueur.prenom }}</td>
+      <td>{{ joueur.nom }}</td>
+      <td>{{ joueur.numero_maillot }}</td>
+      <td>{{ joueur.equipe?.ville }} {{ joueur.equipe?.franchise }}</td>
+      <td>{{ joueur.taille }}</td>
+      <td>{{ joueur.poids }}</td>
 
-    <td>{{ joueur.date_naissance | date : "dd/MM/yyyy" }}</td>
-    <td>{{ joueur.salaire }}</td>
-    <td>{{ joueur.statut }}</td>
-    <td>{{ joueur.poste }}</td>
+      <!-- <td>{{ joueur.date_naissance | date : "dd/MM/yyyy" }}</td> -->
+      <td>{{ calculateAge(joueur.date_naissance!) }}</td>
+      <td>{{ joueur.salaire | number : "1.0-0" }}</td>
+      <td>{{ joueur.statut }}</td>
+      <td>{{ joueur.poste }}</td>
 
-    <td>{{ joueur.aptitudesPhysiques?.vitesse }}</td>
-    <td>{{ joueur.aptitudesPhysiques?.endurance }}</td>
-    <td>{{ joueur.aptitudesPhysiques?.force }}</td>
-    <td>{{ joueur.aptitudesPhysiques?.detente }}</td>
-    <td>{{ joueur.aptitudesPhysiques?.agilite }}</td>
+      <td>{{ joueur.aptitudesPhysiques?.vitesse }}</td>
+      <td>{{ joueur.aptitudesPhysiques?.endurance }}</td>
+      <td>{{ joueur.aptitudesPhysiques?.force }}</td>
+      <td>{{ joueur.aptitudesPhysiques?.detente }}</td>
+      <td>{{ joueur.aptitudesPhysiques?.agilite }}</td>
 
-    <td>
-      <a
-        class="btn btn-outline-primary"
-        routerLink="/joueur/edit/{{ joueur.id }}"
-        >Editer</a
-      >
-    </td>
-    <td>
-      <button (click)="deleteJoueur(joueur.id!)" class="btn btn-outline-danger">
-        Supprimer
-      </button>
-    </td>
-  </tr>
-</table>
-<a class="btn btn-link" routerLink="/joueur/edit">Nouveau joueur</a>
+      <td>
+        <a
+          class="btn btn-outline-primary"
+          routerLink="/joueur/edit/{{ joueur.id }}"
+          >Éditer ✏️</a
+        >
+      </td>
+
+      <td>
+        <button
+          (click)="deleteJoueur(joueur.id!)"
+          class="btn btn-outline-danger"
+        >
+          Supprimer 🗑️
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+<button
+  id="nouveau"
+  type="button"
+  class="btn btn-outline-success"
+  routerLink="/joueur/edit"
+>
+  Nouveau joueur ➕
+</button>

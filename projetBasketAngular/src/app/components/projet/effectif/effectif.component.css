@@ -1,0 +1,15 @@
+.about-container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 0px;
+  text-align: center;
+}
+
+.en-tete {
+  margin-left: 210px;
+  padding: 0px;
+}
+
+#equipe {
+  max-width: 200px;
+}
