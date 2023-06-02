@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Compte } from 'src/app/model/compte';
 import { CompteService } from 'src/app/services/compte.service';
@@ -37,5 +37,19 @@ export class CompteEditComponent {
         this.router.navigateByUrl('/compte');
       });
     }
+  }
+
+  @ViewChild('myModal') myModal!: ElementRef;
+
+  openModal() {
+    this.myModal.nativeElement.classList.add('show');
+    this.myModal.nativeElement.style.display = 'block';
+    document.body.classList.add('modal-open');
+  }
+
+  closeModal() {
+    this.myModal.nativeElement.classList.remove('show');
+    this.myModal.nativeElement.style.display = 'none';
+    document.body.classList.remove('modal-open');
   }
 }

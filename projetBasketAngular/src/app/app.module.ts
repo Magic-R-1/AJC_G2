@@ -34,7 +34,7 @@ import { ReservationListComponent } from './components/projet/reservation/reserv
 import { PersonnelListComponent } from './components/projet/personnel/personnel-list/personnel-list.component';
 import { PersonnelEditComponent } from './components/projet/personnel/personnel-edit/personnel-edit.component';
 import { CustomComponent } from './components/custom/custom.component';
-//import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
+import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { CustomComponent } from './components/custom/custom.component';
     StadeEditComponent,
     StadeListComponent,
     EquipeListComponent,
-    // EquipeEditComponent,
+    EquipeEditComponent,
     SondageQuizComponent,
     ArticlesComponent,
     Actualite1Component,

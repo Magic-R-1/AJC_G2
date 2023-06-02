@@ -1,90 +1,116 @@
-<div class="about-container">
-  <h1>Edition personnel</h1>
-  <form (ngSubmit)="save()" #form="ngForm">
-    <div class="form-group">
-      <label for="id">ID :</label>
-      <input
-        id="id"
-        name="id"
-        [(ngModel)]="personnel.id"
-        class="form-control"
-        placeholder="Numéro auto"
-        readonly
-      />
-    </div>
-    <div class="form-group">
-      <label for="nom">Nom :</label>
-      <input
-        id="nom"
-        name="nom"
-        [(ngModel)]="personnel.nom"
-        class="form-control"
-        required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
-        #nomCtrl="ngModel"
-      />
-      <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
-        Nom obligatoire
+<button class="btn btn-primary" (click)="openModal()">
+  Ajouter du personnel
+</button>
+<div #myModal class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Titre de la fenêtre modale</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="prenom">Prénom :</label>
-      <input
-        id="prenom"
-        name="prenom"
-        [(ngModel)]="personnel.prenom"
-        class="form-control"
-        required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
-        #prenomCtrl="ngModel"
-      />
-      <div
-        *ngIf="prenomCtrl.dirty && prenomCtrl.invalid"
-        class="alert alert-danger"
-      >
-        Prénom obligatoire
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="salaire">Salaire :</label>
-      <input
-        id="salaire"
-        name="salaire"
-        [(ngModel)]="personnel.salaire"
-        class="form-control"
-        required
-        #salaireCtrl="ngModel"
-      />
-      <div
-        *ngIf="salaireCtrl.dirty && salaireCtrl.invalid"
-        class="alert alert-danger"
-      >
-        Salaire obligatoire
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="equipe">Équipe :</label>
-      <select
-        id="equipe"
-        name="equipe"
-        [(ngModel)]="personnel.equipe"
-        class="form-control"
-        required
-        [compareWith]="compareById"
-        #equipeCtrl="ngModel"
-      >
-        <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
-          {{ equipe.franchise }}
-        </option>
-      </select>
-      <div
-        *ngIf="equipeCtrl.dirty && equipeCtrl.invalid"
-        class="alert alert-danger"
-      >
-        Équipe obligatoire
-      </div>
-    </div>
-    <!-- <div class="form-group">
+      <div class="modal-body">
+        <!-- Contenu de la fenêtre modale -->
+        <div class="about-container">
+          <h1>Edition personnel</h1>
+          <form (ngSubmit)="save()" #form="ngForm">
+            <div class="form-group">
+              <label for="id">ID :</label>
+              <input
+                id="id"
+                name="id"
+                [(ngModel)]="personnel.id"
+                class="form-control"
+                placeholder="Numéro auto"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom :</label>
+              <input
+                id="nom"
+                name="nom"
+                [(ngModel)]="personnel.nom"
+                class="form-control"
+                required
+                pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
+                #nomCtrl="ngModel"
+              />
+              <div
+                *ngIf="nomCtrl.dirty && nomCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Nom obligatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="prenom">Prénom :</label>
+              <input
+                id="prenom"
+                name="prenom"
+                [(ngModel)]="personnel.prenom"
+                class="form-control"
+                required
+                pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
+                #prenomCtrl="ngModel"
+              />
+              <div
+                *ngIf="prenomCtrl.dirty && prenomCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Prénom obligatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="salaire">Salaire :</label>
+              <input
+                id="salaire"
+                name="salaire"
+                [(ngModel)]="personnel.salaire"
+                class="form-control"
+                required
+                #salaireCtrl="ngModel"
+              />
+              <div
+                *ngIf="salaireCtrl.dirty && salaireCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Salaire obligatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="equipe">Équipe :</label>
+              <select
+                id="equipe"
+                name="equipe"
+                [(ngModel)]="personnel.equipe"
+                class="form-control"
+                required
+                [compareWith]="compareById"
+                #equipeCtrl="ngModel"
+              >
+                <option
+                  [ngValue]="equipe"
+                  *ngFor="let equipe of obsEquipes | async"
+                >
+                  {{ equipe.franchise }}
+                </option>
+              </select>
+              <div
+                *ngIf="equipeCtrl.dirty && equipeCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Équipe obligatoire
+              </div>
+            </div>
+            <!-- <div class="form-group">
     <label for="role_personnel">Rôle :</label>
     <select id="role_personnel" name="role_personnel" [(ngModel)]="personnel.role_personnel" class="form-control" required>
       <option *ngFor="let role of rolesPersonnel" [value]="role">{{ role }}</option>
@@ -93,21 +119,35 @@
       Rôle obligatoire
     </div>
   </div> -->
-    <br />
-    <div>
-      <button
-        type="submit"
-        [disabled]="form.invalid"
-        class="btn btn-outline-primary"
-      >
-        Enregistrer
-      </button>
-      <a
-        routerLink="/personnel"
-        routerLinkActive="active"
-        class="btn btn-outline-warning"
-        >Annuler</a
-      >
+            <br />
+            <div>
+              <button
+                type="submit"
+                [disabled]="form.invalid"
+                class="btn btn-outline-primary"
+              >
+                Enregistrer
+              </button>
+              <a
+                routerLink="/personnel"
+                routerLinkActive="active"
+                class="btn btn-outline-warning"
+                >Annuler</a
+              >
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            (click)="closeModal()"
+          >
+            Fermer
+          </button>
+        </div>
+      </div>
     </div>
-  </form>
+  </div>
 </div>

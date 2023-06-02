@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stade } from 'src/app/model/stade';
 import { StadeService } from 'src/app/services/stade.service';
@@ -38,5 +38,19 @@ export class StadeEditComponent implements OnInit {
         this.router.navigateByUrl('/stade');
       });
     }
+  }
+
+  @ViewChild('myModal') myModal!: ElementRef;
+
+  openModal() {
+    this.myModal.nativeElement.classList.add('show');
+    this.myModal.nativeElement.style.display = 'block';
+    document.body.classList.add('modal-open');
+  }
+
+  closeModal() {
+    this.myModal.nativeElement.classList.remove('show');
+    this.myModal.nativeElement.style.display = 'none';
+    document.body.classList.remove('modal-open');
   }
 }

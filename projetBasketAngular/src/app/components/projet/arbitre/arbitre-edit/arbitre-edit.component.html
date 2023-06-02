@@ -1,113 +1,152 @@
-<div class="about-container">
-  <h1>Edition d' un arbitre</h1>
-  <form (ngSubmit)="save()" #form="ngForm">
-    <div class="form-group">
-      <label for="id">id:</label>
-      <input
-        id="id"
-        name="id"
-        [(ngModel)]="arbitre.id"
-        class="form-control"
-        placeholder="numero auto"
-        readonly
-      />
-    </div>
-    <div class="form-group">
-      <label for="nom">nom:</label>
-      <input
-        id="nom"
-        name="nom"
-        [(ngModel)]="arbitre.nom"
-        class="form-control"
-        required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
-        #nomCtrl="ngModel"
-      />
-      <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
-        nom obligatoire
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="prenom">prenom:</label>
-      <input
-        id="prenom"
-        name="prenom"
-        [(ngModel)]="arbitre.prenom"
-        class="form-control"
-        required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
-        #prenomCtrl="ngModel"
-      />
-      <div
-        *ngIf="prenomCtrl.dirty && prenomCtrl.invalid"
-        class="alert alert-danger"
-      >
-        prenom obligatoire
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="anciennete">anciennete:</label>
-      <input
-        id="anciennete"
-        name="anciennete"
-        [(ngModel)]="arbitre.anciennete"
-        class="form-control"
-        required
-        #ancienneteCtrl="ngModel"
-      />
-      <div
-        *ngIf="ancienneteCtrl.dirty && ancienneteCtrl.invalid"
-        class="alert alert-danger"
-      >
-        anciennete obligatoire
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="nationalite">nationalite:</label>
-      <input
-        id="nationalite"
-        name="nationalite"
-        [(ngModel)]="arbitre.nationalite"
-        class="form-control"
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="confrontation">confrontation:</label>
-      <select
-        id="confrontation"
-        [(ngModel)]="arbitre.confrontation"
-        class="form-control"
-        name="confrontation"
-        [compareWith]="compareById"
-        required
-      >
-        <option
-          [ngValue]="confrontation"
-          *ngFor="let confrontation of obsConfrontations | async"
+<button class="btn btn-primary" (click)="openModal()">
+  Ajouter d'un arbitre
+</button>
+<div #myModal class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Titre de la fenêtre modale</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeModal()"
         >
-          {{ confrontation.dateConfrontation }} {{ confrontation.arbitre }}
-        </option>
-      </select>
-    </div>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenu de la fenêtre modale -->
 
-    <div>
-      <button
-        type="submit"
-        [disabled]="form.invalid"
-        class="btn btn-outline-primary"
-      >
-        enregistrer
-      </button>
-      <a
-        routerLink="/arbitre"
-        routerLinkActive="active"
-        class="btn btn-outline-warning"
-        >annuler</a
-      >
+        <div class="about-container">
+          <h1>Edition d' un arbitre</h1>
+          <form (ngSubmit)="save()" #form="ngForm">
+            <div class="form-group">
+              <label for="id">id:</label>
+              <input
+                id="id"
+                name="id"
+                [(ngModel)]="arbitre.id"
+                class="form-control"
+                placeholder="numero auto"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="nom">nom:</label>
+              <input
+                id="nom"
+                name="nom"
+                [(ngModel)]="arbitre.nom"
+                class="form-control"
+                required
+                pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
+                #nomCtrl="ngModel"
+              />
+              <div
+                *ngIf="nomCtrl.dirty && nomCtrl.invalid"
+                class="alert alert-danger"
+              >
+                nom obligatoire
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="prenom">prenom:</label>
+              <input
+                id="prenom"
+                name="prenom"
+                [(ngModel)]="arbitre.prenom"
+                class="form-control"
+                required
+                pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
+                #prenomCtrl="ngModel"
+              />
+              <div
+                *ngIf="prenomCtrl.dirty && prenomCtrl.invalid"
+                class="alert alert-danger"
+              >
+                prenom obligatoire
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="anciennete">anciennete:</label>
+              <input
+                id="anciennete"
+                name="anciennete"
+                [(ngModel)]="arbitre.anciennete"
+                class="form-control"
+                required
+                #ancienneteCtrl="ngModel"
+              />
+              <div
+                *ngIf="ancienneteCtrl.dirty && ancienneteCtrl.invalid"
+                class="alert alert-danger"
+              >
+                anciennete obligatoire
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="nationalite">nationalite:</label>
+              <input
+                id="nationalite"
+                name="nationalite"
+                [(ngModel)]="arbitre.nationalite"
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="confrontation">confrontation:</label>
+              <select
+                id="confrontation"
+                [(ngModel)]="arbitre.confrontation"
+                class="form-control"
+                name="confrontation"
+                [compareWith]="compareById"
+                required
+              >
+                <option
+                  [ngValue]="confrontation"
+                  *ngFor="let confrontation of obsConfrontations | async"
+                >
+                  {{ confrontation.dateConfrontation }}
+                  {{ confrontation.arbitre }}
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                [disabled]="form.invalid"
+                class="btn btn-outline-primary"
+              >
+                enregistrer
+              </button>
+              <a
+                routerLink="/arbitre"
+                routerLinkActive="active"
+                class="btn btn-outline-warning"
+                >annuler</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="closeModal()"
+        >
+          Fermer
+        </button>
+      </div>
     </div>
-  </form>
+  </div>
 </div>

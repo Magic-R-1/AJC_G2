@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PersonnelService {
-  private static URL: string = 'http://localhost:8080/projetbasket/api/team';
+  private static URL: string =
+    'http://localhost:8080/projetbasket/api/personnel';
 
   constructor(private httpClient: HttpClient) {}
 

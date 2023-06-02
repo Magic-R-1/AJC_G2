@@ -1,122 +1,164 @@
-<h1>Edition réservation</h1>
-<form (ngSubmit)="save()" #form="ngForm">
-  <div class="form-group">
-    <label for="id">ID :</label>
-    <input
-      id="id"
-      name="id"
-      [(ngModel)]="reservation.id"
-      class="form-control"
-      placeholder="Numéro auto"
-      readonly
-    />
-  </div>
-  <div class="form-group">
-    <label for="prix">Prix :</label>
-    <input
-      id="prix"
-      name="prix"
-      [(ngModel)]="reservation.prix"
-      class="form-control"
-      required
-      #prixCtrl="ngModel"
-    />
-    <div *ngIf="prixCtrl.dirty && prixCtrl.invalid" class="alert alert-danger">
-      Prix obligatoire
+<button class="btn btn-primary" (click)="openModal()">
+  Ajouter d'une réservation
+</button>
+<div #myModal class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Titre de la fenêtre modale</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenu de la fenêtre modale -->
+        <div class="about-container">
+          <h1>Edition réservation</h1>
+          <form (ngSubmit)="save()" #form="ngForm">
+            <div class="form-group">
+              <label for="id">ID :</label>
+              <input
+                id="id"
+                name="id"
+                [(ngModel)]="reservation.id"
+                class="form-control"
+                placeholder="Numéro auto"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="prix">Prix :</label>
+              <input
+                id="prix"
+                name="prix"
+                [(ngModel)]="reservation.prix"
+                class="form-control"
+                required
+                #prixCtrl="ngModel"
+              />
+              <div
+                *ngIf="prixCtrl.dirty && prixCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Prix obligatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="quantite">Quantité :</label>
+              <input
+                id="quantite"
+                name="quantite"
+                [(ngModel)]="reservation.quantite"
+                class="form-control"
+                required
+                #quantiteCtrl="ngModel"
+              />
+              <div
+                *ngIf="quantiteCtrl.dirty && quantiteCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Quantité obligatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="dateReservation">Date de réservation :</label>
+              <input
+                id="dateReservation"
+                name="dateReservation"
+                [(ngModel)]="reservation.dateReservation"
+                class="form-control"
+                type="date"
+                #dateReservationCtrl="ngModel"
+              />
+              <div
+                *ngIf="dateReservationCtrl.dirty && dateReservationCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Date de réservation obligatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confrontation">Confrontation :</label>
+              <select
+                id="confrontation"
+                name="confrontation"
+                [(ngModel)]="reservation.confrontation"
+                class="form-control"
+                [compareWith]="compareById"
+                #confrontationCtrl="ngModel"
+              >
+                <option
+                  [ngValue]="confrontation"
+                  *ngFor="let confrontation of obsConfrontations | async"
+                >
+                  {{ confrontation.dateConfrontation }}
+                </option>
+              </select>
+              <div
+                *ngIf="confrontationCtrl.dirty && confrontationCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Confrontation obligatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="compte">Compte :</label>
+              <select
+                id="compte"
+                name="compte"
+                [(ngModel)]="reservation.compte"
+                class="form-control"
+                [compareWith]="compareById"
+                #compteCtrl="ngModel"
+              >
+                <option
+                  [ngValue]="compte"
+                  *ngFor="let compte of obsComptes | async"
+                >
+                  {{ compte.nom }}
+                </option>
+              </select>
+              <div
+                *ngIf="compteCtrl.dirty && compteCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Compte obligatoire
+              </div>
+            </div>
+            <div>
+              <button
+                type="submit"
+                [disabled]="form.invalid"
+                class="btn btn-outline-primary"
+              >
+                Enregistrer
+              </button>
+              <a
+                routerLink="/reservation"
+                routerLinkActive="active"
+                class="btn btn-outline-warning"
+                >Annuler</a
+              >
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            (click)="closeModal()"
+          >
+            Fermer
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <label for="quantite">Quantité :</label>
-    <input
-      id="quantite"
-      name="quantite"
-      [(ngModel)]="reservation.quantite"
-      class="form-control"
-      required
-      #quantiteCtrl="ngModel"
-    />
-    <div
-      *ngIf="quantiteCtrl.dirty && quantiteCtrl.invalid"
-      class="alert alert-danger"
-    >
-      Quantité obligatoire
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="dateReservation">Date de réservation :</label>
-    <input
-      id="dateReservation"
-      name="dateReservation"
-      [(ngModel)]="reservation.dateReservation"
-      class="form-control"
-      type="date"
-      #dateReservationCtrl="ngModel"
-    />
-    <div
-      *ngIf="dateReservationCtrl.dirty && dateReservationCtrl.invalid"
-      class="alert alert-danger"
-    >
-      Date de réservation obligatoire
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="confrontation">Confrontation :</label>
-    <select
-      id="confrontation"
-      name="confrontation"
-      [(ngModel)]="reservation.confrontation"
-      class="form-control"
-      [compareWith]="compareById"
-      #confrontationCtrl="ngModel"
-    >
-      <option
-        [ngValue]="confrontation"
-        *ngFor="let confrontation of obsConfrontations | async"
-      >
-        {{ confrontation.dateConfrontation }}
-      </option>
-    </select>
-    <div
-      *ngIf="confrontationCtrl.dirty && confrontationCtrl.invalid"
-      class="alert alert-danger"
-    >
-      Confrontation obligatoire
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="compte">Compte :</label>
-    <select
-      id="compte"
-      name="compte"
-      [(ngModel)]="reservation.compte"
-      class="form-control"
-      [compareWith]="compareById"
-      #compteCtrl="ngModel"
-    >
-      <option [ngValue]="compte" *ngFor="let compte of obsComptes | async">
-        {{ compte.nom }}
-      </option>
-    </select>
-    <div
-      *ngIf="compteCtrl.dirty && compteCtrl.invalid"
-      class="alert alert-danger"
-    >
-      Compte obligatoire
-    </div>
-  </div>
-  <div>
-    <button
-      type="submit"
-      [disabled]="form.invalid"
-      class="btn btn-outline-primary"
-    >
-      Enregistrer
-    </button>
-    <a
-      routerLink="/reservation"
-      routerLinkActive="active"
-      class="btn btn-outline-warning"
-      >Annuler</a
-    >
-  </div>
-</form>
+</div>
