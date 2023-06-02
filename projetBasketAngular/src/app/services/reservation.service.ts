@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ReservationService {
-  private static URL: string =
-    'http://localhost:8080/projetbasket/api/reservation';
+
+  private static URL: string = 'http://localhost:8080/projetbasket/api/reservation';
 
   constructor(private httpClient: HttpClient) {}
 

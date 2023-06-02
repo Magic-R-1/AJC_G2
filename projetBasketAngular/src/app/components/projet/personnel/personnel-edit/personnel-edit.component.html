@@ -52,7 +52,6 @@
         name="salaire"
         [(ngModel)]="personnel.salaire"
         class="form-control"
-        required
         #salaireCtrl="ngModel"
       />
       <div
@@ -62,14 +61,13 @@
         Salaire obligatoire
       </div>
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="equipe">Équipe :</label>
       <select
         id="equipe"
         name="equipe"
         [(ngModel)]="personnel.equipe"
         class="form-control"
-        required
         [compareWith]="compareById"
         #equipeCtrl="ngModel"
       >
@@ -83,7 +81,7 @@
       >
         Équipe obligatoire
       </div>
-    </div>
+    </div> -->
     <!-- <div class="form-group">
     <label for="role_personnel">Rôle :</label>
     <select id="role_personnel" name="role_personnel" [(ngModel)]="personnel.role_personnel" class="form-control" required>

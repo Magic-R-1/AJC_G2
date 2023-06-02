@@ -23,15 +23,15 @@ export class PersonnelEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let equipe: Equipe = new Equipe();
+
     this.personnel = new Personnel();
-    this.personnel.equipe = equipe;
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
-        this.personnelSrv.getById(params['id']).subscribe((equipeJson) => {
-          this.personnel = equipeJson;
+        this.personnelSrv.getById(params['id']).subscribe((personnelJson) => {
+          this.personnel = personnelJson;
         });
       }
+
     });
     this.obsEquipes = this.equipeSrv.getEquipes();
   }
