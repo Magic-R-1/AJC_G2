@@ -16,7 +16,7 @@
       <td>{{ reservation.prix }}</td>
       <td>{{ reservation.quantite }}</td>
       <td>{{ reservation.dateReservation | date : "dd/MM/yyyy" }}</td>
-      <td>{{ reservation.compte?.prenom }}</td>
+      <td>{{ reservation.compte?.prenom }} {{ reservation.compte?.nom }}</td>
       <td>
         <a
           class="btn btn-outline-primary"

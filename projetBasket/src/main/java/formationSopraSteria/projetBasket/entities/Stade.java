@@ -89,6 +89,19 @@ public class Stade {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	
+	
+	
+	
+
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
 
 	@Override
 	public int hashCode() {
@@ -106,6 +119,7 @@ public class Stade {
 		Stade other = (Stade) obj;
 		return Objects.equals(id, other.id);
 	}
+
 
 	
 

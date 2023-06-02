@@ -136,6 +136,24 @@ public class Compte implements UserDetails  {
 	public void setStatutRole(StatutRole statutRole) {
 		this.statutRole = statutRole;
 	}
+	
+	
+	public Set<Reservation> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(Set<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+	public Equipe getEquipe() {
+		return equipe;
+	}
+
+	public void setEquipe(Equipe equipe) {
+		this.equipe = equipe;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -181,7 +199,8 @@ public class Compte implements UserDetails  {
 	public boolean isEnabled() {
 		return true;
 	}
+
+	}
 		
 	
 	
-}

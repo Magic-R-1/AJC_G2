@@ -20,7 +20,6 @@
         [(ngModel)]="stade.nom"
         class="form-control"
         required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
         #nomCtrl="ngModel"
       />
       <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
@@ -67,7 +66,6 @@
         type="submit"
         [disabled]="form.invalid"
         class="btn btn-outline-primary"
-        (click)="closeModal()"
       >
         Enregistrer
       </button>
@@ -75,7 +73,6 @@
         routerLink="/stade"
         routerLinkActive="active"
         class="btn btn-outline-warning"
-        (click)="closeModal()"
       >
         Annuler
       </a>

@@ -6,12 +6,14 @@
       <th>Franchise :</th>
       <th>Ville :</th>
       <th>Stade :</th>
+      <th>Compte :</th>
     </tr>
-    <tr *ngFor="let e of obsEquipes | async">
+    <tr *ngFor="let e of equipeFiltre()">
       <td>{{ e.id }}</td>
       <td>{{ e.franchise }}</td>
       <td>{{ e.ville }}</td>
       <td>{{ e.stade?.nom }}</td>
+      <td>{{ e.compte?.nom }} {{ e.compte?.prenom }}</td>
 
       <td>
         <a class="btn btn-outline-primary" routerLink="/equipe/edit/{{ e.id }}"
@@ -25,5 +27,5 @@
       </td>
     </tr>
   </table>
-  <app-equipe-edit></app-equipe-edit>
+  <a class="btn btn-link" routerLink="/equipe/edit">Nouvelle équipe</a>
 </div>

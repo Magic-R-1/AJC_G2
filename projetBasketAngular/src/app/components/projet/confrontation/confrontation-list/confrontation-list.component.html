@@ -2,22 +2,31 @@
   <h1>Liste des Confrontations</h1>
   <table class="table">
     <tr>
-      <th>Id :</th>
-      <th>Date de Confrontation :</th>
-      <th>Duree :</th>
-      <th>Score Domicile :</th>
-      <th>Score Visiteur :</th>
-      <th>Arbitre :</th>
-      <th>Equipe :</th>
+      <th>Id</th>
+      <th>Date</th>
+      <th>Durée</th>
+      <th>Équipe domicile</th>
+      <th>Score domicile</th>
+      <th>Score visiteur</th>
+      <th>Équipe visiteur</th>
+      <th>Arbitre</th>
     </tr>
     <tr *ngFor="let confrontation of confrontations">
       <td>{{ confrontation.id }}</td>
-      <td>{{ confrontation.dateConfrontation }}</td>
+      <td>{{ confrontation.dateConfrontation | date : "dd/MM/yyyy" }}</td>
       <td>{{ confrontation.duree }}</td>
+      <td>
+        {{ confrontation.equipe?.ville }} {{ confrontation.equipe?.franchise }}
+      </td>
       <td>{{ confrontation.scoreDomicile }}</td>
       <td>{{ confrontation.scoreVisiteur }}</td>
-      <td>{{ confrontation.arbitre?.nom }}</td>
-      <td>{{ confrontation.equipe?.franchise }}</td>
+      <td>
+        {{ confrontation.equipeVisiteur?.ville }}
+        {{ confrontation.equipeVisiteur?.franchise }}
+      </td>
+      <td>
+        {{ confrontation.arbitre?.prenom }} {{ confrontation.arbitre?.nom }}
+      </td>
       <td>
         <a
           class="btn btn-outline-primary"

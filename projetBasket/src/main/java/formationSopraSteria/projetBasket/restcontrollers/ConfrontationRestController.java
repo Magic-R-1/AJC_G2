@@ -41,6 +41,12 @@ public class ConfrontationRestController {
 		return confrontationSrv.getAll();
 	}
 	
+	@GetMapping("/{id}")
+	@JsonView(JsonViews.Confrontation.class)
+	public Confrontation getById(@PathVariable("id") Long id) {
+		return confrontationSrv.getById(id);
+	}
+	
 	@PostMapping("")
 	@JsonView(JsonViews.Confrontation.class)
 	@ResponseStatus(code = HttpStatus.CREATED)

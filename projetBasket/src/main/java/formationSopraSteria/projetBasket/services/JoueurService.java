@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import formationSopraSteria.projetBasket.entities.Equipe;
 import formationSopraSteria.projetBasket.entities.Joueur;
 import formationSopraSteria.projetBasket.entities.Poste;
 import formationSopraSteria.projetBasket.exceptions.CompteException;
@@ -79,6 +80,10 @@ public class JoueurService {
 		}
 	
 	// Fin du CRUDE
+	
+	public List<Joueur> rechercherJoueurParEquipe(Equipe equipe) {
+	    return joueurRepo.findByEquipe(equipe);
+	}
 	
 	public List<Joueur> rechercherJoueurParPoste(Poste poste) {
         return joueurRepo.findByPoste(poste);

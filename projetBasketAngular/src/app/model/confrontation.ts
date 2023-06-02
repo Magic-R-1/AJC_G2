@@ -9,6 +9,7 @@ export class Confrontation {
     public scoreVisiteur?: number,
     public arbitre?: Arbitre,
     public equipe?: Equipe,
+    public equipeVisiteur?: Equipe,
     public id?: number
   ) {}
 }

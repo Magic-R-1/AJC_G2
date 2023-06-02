@@ -41,18 +41,4 @@ export class StadeListComponent implements OnInit {
       this.listStades();
     });
   }
-
-  @ViewChild('myModal') myModal!: ElementRef;
-
-  openModal() {
-    this.myModal.nativeElement.classList.add('show');
-    this.myModal.nativeElement.style.display = 'block';
-    document.body.classList.add('modal-open');
-  }
-
-  closeModal() {
-    this.myModal.nativeElement.classList.remove('show');
-    this.myModal.nativeElement.style.display = 'none';
-    document.body.classList.remove('modal-open');
-  }
 }

@@ -16,23 +16,8 @@ import { EquipeService } from 'src/app/services/equipe.service';
 export class ConfrontationEditComponent implements OnInit {
   obsArbitres!: Observable<Arbitre[]>;
   obsEquipes!: Observable<Equipe[]>;
-  confrontation: Confrontation = new Confrontation();
-
-  ngOnInit(): void {
-    this.confrontation = new Confrontation();
-
-    this.activatedRoute.params.subscribe((params) => {
-      if (params['id']) {
-        this.confrontationSrv
-          .getById(params['id'])
-          .subscribe((confrontationJson) => {
-            this.confrontation = confrontationJson;
-          });
-      }
-    });
-    this.obsArbitres = this.arbitreSrv.getArbitres();
-    this.obsEquipes = this.equipeSrv.getEquipes();
-  }
+  obsEquipesVisiteurs!: Observable<Equipe[]>;
+  confrontation!: Confrontation;
 
   constructor(
     private confrontationSrv: ConfrontationService,
@@ -41,6 +26,22 @@ export class ConfrontationEditComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    this.confrontation = new Confrontation();
+
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['id']) {
+        this.confrontationSrv.getById(params['id']).subscribe((res) => {
+          this.confrontation = res;
+        });
+      }
+    });
+
+    this.obsArbitres = this.arbitreSrv.getArbitres();
+    this.obsEquipes = this.equipeSrv.getEquipes();
+    this.obsEquipesVisiteurs = this.equipeSrv.getEquipesVisiteurs();
+  }
 
   save() {
     if (this.confrontation.id) {
@@ -54,27 +55,10 @@ export class ConfrontationEditComponent implements OnInit {
     }
   }
 
-  compareById(
-    frsOptionActive: Arbitre | Equipe,
-    frsSelect: Arbitre | Equipe
-  ): boolean {
+  compareById(frsOptionActive: Equipe, frsSelect: Equipe): boolean {
     if (frsSelect && frsOptionActive) {
       return frsOptionActive.id === frsSelect.id;
     }
     return false;
-  }
-
-  @ViewChild('myModal') myModal!: ElementRef;
-
-  openModal() {
-    this.myModal.nativeElement.classList.add('show');
-    this.myModal.nativeElement.style.display = 'block';
-    document.body.classList.add('modal-open');
-  }
-
-  closeModal() {
-    this.myModal.nativeElement.classList.remove('show');
-    this.myModal.nativeElement.style.display = 'none';
-    document.body.classList.remove('modal-open');
   }
 }

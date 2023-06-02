@@ -9,6 +9,12 @@ import { Joueur } from '../model/joueur';
 export class JoueurService {
   constructor(private httpClient: HttpClient) {}
 
+  public getJoueursByEquipe(id: number): Observable<Joueur[]> {
+    return this.httpClient.get<Joueur[]>(
+      `http://localhost:8080/projetbasket/api/joueur/effectif/${id}`
+    );
+  }
+
   public getJoueurs(): Observable<Joueur[]> {
     return this.httpClient.get<Joueur[]>(
       'http://localhost:8080/projetbasket/api/joueur'

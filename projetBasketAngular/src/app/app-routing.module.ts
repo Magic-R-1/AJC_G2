@@ -23,6 +23,7 @@ import { PersonnelEditComponent } from './components/projet/personnel/personnel-
 import { PersonnelListComponent } from './components/projet/personnel/personnel-list/personnel-list.component';
 import { ReservationEditComponent } from './components/projet/reservation/reservation-edit/reservation-edit.component';
 import { ReservationListComponent } from './components/projet/reservation/reservation-list/reservation-list.component';
+import { EffectifComponent } from './components/projet/effectif/effectif.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'joueur', component: JoueurListComponent },
   { path: 'joueur/edit', component: JoueurEditComponent },
   { path: 'joueur/edit/:id', component: JoueurEditComponent },
+  { path: 'effectif', component: EffectifComponent },
   { path: 'personnel', component: PersonnelListComponent },
   { path: 'personnel/edit', component: PersonnelEditComponent },
   { path: 'personnel/edit/:id', component: PersonnelEditComponent },

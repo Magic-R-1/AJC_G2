@@ -62,6 +62,9 @@ public class ConfrontationService {
 	    public List<Confrontation> findByEquipe(Equipe equipe) {
 	        return confrontationRepo.findByEquipe(equipe);
 	    }
+	    public List<Confrontation> findByEquipeVisiteur(Equipe equipeVisiteur) {
+	        return confrontationRepo.findByEquipeVisiteur(equipeVisiteur);
+	    }
 
 	    public List<Confrontation> findByEquipeId(Long Id) {
 	        return confrontationRepo.findByEquipeId(Id);
@@ -86,6 +89,9 @@ public class ConfrontationService {
 			confrontationEnBase.setDuree(confrontation.getDuree());
 			confrontationEnBase.setScoreDomicile(confrontation.getScoreDomicile());
 			confrontationEnBase.setScoreVisiteur(confrontation.getScoreVisiteur());
+			confrontationEnBase.setArbitre(confrontation.getArbitre());
+			confrontationEnBase.setEquipe(confrontation.getEquipe());
+			confrontationEnBase.setEquipeVisiteur(confrontation.getEquipeVisiteur());
 			return confrontationRepo.save(confrontationEnBase);
 		}
 		public Confrontation getById(Long id) {

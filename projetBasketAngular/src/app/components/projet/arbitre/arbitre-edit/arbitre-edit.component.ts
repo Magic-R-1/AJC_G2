@@ -39,8 +39,6 @@ export class ArbitreEditComponent implements OnInit {
       });
     }
   }
-<<<<<<< HEAD
-=======
 
   @ViewChild('myModal') myModal!: ElementRef;
 
@@ -55,5 +53,4 @@ export class ArbitreEditComponent implements OnInit {
     this.myModal.nativeElement.style.display = 'none';
     document.body.classList.remove('modal-open');
   }
->>>>>>> main
 }

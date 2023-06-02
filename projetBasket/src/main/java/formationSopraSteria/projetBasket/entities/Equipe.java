@@ -47,8 +47,13 @@ public class Equipe {
 	@JsonView(JsonViews.EquipeWithConfrontation.class)
 	private Set<Confrontation> confrontation;
 	
+	@OneToMany(mappedBy="equipeVisiteur")
+	@Column(name="confrontation")
+	@JsonView(JsonViews.EquipeWithConfrontation.class)
+	private Set<Confrontation> confrontationVisiteur;
+	
 	@OneToOne
-	@JoinColumn(name="team_stadium_id", foreignKey = @ForeignKey(name="team_stadium_id_fk"))
+	@JoinColumn(name="team_stadium_id")
 	@JsonView(JsonViews.Equipe.class)
 	private Stade stade;
 	
@@ -58,23 +63,39 @@ public class Equipe {
 	private Set<Personnel> personnel;
 	
 	@OneToOne
-	@JoinColumn(name="team_account_id", foreignKey = @ForeignKey(name="team_account_id_fk"))
+	@JoinColumn(name="team_account_id")
 	@JsonView(JsonViews.Equipe.class)
 	private Compte compte;
 	
 	public Equipe() {	
 	}
 	
-	public Equipe(String franchise, String ville, Set<Joueur> joueur, Set<Confrontation> confrontation, Stade stade,
-			Set<Personnel> personnel, Compte compte) {
+	
+
+
+	public Equipe(String franchise, String ville) {
+		super();
+		this.franchise = franchise;
+		this.ville = ville;
+	}
+
+
+
+
+	public Equipe(String franchise, String ville, Set<Joueur> joueur, Set<Confrontation> confrontation,
+			Set<Confrontation> confrontationVisiteur, Stade stade, Set<Personnel> personnel, Compte compte) {
+		super();
 		this.franchise = franchise;
 		this.ville = ville;
 		this.joueur = joueur;
 		this.confrontation = confrontation;
+		this.confrontationVisiteur = confrontationVisiteur;
 		this.stade = stade;
 		this.personnel = personnel;
 		this.compte = compte;
 	}
+
+
 
 
 	public Long getId() {
@@ -115,6 +136,14 @@ public class Equipe {
 
 	public void setConfrontation(Set<Confrontation> confrontation) {
 		this.confrontation = confrontation;
+	}
+
+	public Set<Confrontation> getConfrontationVisiteur() {
+		return confrontationVisiteur;
+	}
+
+	public void setConfrontationVisiteur(Set<Confrontation> confrontationVisiteur) {
+		this.confrontationVisiteur = confrontationVisiteur;
 	}
 
 	public Stade getStade() {
@@ -158,14 +187,6 @@ public class Equipe {
 		return Objects.equals(id, other.id);
 	}
 
-	
-	
-	
-	
-	
-
-	
-	
 	
 	
 }

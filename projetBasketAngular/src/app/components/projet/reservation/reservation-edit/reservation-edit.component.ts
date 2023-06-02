@@ -42,16 +42,16 @@ export class ReservationEditComponent implements OnInit {
   ) {}
 
   save() {
-    console.log(this.reservation + '-----');
+    //console.log(this.reservation + '-----');
 
     if (this.reservation.id) {
       this.reservationSrv.update(this.reservation).subscribe((res) => {
-        console.log('bien passé ici 2');
+        //console.log('bien passé ici 2');
         this.router.navigateByUrl('/reservation');
       });
     } else {
       this.reservationSrv.create(this.reservation).subscribe((res) => {
-        console.log('bien passé ici 3');
+        //console.log('bien passé ici 3');
         this.router.navigateByUrl('/reservation');
       });
     }

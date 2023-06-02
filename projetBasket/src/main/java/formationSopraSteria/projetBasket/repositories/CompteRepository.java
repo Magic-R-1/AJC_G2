@@ -26,5 +26,12 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 		@Transactional
 		@Modifying
 		void setEquipeToNull(@Param("equipe") Equipe equipe);
+	
+	  
+	  @Modifying
+	  @Transactional
+	  @Query("UPDATE Compte c SET c.equipe = null WHERE c.equipe.id = :id")
+	  void updateEquipeIdToNull(@Param("id") Long id);
+
 
 }

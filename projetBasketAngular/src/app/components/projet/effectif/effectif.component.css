@@ -5,6 +5,11 @@
   text-align: center;
 }
 
-#nouveau {
+.en-tete {
   margin-left: 210px;
+  padding: 0px;
+}
+
+#equipe {
+  max-width: 200px;
 }
