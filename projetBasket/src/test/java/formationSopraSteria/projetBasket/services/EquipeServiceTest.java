@@ -90,6 +90,18 @@ public class EquipeServiceTest {
 				equipeSrv.create(equipe);
 
 	}
+	
+	@Test
+	void testUpdate1() {
+		Equipe equipe = equipeSrv.getByFranchise("franchise");
+		equipe.setVille("villeMaj");
+		equipeSrv.update(equipe);
+		System.out.println(equipe);
+	}
+	
+		
+	
+	
 
 	@Test
 	@Disabled

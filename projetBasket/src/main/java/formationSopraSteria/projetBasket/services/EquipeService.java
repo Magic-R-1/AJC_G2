@@ -307,10 +307,29 @@ public class EquipeService {
 	}
 	
 	public void delete(Long id) {
-		this.delete(this.getById(id));
-	}
-    
+        Equipe equipe = equipeRepo.findById(id).orElse(null);
+        if (equipe != null) {
+            // Supprimer l'équipe des confrontations liées
+            confrontationRepo.setEquipeToNull(equipe);
 
+            // Supprimer l'équipe du stade lié
+            Stade stade = equipe.getStade();
+            if (stade != null) {
+                stade.setEquipe(null);
+                stadeRepo.save(stade);
+            }
+
+            // Supprimer l'équipe du compte lié
+            Compte compte = equipe.getCompte();
+            if (compte != null) {
+                compte.setEquipe(null);
+                compteRepo.save(compte);
+            }
+
+            // Supprimer l'équipe elle-même
+            equipeRepo.delete(equipe);
+        }
+    }
 
 	
 }

@@ -7,6 +7,8 @@ import { Joueur } from 'src/app/model/joueur';
 import { Confrontation } from 'src/app/model/confrontation';
 import { EquipeService } from 'src/app/services/equipe.service';
 import { StadeService } from 'src/app/services/stade.service';
+import { Compte } from 'src/app/model/compte';
+import { CompteService } from 'src/app/services/compte.service';
 
 @Component({
   selector: 'app-equipe-edit',
@@ -15,6 +17,8 @@ import { StadeService } from 'src/app/services/stade.service';
 })
 export class EquipeEditComponent implements OnInit {
   obsStades!: Observable<Stade[]>;
+  obsComptes!: Observable<Compte[]>;
+  equipe: Equipe = new Equipe();
 
   ngOnInit(): void {
     this.aR.params.subscribe((params) => {
@@ -25,24 +29,24 @@ export class EquipeEditComponent implements OnInit {
       }
     });
     this.obsStades = this.stadeSrv.getStades();
+    this.obsComptes = this.compteSrv.getComptes();
   }
-
-  equipe: Equipe = new Equipe();
 
   constructor(
     private equipeSrv: EquipeService,
     private stadeSrv: StadeService,
+    private compteSrv: CompteService,
     private aR: ActivatedRoute,
     private router: Router
   ) {}
 
   save() {
     if (this.equipe.id) {
-      this.equipeSrv.update(this.equipe).subscribe(() => {
+      this.equipeSrv.update(this.equipe).subscribe((res) => {
         this.router.navigate(['/equipe']);
       });
     } else {
-      this.equipeSrv.create(this.equipe).subscribe((equipeCree) => {
+      this.equipeSrv.create(this.equipe).subscribe((res) => {
         this.router.navigate(['/equipe']);
       });
     }
@@ -53,19 +57,5 @@ export class EquipeEditComponent implements OnInit {
       return eqpOptionActive.id == eqpSelect.id;
     }
     return false;
-  }
-
-  @ViewChild('myModal') myModal!: ElementRef;
-
-  openModal() {
-    this.myModal.nativeElement.classList.add('show');
-    this.myModal.nativeElement.style.display = 'block';
-    document.body.classList.add('modal-open');
-  }
-
-  closeModal() {
-    this.myModal.nativeElement.classList.remove('show');
-    this.myModal.nativeElement.style.display = 'none';
-    document.body.classList.remove('modal-open');
   }
 }

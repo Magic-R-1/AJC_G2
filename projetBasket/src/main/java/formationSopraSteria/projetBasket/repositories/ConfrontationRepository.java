@@ -45,6 +45,13 @@ public interface ConfrontationRepository extends JpaRepository<Confrontation, Lo
 	@Transactional
 	@Modifying
 	void setArbitreToNull(@Param("arbitre") Arbitre arbitre);
+
+	
+	@Modifying
+	@Transactional
+	@Query("DELETE FROM Confrontation c WHERE c.equipe.id = :id")
+	void deleteByEquipeId(@Param("id") Long id);
+
 	
 	
 	

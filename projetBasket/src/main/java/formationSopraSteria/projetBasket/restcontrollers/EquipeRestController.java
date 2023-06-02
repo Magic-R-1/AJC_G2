@@ -145,10 +145,12 @@ public class EquipeRestController {
 	}
 	
 	@DeleteMapping("/{id}")
-	@ResponseStatus(code=HttpStatus.NO_CONTENT)
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		equipeSrv.delete(id);
+	    equipeSrv.delete(id);
 	}
+
+	
 	
 	
 	
