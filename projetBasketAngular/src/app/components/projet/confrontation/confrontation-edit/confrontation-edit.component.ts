@@ -55,26 +55,10 @@ export class ConfrontationEditComponent implements OnInit {
     }
   }
 
-  compareById(
-    frsOptionActive: Arbitre | Equipe,
-    frsSelect: Arbitre | Equipe
-  ): boolean {
+  compareById(frsOptionActive: Equipe, frsSelect: Equipe): boolean {
     if (frsSelect && frsOptionActive) {
       return frsOptionActive.id === frsSelect.id;
     }
     return false;
-  }
-  @ViewChild('myModal') myModal!: ElementRef;
-
-  openModal() {
-    this.myModal.nativeElement.classList.add('show');
-    this.myModal.nativeElement.style.display = 'block';
-    document.body.classList.add('modal-open');
-  }
-
-  closeModal() {
-    this.myModal.nativeElement.classList.remove('show');
-    this.myModal.nativeElement.style.display = 'none';
-    document.body.classList.remove('modal-open');
   }
 }

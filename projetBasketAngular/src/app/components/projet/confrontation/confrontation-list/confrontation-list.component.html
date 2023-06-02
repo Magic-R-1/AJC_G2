@@ -11,7 +11,7 @@
       <th>Equipe Domicile:</th>
       <th>Equipe Visiteur :</th>
     </tr>
-    <tr *ngFor="let confrontation of confrontations">
+    <tr *ngFor="let confrontation of confrontationFiltre()">
       <td>{{ confrontation.id }}</td>
       <td>{{ confrontation.dateConfrontation }}</td>
       <td>{{ confrontation.duree }}</td>

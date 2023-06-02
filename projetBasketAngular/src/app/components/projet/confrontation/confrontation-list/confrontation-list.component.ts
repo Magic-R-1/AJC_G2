@@ -9,6 +9,7 @@ import { ConfrontationService } from 'src/app/services/confrontation.service';
 })
 export class ConfrontationListComponent implements OnInit {
   confrontations: Confrontation[] = [];
+  filtre = '';
 
   constructor(private confrontationSrv: ConfrontationService) {}
 
@@ -26,5 +27,11 @@ export class ConfrontationListComponent implements OnInit {
     this.confrontationSrv.deleteById(id).subscribe(() => {
       this.listConfrontations();
     });
+  }
+
+  confrontationFiltre() {
+    return this.confrontations.filter((f) =>
+      f.dateConfrontation?.toLocaleDateString().includes(this.filtre)
+    );
   }
 }

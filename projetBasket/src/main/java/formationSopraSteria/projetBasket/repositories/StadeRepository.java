@@ -43,6 +43,13 @@ public interface StadeRepository extends JpaRepository<Stade, Long>{
 	List<Stade> findByCapaciteGreaterThanEqual(int capacite);
 
 
+	@Modifying
+	@Transactional
+	@Query("UPDATE Stade c SET c.equipe = null WHERE c.equipe.id = :id")
+	void updateEquipeIdToNull(@Param("id") Long id);
+
+
+
 
 
 }

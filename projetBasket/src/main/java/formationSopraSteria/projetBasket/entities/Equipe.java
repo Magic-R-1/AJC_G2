@@ -53,7 +53,7 @@ public class Equipe {
 	private Set<Confrontation> confrontationVisiteur;
 	
 	@OneToOne
-	@JoinColumn(name="team_stadium_id", foreignKey = @ForeignKey(name="team_stadium_id_fk"))
+	@JoinColumn(name="team_stadium_id")
 	@JsonView(JsonViews.Equipe.class)
 	private Stade stade;
 	
@@ -63,7 +63,7 @@ public class Equipe {
 	private Set<Personnel> personnel;
 	
 	@OneToOne
-	@JoinColumn(name="team_account_id", foreignKey = @ForeignKey(name="team_account_id_fk"))
+	@JoinColumn(name="team_account_id")
 	@JsonView(JsonViews.Equipe.class)
 	private Compte compte;
 	
@@ -187,14 +187,6 @@ public class Equipe {
 		return Objects.equals(id, other.id);
 	}
 
-	
-	
-	
-	
-	
-
-	
-	
 	
 	
 }

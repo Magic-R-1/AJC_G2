@@ -10,6 +10,7 @@ export class Equipe {
     public franchise?: string,
     public ville?: string,
     public stade?: Stade,
+    public compte?: Compte,
     public id?: number
   ) {}
 }
