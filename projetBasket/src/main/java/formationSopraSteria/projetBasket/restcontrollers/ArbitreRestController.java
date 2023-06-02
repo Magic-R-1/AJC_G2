@@ -35,7 +35,7 @@ public class ArbitreRestController {
 	private ArbitreService arbitreSrv;
 	
 	@GetMapping("")
-	@JsonView(JsonViews.Stade.class)
+	@JsonView(JsonViews.Arbitre.class)
 	public List<Arbitre> getAll() {
 		return arbitreSrv.getAll();
 	}

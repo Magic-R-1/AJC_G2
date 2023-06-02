@@ -15,6 +15,7 @@
     <div class="form-group">
       <label for="dateConfrontation">dateConfrontation:</label>
       <input
+        type="date"
         id="dateConfrontation"
         name="dateConfrontation"
         [(ngModel)]="confrontation.dateConfrontation"
@@ -92,10 +93,9 @@
         class="form-control"
         name="arbitre"
         [compareWith]="compareById"
-        required
       >
         <option [ngValue]="arbitre" *ngFor="let arbitre of obsArbitres | async">
-          {{ arbitre.nom }} {{ arbitre.nationalite }}
+          {{ arbitre.nom }}
         </option>
       </select>
     </div>
@@ -108,29 +108,9 @@
         class="form-control"
         name="equipe"
         [compareWith]="compareById"
-        required
       >
         <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
           {{ equipe.franchise }} {{ equipe.ville }}
-        </option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="reservation">reservation:</label>
-      <select
-        id="reservation"
-        [(ngModel)]="confrontation.reservation"
-        class="form-control"
-        name="reservation"
-        [compareWith]="compareById"
-        required
-      >
-        <option
-          [ngValue]="reservation"
-          *ngFor="let reservation of obsReservations | async"
-        >
-          {{ reservation.prix }} {{ reservation.dateReservation }}
         </option>
       </select>
     </div>

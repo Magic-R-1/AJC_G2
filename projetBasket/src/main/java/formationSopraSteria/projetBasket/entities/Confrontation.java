@@ -49,12 +49,12 @@ public class Confrontation {
 	
 	@ManyToOne
 	@JoinColumn(name="confrontation_referee_id", foreignKey = @ForeignKey(name="confrontation_referee_id_fk"))
-	@JsonView(JsonViews.Confrontation.class)
+	@JsonView(JsonViews.Base.class)
 	private Arbitre arbitre;
 	
 	@ManyToOne
 	@JoinColumn(name="confrontation_team_id", foreignKey = @ForeignKey(name="confrontation_team_id_fk"))
-	@JsonView(JsonViews.Confrontation.class)
+	@JsonView(JsonViews.Base.class)
 	private Equipe equipe;
 	
 	@OneToMany(mappedBy="confrontation")
