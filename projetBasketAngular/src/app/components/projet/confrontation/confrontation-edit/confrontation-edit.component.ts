@@ -38,9 +38,9 @@ export class ConfrontationEditComponent implements OnInit {
       }
     });
 
-    // this.obsArbitres = this.arbitreSrv.getArbitres();
-    // this.obsEquipes = this.equipeSrv.getEquipes();
-    // this.obsEquipesVisiteurs = this.equipeSrv.getEquipesVisiteurs();
+    this.obsArbitres = this.arbitreSrv.getArbitres();
+    this.obsEquipes = this.equipeSrv.getEquipes();
+    this.obsEquipesVisiteurs = this.equipeSrv.getEquipesVisiteurs();
   }
 
   save() {

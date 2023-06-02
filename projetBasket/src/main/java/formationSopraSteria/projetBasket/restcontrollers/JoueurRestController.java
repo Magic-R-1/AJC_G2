@@ -21,8 +21,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import formationSopraSteria.projetBasket.entities.Equipe;
 import formationSopraSteria.projetBasket.entities.Joueur;
 import formationSopraSteria.projetBasket.entities.jsonviews.JsonViews;
+import formationSopraSteria.projetBasket.services.EquipeService;
 import formationSopraSteria.projetBasket.services.JoueurService;
 
 @RestController
@@ -33,10 +35,21 @@ public class JoueurRestController {
 	@Autowired
 	private JoueurService joueurSrv;
 	
+	@Autowired
+	private EquipeService equipeSrv;
+	
+	
 	@GetMapping("")
 	@JsonView(JsonViews.Joueur.class)
 	public List<Joueur> getAll() {
 		return joueurSrv.getAll();
+	}
+	
+	@GetMapping("/effectif/{id}")
+	@JsonView(JsonViews.Joueur.class)
+	public List<Joueur> rechercherJoueurByEquipe(@PathVariable("id") Long id) {
+		Equipe equipe = equipeSrv.getById(id);
+		return joueurSrv.rechercherJoueurParEquipe(equipe);
 	}
 	
 	@GetMapping("/{id}")

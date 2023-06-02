@@ -35,6 +35,7 @@ import { PersonnelListComponent } from './components/projet/personnel/personnel-
 import { PersonnelEditComponent } from './components/projet/personnel/personnel-edit/personnel-edit.component';
 import { CustomComponent } from './components/custom/custom.component';
 import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
+import { EffectifComponent } from './components/projet/effectif/effectif.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equi
     PersonnelListComponent,
     PersonnelEditComponent,
     CustomComponent,
+    EffectifComponent,
   ],
   imports: [
     HttpClientModule,

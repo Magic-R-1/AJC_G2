@@ -19,6 +19,8 @@ public interface JoueurRepository extends JpaRepository<Joueur, Long> {
 //	"AND TIMESTAMPDIFF(YEAR, current_date, j.date_naissance) <= :ageFin")
 //	List<Joueur> findByAgeBetween(int ageDebut, int ageFin);
 
+	List<Joueur> findByEquipe(Equipe equipe);
+	
 	List<Joueur> findByPoste(Poste poste);
 	
 	@Query("SELECT j FROM Joueur j WHERE j.taille >= :tailleMini AND j.taille <= :tailleMaxi")
