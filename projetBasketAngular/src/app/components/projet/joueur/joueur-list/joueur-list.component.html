@@ -27,7 +27,7 @@
     <td>{{ joueur.numero_maillot }}</td>
     <td>{{ joueur.taille }}</td>
     <td>{{ joueur.poids }}</td>
-    <td>{{ joueur.equipe }}</td>
+    <td>{{ joueur.equipe?.franchise }}</td>
 
     <td>{{ joueur.date_naissance | date : "dd/MM/yyyy" }}</td>
     <td>{{ joueur.salaire }}</td>

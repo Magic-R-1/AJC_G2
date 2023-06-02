@@ -20,7 +20,6 @@
         [(ngModel)]="personnel.nom"
         class="form-control"
         required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
         #nomCtrl="ngModel"
       />
       <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
@@ -35,7 +34,6 @@
         [(ngModel)]="personnel.prenom"
         class="form-control"
         required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
         #prenomCtrl="ngModel"
       />
       <div
@@ -61,36 +59,41 @@
         Salaire obligatoire
       </div>
     </div>
-    <!-- <div class="form-group">
-              <label for="equipe">Équipe :</label>
-              <select
-                id="equipe"
-                name="equipe"
-                [(ngModel)]="personnel.equipe"
-                class="form-control"
-                [compareWith]="compareById"
-                #equipeCtrl="ngModel"
-              >
-                <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
-                  {{ equipe.franchise }}
-                </option>
-              </select>
-              <div
-                *ngIf="equipeCtrl.dirty && equipeCtrl.invalid"
-                class="alert alert-danger"
-              >
-                Équipe obligatoire
-              </div>
-            </div> -->
-    <!-- <div class="form-group">
-            <label for="role_personnel">Rôle :</label>
-            <select id="role_personnel" name="role_personnel" [(ngModel)]="personnel.role_personnel" class="form-control" required>
-              <option *ngFor="let role of rolesPersonnel" [value]="role">{{ role }}</option>
-            </select>
-            <div *ngIf="roleCtrl.dirty && roleCtrl.invalid" class="alert alert-danger">
-              Rôle obligatoire
-            </div>
-          </div> -->
+    <div class="form-group">
+      <label for="equipe">Équipe :</label>
+      <select
+        id="equipe"
+        name="equipe"
+        [(ngModel)]="personnel.equipe"
+        class="form-control"
+        [compareWith]="compareById"
+        #equipeCtrl="ngModel"
+      >
+        <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
+          {{ equipe.franchise }}
+        </option>
+      </select>
+      <div
+        *ngIf="equipeCtrl.dirty && equipeCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Équipe obligatoire
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="role_personnel">Role:</label>
+      <select
+        id="role_personnel"
+        name="role_personnel"
+        [(ngModel)]="personnel.role_personnel"
+        class="form-control"
+      >
+        <option value="ENTRAINEUR_PRINCIPAL">ENTRAINEUR_PRINCIPAL</option>
+        <option value="ENTRAINEUR_ADJOINT">ENTRAINEUR_ADJOINT</option>
+        <option value="PREPARATEUR_PHYSIQUE">PREPARATEUR_PHYSIQUE</option>
+        <option value="KINESITHERAPEUTE">KINESITHERAPEUTE</option>
+      </select>
+    </div>
     <br />
     <div>
       <button

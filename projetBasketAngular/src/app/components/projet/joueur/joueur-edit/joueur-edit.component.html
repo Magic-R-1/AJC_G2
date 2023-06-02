@@ -87,14 +87,18 @@
     </div>
 
     <div class="form-group">
-      <label for="equipe">Equipe :</label>
-      <input
+      <label for="equipe">Equipe:</label>
+      <select
         id="equipe"
-        name="equipe"
         [(ngModel)]="joueur.equipe"
         class="form-control"
-        #equipeCtrl="ngModel"
-      />
+        name="equipe"
+        [compareWith]="compareById"
+      >
+        <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
+          {{ equipe.franchise }} {{ equipe.ville }}
+        </option>
+      </select>
     </div>
 
     <div class="form-group">
