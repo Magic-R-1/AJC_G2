@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AptitudePhysique } from 'src/app/model/aptitude-physique';
 import { Joueur } from 'src/app/model/joueur';
@@ -42,5 +42,19 @@ export class JoueurEditComponent implements OnInit {
         this.router.navigateByUrl('/joueur');
       });
     }
+  }
+
+  @ViewChild('myModal') myModal!: ElementRef;
+
+  openModal() {
+    this.myModal.nativeElement.classList.add('show');
+    this.myModal.nativeElement.style.display = 'block';
+    document.body.classList.add('modal-open');
+  }
+
+  closeModal() {
+    this.myModal.nativeElement.classList.remove('show');
+    this.myModal.nativeElement.style.display = 'none';
+    document.body.classList.remove('modal-open');
   }
 }

@@ -16,7 +16,7 @@ export class SondageQuizComponent {
         'Kobe Bryant',
         'Magic Johnson',
       ],
-      correctAnswer: 'Michael Jordan',
+      correctAnswer: 'LeBron James',
     },
     {
       question: 'Quelle équipe a remporté le championnat NBA en 2020 ?',

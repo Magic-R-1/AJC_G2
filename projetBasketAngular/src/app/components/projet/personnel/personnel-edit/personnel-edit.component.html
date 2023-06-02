@@ -52,7 +52,6 @@
         name="salaire"
         [(ngModel)]="personnel.salaire"
         class="form-control"
-        required
         #salaireCtrl="ngModel"
       />
       <div
@@ -62,37 +61,36 @@
         Salaire obligatoire
       </div>
     </div>
-    <div class="form-group">
-      <label for="equipe">Équipe :</label>
-      <select
-        id="equipe"
-        name="equipe"
-        [(ngModel)]="personnel.equipe"
-        class="form-control"
-        required
-        [compareWith]="compareById"
-        #equipeCtrl="ngModel"
-      >
-        <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
-          {{ equipe.franchise }}
-        </option>
-      </select>
-      <div
-        *ngIf="equipeCtrl.dirty && equipeCtrl.invalid"
-        class="alert alert-danger"
-      >
-        Équipe obligatoire
-      </div>
-    </div>
     <!-- <div class="form-group">
-    <label for="role_personnel">Rôle :</label>
-    <select id="role_personnel" name="role_personnel" [(ngModel)]="personnel.role_personnel" class="form-control" required>
-      <option *ngFor="let role of rolesPersonnel" [value]="role">{{ role }}</option>
-    </select>
-    <div *ngIf="roleCtrl.dirty && roleCtrl.invalid" class="alert alert-danger">
-      Rôle obligatoire
-    </div>
-  </div> -->
+              <label for="equipe">Équipe :</label>
+              <select
+                id="equipe"
+                name="equipe"
+                [(ngModel)]="personnel.equipe"
+                class="form-control"
+                [compareWith]="compareById"
+                #equipeCtrl="ngModel"
+              >
+                <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
+                  {{ equipe.franchise }}
+                </option>
+              </select>
+              <div
+                *ngIf="equipeCtrl.dirty && equipeCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Équipe obligatoire
+              </div>
+            </div> -->
+    <!-- <div class="form-group">
+            <label for="role_personnel">Rôle :</label>
+            <select id="role_personnel" name="role_personnel" [(ngModel)]="personnel.role_personnel" class="form-control" required>
+              <option *ngFor="let role of rolesPersonnel" [value]="role">{{ role }}</option>
+            </select>
+            <div *ngIf="roleCtrl.dirty && roleCtrl.invalid" class="alert alert-danger">
+              Rôle obligatoire
+            </div>
+          </div> -->
     <br />
     <div>
       <button

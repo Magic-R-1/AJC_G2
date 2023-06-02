@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Reservation } from 'src/app/model/reservation';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,10 +19,7 @@ export class ReservationEditComponent implements OnInit {
   reservation: Reservation = new Reservation();
 
   ngOnInit(): void {
-    let confrontation: Confrontation = new Confrontation();
-    let compte: Compte = new Compte();
     this.reservation = new Reservation();
-    this.reservation.confrontation = confrontation;
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
         this.reservationSrv
@@ -45,12 +42,16 @@ export class ReservationEditComponent implements OnInit {
   ) {}
 
   save() {
+    console.log(this.reservation + '-----');
+
     if (this.reservation.id) {
       this.reservationSrv.update(this.reservation).subscribe((res) => {
+        console.log('bien passé ici 2');
         this.router.navigateByUrl('/reservation');
       });
     } else {
       this.reservationSrv.create(this.reservation).subscribe((res) => {
+        console.log('bien passé ici 3');
         this.router.navigateByUrl('/reservation');
       });
     }
@@ -64,5 +65,19 @@ export class ReservationEditComponent implements OnInit {
       return frsOptionActive.id === frsSelect.id;
     }
     return false;
+  }
+
+  @ViewChild('myModal') myModal!: ElementRef;
+
+  openModal() {
+    this.myModal.nativeElement.classList.add('show');
+    this.myModal.nativeElement.style.display = 'block';
+    document.body.classList.add('modal-open');
+  }
+
+  closeModal() {
+    this.myModal.nativeElement.classList.remove('show');
+    this.myModal.nativeElement.style.display = 'none';
+    document.body.classList.remove('modal-open');
   }
 }

@@ -131,8 +131,4 @@ public class Arbitre {
 		return Objects.equals(id, other.id);
 	}
 
-
-	
-	
-	
 }

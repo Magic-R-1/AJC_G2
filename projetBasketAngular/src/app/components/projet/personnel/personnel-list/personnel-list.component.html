@@ -11,26 +11,24 @@
       <th>Salaire:</th>
       <th>Équipe:</th>
       <th>Rôle:</th>
-      <th></th>
-      <th></th>
     </tr>
-    <tr *ngFor="let personne of personnelFiltre()">
-      <td>{{ personne.id }}</td>
-      <td>{{ personne.nom }}</td>
-      <td>{{ personne.prenom }}</td>
-      <td>{{ personne.salaire }}</td>
-      <td>{{ personne.equipe }}</td>
-      <td>{{ personne.role_personnel }}</td>
+    <tr *ngFor="let personnel of personnelFiltre()">
+      <td>{{ personnel.id }}</td>
+      <td>{{ personnel.nom }}</td>
+      <td>{{ personnel.prenom }}</td>
+      <td>{{ personnel.salaire }}</td>
+      <td>{{ personnel.equipe }}</td>
+      <td>{{ personnel.role_personnel }}</td>
       <td>
         <a
           class="btn btn-outline-primary"
-          routerLink="/personnel/edit/{{ personne.id }}"
+          routerLink="/personnel/edit/{{ personnel.id }}"
           >Editer</a
         >
       </td>
       <td>
         <button
-          (click)="deletePersonnel(personne.id!)"
+          (click)="deletePersonnel(personnel.id!)"
           class="btn btn-outline-danger"
         >
           Supprimer
@@ -38,5 +36,5 @@
       </td>
     </tr>
   </table>
-  <a class="btn btn-link" routerLink="/personnel/edit">Nouveau personnel</a>
+  <a class="btn btn-link" routerLink="/personnel/edit">Nouvelle personne</a>
 </div>

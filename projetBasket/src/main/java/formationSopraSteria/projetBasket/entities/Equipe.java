@@ -62,11 +62,7 @@ public class Equipe {
 	@JsonView(JsonViews.Equipe.class)
 	private Compte compte;
 	
-	
-	
-	
-	public Equipe() {
-		
+	public Equipe() {	
 	}
 	
 	public Equipe(String franchise, String ville, Set<Joueur> joueur, Set<Confrontation> confrontation, Stade stade,

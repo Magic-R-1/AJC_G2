@@ -65,7 +65,7 @@ public class StadeRestController {
 	}
 	
 	
-	@GetMapping("/team/{team}")
+	@GetMapping("/equipe/{equipe}")
 	@JsonView(JsonViews.StadeWithEquipe.class)
 	public List<Stade> getByEquipe(@PathVariable Equipe equipe){
 		return stadeSrv.getByEquipe(equipe);

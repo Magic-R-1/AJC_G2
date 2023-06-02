@@ -27,14 +27,14 @@ import { ConfrontationEditComponent } from './components/projet/confrontation/co
 import { ConfrontationListComponent } from './components/projet/confrontation/confrontation-list/confrontation-list.component';
 import { CompteEditComponent } from './components/projet/compte/compte-edit/compte-edit/compte-edit.component';
 import { CompteListComponent } from './components/projet/compte/compte-list/compte-list/compte-list.component';
-import { JoueurEditComponent } from './components/joueur/joueur-edit/joueur-edit.component';
-import { JoueurListComponent } from './components/joueur/joueur-list/joueur-list.component';
+import { JoueurEditComponent } from './components/projet/joueur/joueur-edit/joueur-edit.component';
+import { JoueurListComponent } from './components/projet/joueur/joueur-list/joueur-list.component';
 import { ReservationEditComponent } from './components/projet/reservation/reservation-edit/reservation-edit.component';
 import { ReservationListComponent } from './components/projet/reservation/reservation-list/reservation-list.component';
 import { PersonnelListComponent } from './components/projet/personnel/personnel-list/personnel-list.component';
 import { PersonnelEditComponent } from './components/projet/personnel/personnel-edit/personnel-edit.component';
 import { CustomComponent } from './components/custom/custom.component';
-//import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
+import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { CustomComponent } from './components/custom/custom.component';
     StadeEditComponent,
     StadeListComponent,
     EquipeListComponent,
-    // EquipeEditComponent,
+    EquipeEditComponent,
     SondageQuizComponent,
     ArticlesComponent,
     Actualite1Component,

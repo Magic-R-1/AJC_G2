@@ -5,7 +5,7 @@ import { AboutComponent } from './components/about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 import { StadeListComponent } from './components/projet/stade/stade-list/stade-list.component';
 import { StadeEditComponent } from './components/projet/stade/stade-edit/stade-edit.component';
-//import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
+import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
 import { EquipeListComponent } from './components/projet/equipe/equipe-list/equipe-list.component';
 import { Actualite1Component } from './components/actualite/actualite1/actualite1.component';
 import { Actualite2Component } from './components/actualite/actualite2/actualite2.component';
@@ -17,8 +17,8 @@ import { ArbitreEditComponent } from './components/projet/arbitre/arbitre-edit/a
 import { ArbitreListComponent } from './components/projet/arbitre/arbitre-list/arbitre-list.component';
 import { ConfrontationEditComponent } from './components/projet/confrontation/confrontation-edit/confrontation-edit.component';
 import { ConfrontationListComponent } from './components/projet/confrontation/confrontation-list/confrontation-list.component';
-import { JoueurListComponent } from './components/joueur/joueur-list/joueur-list.component';
-import { JoueurEditComponent } from './components/joueur/joueur-edit/joueur-edit.component';
+import { JoueurListComponent } from './components/projet/joueur/joueur-list/joueur-list.component';
+import { JoueurEditComponent } from './components/projet/joueur/joueur-edit/joueur-edit.component';
 import { PersonnelEditComponent } from './components/projet/personnel/personnel-edit/personnel-edit.component';
 import { PersonnelListComponent } from './components/projet/personnel/personnel-list/personnel-list.component';
 import { ReservationEditComponent } from './components/projet/reservation/reservation-edit/reservation-edit.component';
@@ -30,9 +30,9 @@ const routes: Routes = [
   { path: 'stade', component: StadeListComponent },
   { path: 'stade/edit', component: StadeEditComponent },
   { path: 'stade/edit/:id', component: StadeEditComponent },
-  { path: 'team', component: EquipeListComponent },
-  // { path: 'team/edit', component: EquipeEditComponent },
-  // { path: 'team/edit/:id', component: EquipeEditComponent },
+  { path: 'equipe', component: EquipeListComponent },
+  { path: 'equipe/edit', component: EquipeEditComponent },
+  { path: 'equipe/edit/:id', component: EquipeEditComponent },
   { path: 'joueur', component: JoueurListComponent },
   { path: 'joueur/edit', component: JoueurEditComponent },
   { path: 'joueur/edit/:id', component: JoueurEditComponent },

@@ -38,4 +38,7 @@ export class StadeService {
   public update(stade: Stade): Observable<Stade> {
     return this.httpClient.put<Stade>(`${StadeService.URL}/${stade.id}`, stade);
   }
+  public updateById(id: number, stade: Stade): Observable<Stade> {
+    return this.httpClient.put<Stade>(`${StadeService.URL}/${id}`, stade);
+  }
 }

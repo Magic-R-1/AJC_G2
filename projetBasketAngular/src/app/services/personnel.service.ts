@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PersonnelService {
-  private static URL: string = 'http://localhost:8080/projetbasket/api/team';
+  private static URL: string =
+    'http://localhost:8080/projetbasket/api/personnel';
 
   constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<Personnel[]> {
-    return this.httpClient.get<Personnel[]>(PersonnelService.URL);
+    return this.httpClient.get<[Personnel]>(PersonnelService.URL);
   }
 
   public deleteById(id: number): Observable<void> {

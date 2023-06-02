@@ -1,122 +1,110 @@
-<div class="about-container">
-  <h1>Edition d'une équipe</h1>
-  <form (ngSubmit)="save()" #form="ngForm">
-    <div class="form-group">
-      <label for="id"> Id:</label>
-      <input
-        id="id"
-        name="id"
-        [(ngModel)]="equipe.id"
-        class="form-control"
-        placeholder="numero auto"
-        readonly
-      />
-    </div>
-    <div class="form-group">
-      <label for="nom">Nom :</label>
-      <input
-        id="nom"
-        name="nom"
-        [(ngModel)]="equipe.franchise"
-        class="form-control"
-        required
-        pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
-        #nomCtrl="ngModel"
-      />
-      <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
-        Nom obligatoire
+<button class="btn btn-primary" (click)="openModal()">
+  Ajouter d'une équipe
+</button>
+<div #myModal class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Titre de la fenêtre modale</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Contenu de la fenêtre modale -->
+        <div class="about-container">
+          <h1>Edition d'une équipe</h1>
+          <form (ngSubmit)="save()" #form="ngForm">
+            <div class="form-group">
+              <label for="id"> Id:</label>
+              <input
+                id="id"
+                name="id"
+                [(ngModel)]="equipe.id"
+                class="form-control"
+                placeholder="numero auto"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="nom">Franchise :</label>
+              <input
+                id="nom"
+                name="nom"
+                [(ngModel)]="equipe.franchise"
+                class="form-control"
+                required
+                pattern="^[a-zA-Z][a-zA-Z]*((-|\s)[a-zA-Z]+)*$"
+                #nomCtrl="ngModel"
+              />
+              <div
+                *ngIf="nomCtrl.dirty && nomCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Franchise obligatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ville">Ville :</label>
+              <input
+                id="ville"
+                name="ville"
+                [(ngModel)]="equipe.ville"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="capacite">Stade :</label>
+              <select
+                id="stade"
+                class="form-control"
+                name="stade"
+                [(ngModel)]="equipe.stade"
+                [compareWith]="compareById"
+              >
+                <option
+                  [ngValue]="stade"
+                  *ngFor="let stade of obsStades | async"
+                >
+                  {{ stade.nom }} {{ stade.ville }}
+                </option>
+              </select>
+            </div>
+            <br />
+            <div>
+              <button
+                type="submit"
+                [disabled]="form.invalid"
+                class="btn btn-outline-primary"
+              >
+                Enregistrer
+              </button>
+              <a
+                routerLink="/equipe"
+                routerLinkActive="active"
+                class="btn btn-outline-warning"
+                >Annuler</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="closeModal()"
+        >
+          Fermer
+        </button>
       </div>
     </div>
-    <div class="form-group">
-      <label for="ville">Ville :</label>
-      <input
-        id="ville"
-        name="ville"
-        [(ngModel)]="equipe.ville"
-        class="form-control"
-        required
-        #villeCtrl="ngModel"
-      />
-      <div
-        *ngIf="villeCtrl.dirty && villeCtrl.invalid"
-        class="alert alert-danger"
-      >
-        Ville obligatoire
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="capacite">Joueur :</label>
-      <select
-        id="joueur"
-        name="joueur"
-        [(ngModel)]="equipe.joueur"
-        [compareWith]="compareById"
-      >
-        <option [ngValue]="joueur" *ngFor="let joueur of obsJoueurs | async">
-          {{ joueur.nom }} {{ joueur.prenom }}
-        </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="capacite">Confrontation :</label>
-      <select
-        id="confrontation"
-        name="confrontation"
-        [(ngModel)]="equipe.confrontation"
-        [compareWith]="compareById"
-      >
-        <option
-          [ngValue]="confrontation"
-          *ngFor="let confrontation of obsConfrontations | async"
-        >
-          {{ confrontation.dateConfrontation }} {{ confrontation.duree }}
-        </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="capacite">Stade :</label>
-      <select
-        id="stade"
-        name="stade"
-        [(ngModel)]="equipe.stade"
-        [compareWith]="compareById"
-      >
-        <option [ngValue]="stade" *ngFor="let stade of obsStades | async">
-          {{ stade.nom }} {{ stade.ville }}
-        </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="capacite">Personnel :</label>
-      <select
-        id="personnel"
-        name="personnel"
-        [(ngModel)]="equipe.personnel"
-        [compareWith]="compareById"
-      >
-        <option
-          [ngValue]="personnel"
-          *ngFor="let personnel of obsPersonnels | async"
-        >
-          {{ personnel.nom }} {{ personnel.prenom }}
-        </option>
-      </select>
-    </div>
-    <br />
-    <div>
-      <button
-        type="submit"
-        [disabled]="form.invalid"
-        class="btn btn-outline-primary"
-      >
-        Enregistrer
-      </button>
-      <a
-        routerLink="/stade"
-        routerLinkActive="active"
-        class="btn btn-outline-warning"
-        >Annuler</a
-      >
-    </div>
-  </form>
+  </div>
 </div>
