@@ -14,6 +14,9 @@ export class EquipeService {
   public getEquipes(): Observable<Equipe[]> {
     return this.httpClient.get<Equipe[]>(EquipeService.URL);
   }
+  public getEquipesVisiteurs(): Observable<Equipe[]> {
+    return this.httpClient.get<Equipe[]>(EquipeService.URL);
+  }
 
   public deleteById(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${EquipeService.URL}/${id}`);

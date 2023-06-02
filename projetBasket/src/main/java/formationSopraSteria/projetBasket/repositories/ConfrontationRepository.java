@@ -25,6 +25,8 @@ public interface ConfrontationRepository extends JpaRepository<Confrontation, Lo
 	
 	List<Confrontation> findByEquipe(Equipe equipe);
 	
+	List<Confrontation> findByEquipeVisiteur(Equipe equipeVisiteur);
+	
 	List<Confrontation> findByEquipeId(Long Id);
 	
 	List<Confrontation> findByArbitre(Arbitre arbitre);

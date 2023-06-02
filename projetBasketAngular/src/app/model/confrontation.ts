@@ -1,6 +1,5 @@
 import { Arbitre } from './arbitre';
 import { Equipe } from './equipe';
-import { Reservation } from './reservation';
 
 export class Confrontation {
   constructor(
@@ -10,7 +9,7 @@ export class Confrontation {
     public scoreVisiteur?: number,
     public arbitre?: Arbitre,
     public equipe?: Equipe,
-    public reservation?: Reservation,
+    public equipeVisiteur?: Equipe,
     public id?: number
   ) {}
 }

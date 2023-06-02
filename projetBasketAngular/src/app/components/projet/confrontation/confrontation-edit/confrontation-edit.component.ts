@@ -16,23 +16,8 @@ import { EquipeService } from 'src/app/services/equipe.service';
 export class ConfrontationEditComponent implements OnInit {
   obsArbitres!: Observable<Arbitre[]>;
   obsEquipes!: Observable<Equipe[]>;
-  confrontation: Confrontation = new Confrontation();
-
-  ngOnInit(): void {
-    this.confrontation = new Confrontation();
-
-    this.activatedRoute.params.subscribe((params) => {
-      if (params['id']) {
-        this.confrontationSrv
-          .getById(params['id'])
-          .subscribe((confrontationJson) => {
-            this.confrontation = confrontationJson;
-          });
-      }
-    });
-    this.obsArbitres = this.arbitreSrv.getArbitres();
-    this.obsEquipes = this.equipeSrv.getEquipes();
-  }
+  obsEquipesVisiteurs!: Observable<Equipe[]>;
+  confrontation!: Confrontation;
 
   constructor(
     private confrontationSrv: ConfrontationService,
@@ -41,6 +26,22 @@ export class ConfrontationEditComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    this.confrontation = new Confrontation();
+
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['id']) {
+        this.confrontationSrv.getById(params['id']).subscribe((res) => {
+          this.confrontation = res;
+        });
+      }
+    });
+
+    // this.obsArbitres = this.arbitreSrv.getArbitres();
+    // this.obsEquipes = this.equipeSrv.getEquipes();
+    // this.obsEquipesVisiteurs = this.equipeSrv.getEquipesVisiteurs();
+  }
 
   save() {
     if (this.confrontation.id) {
@@ -63,7 +64,6 @@ export class ConfrontationEditComponent implements OnInit {
     }
     return false;
   }
-
   @ViewChild('myModal') myModal!: ElementRef;
 
   openModal() {

@@ -53,9 +53,14 @@ public class Confrontation {
 	private Arbitre arbitre;
 	
 	@ManyToOne
-	@JoinColumn(name="confrontation_team_id", foreignKey = @ForeignKey(name="confrontation_team_id_fk"))
+	@JoinColumn(name="confrontation_team_Home_id", foreignKey = @ForeignKey(name="confrontation_team_Home_id_fk"))
 	@JsonView(JsonViews.Base.class)
 	private Equipe equipe;
+	
+	@ManyToOne
+	@JoinColumn(name="confrontation_team_Guest_id", foreignKey = @ForeignKey(name="confrontation_team_Guest_id_fk"))
+	@JsonView(JsonViews.Base.class)
+	private Equipe equipeVisiteur;
 	
 	@OneToMany(mappedBy="confrontation")
 	@Column(name="bookings_confrontation")
@@ -66,8 +71,11 @@ public class Confrontation {
 		
 	}
 
+	
+
+
 	public Confrontation(LocalDate dateConfrontation, int duree, int scoreDomicile, int scoreVisiteur, Arbitre arbitre,
-			Equipe equipe, Set<Reservation> reservations) {
+			Equipe equipe, Equipe equipeVisiteur, Set<Reservation> reservations) {
 		super();
 		this.dateConfrontation = dateConfrontation;
 		this.duree = duree;
@@ -75,8 +83,11 @@ public class Confrontation {
 		this.scoreVisiteur = scoreVisiteur;
 		this.arbitre = arbitre;
 		this.equipe = equipe;
+		this.equipeVisiteur = equipeVisiteur;
 		this.reservations = reservations;
 	}
+
+
 
 
 	public Long getId() {
@@ -133,6 +144,13 @@ public class Confrontation {
 
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
+	}
+	public Equipe getEquipeVisiteur() {
+		return equipeVisiteur;
+	}
+
+	public void setEquipeVisiteur(Equipe equipeVisiteur) {
+		this.equipeVisiteur = equipeVisiteur;
 	}
 
 	public Set<Reservation> getReservations() {

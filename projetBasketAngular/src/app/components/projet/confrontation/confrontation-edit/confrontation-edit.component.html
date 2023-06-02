@@ -101,7 +101,7 @@
     </div>
 
     <div class="form-group">
-      <label for="equipe">equipe:</label>
+      <label for="equipe">equipe domicile:</label>
       <select
         id="equipe"
         [(ngModel)]="confrontation.equipe"
@@ -111,6 +111,23 @@
       >
         <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
           {{ equipe.franchise }} {{ equipe.ville }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="equipeVisiteur">equipe visiteur:</label>
+      <select
+        id="equipeVisiteur"
+        [(ngModel)]="confrontation.equipeVisiteur"
+        class="form-control"
+        name="equipeVisiteur"
+        [compareWith]="compareById"
+      >
+        <option
+          [ngValue]="equipeVisiteur"
+          *ngFor="let equipeVisiteur of obsEquipesVisiteurs | async"
+        >
+          {{ equipeVisiteur.franchise }} {{ equipeVisiteur.ville }}
         </option>
       </select>
     </div>

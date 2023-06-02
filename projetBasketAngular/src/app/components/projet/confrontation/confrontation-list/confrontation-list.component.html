@@ -8,7 +8,8 @@
       <th>Score Domicile :</th>
       <th>Score Visiteur :</th>
       <th>Arbitre :</th>
-      <th>Equipe :</th>
+      <th>Equipe Domicile:</th>
+      <th>Equipe Visiteur :</th>
     </tr>
     <tr *ngFor="let confrontation of confrontations">
       <td>{{ confrontation.id }}</td>
@@ -18,6 +19,7 @@
       <td>{{ confrontation.scoreVisiteur }}</td>
       <td>{{ confrontation.arbitre?.nom }}</td>
       <td>{{ confrontation.equipe?.franchise }}</td>
+      <td>{{ confrontation.equipeVisiteur?.franchise }}</td>
       <td>
         <a
           class="btn btn-outline-primary"
