@@ -24,6 +24,7 @@ import { PersonnelListComponent } from './components/projet/personnel/personnel-
 import { ReservationEditComponent } from './components/projet/reservation/reservation-edit/reservation-edit.component';
 import { ReservationListComponent } from './components/projet/reservation/reservation-list/reservation-list.component';
 import { EffectifComponent } from './components/projet/effectif/effectif.component';
+import { InscriptionConfirmationComponent } from './components/inscription/inscription-confirmation/inscription-confirmation.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -57,6 +58,10 @@ const routes: Routes = [
   { path: 'actualite/actualite2', component: Actualite2Component },
   { path: 'actualite/actualite3', component: Actualite3Component },
   { path: 'inscription', component: InscriptionComponent },
+  {
+    path: 'inscription/confirmation',
+    component: InscriptionConfirmationComponent,
+  },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

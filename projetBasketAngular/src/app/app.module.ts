@@ -36,10 +36,13 @@ import { PersonnelEditComponent } from './components/projet/personnel/personnel-
 import { CustomComponent } from './components/custom/custom.component';
 import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equipe-edit.component';
 import { EffectifComponent } from './components/projet/effectif/effectif.component';
+import { InscriptionComponent } from './components/inscription/inscription.component';
+import { InscriptionConfirmationComponent } from './components/inscription/inscription-confirmation/inscription-confirmation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    InscriptionComponent,
     HomeComponent,
     ConnexionComponent,
     MenuComponent,
@@ -70,6 +73,7 @@ import { EffectifComponent } from './components/projet/effectif/effectif.compone
     PersonnelEditComponent,
     CustomComponent,
     EffectifComponent,
+    InscriptionConfirmationComponent,
   ],
   imports: [
     HttpClientModule,
