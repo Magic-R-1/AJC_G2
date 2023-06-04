@@ -7,6 +7,7 @@ export class Compte {
     public nom?: string,
     public prenom?: string,
     public statutRole?: StatutRole,
+    public email?: string,
     public id?: number
   ) {}
 }
