@@ -16,6 +16,7 @@ export class EffectifComponent implements OnInit {
   equipe!: Equipe;
   equipes!: Equipe[];
   joueurs: Joueur[] = [];
+
   constructor(
     private equipeSrv: EquipeService,
     private router: Router,
@@ -76,10 +77,10 @@ export class EffectifComponent implements OnInit {
     }
   }
 
-  public isAutorise(): boolean {
+  public isAutorise(equipe: Equipe): boolean {
     if (this.admin) {
       return true;
-    } else if (this.equipe.id == this.compteEquipe.id) {
+    } else if (equipe?.id == this.compteEquipe?.id) {
       return true;
     }
     return false;

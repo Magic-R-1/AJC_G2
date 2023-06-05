@@ -11,7 +11,6 @@ import { PersonnelService } from 'src/app/services/personnel.service';
 })
 export class PersonnelListComponent implements OnInit {
   personnels: Personnel[] = [];
-  personnel!: Personnel;
   filtre = '';
   equipe!: Equipe;
 
@@ -54,10 +53,10 @@ export class PersonnelListComponent implements OnInit {
     return this.authSrv.isAdmin();
   }
 
-  public isAutorise(): boolean {
+  public isAutorise(personnel: Personnel): boolean {
     if (this.admin) {
       return true;
-    } else if (this.personnel.equipe?.id === this.compteEquipe.id) {
+    } else if (personnel?.equipe?.id == this.compteEquipe.id) {
       return true;
     }
     return false;
