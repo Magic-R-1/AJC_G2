@@ -1,4 +1,6 @@
+import { AuthentificationService } from './../../../../services/authentification.service';
 import { Component, OnInit } from '@angular/core';
+import { Equipe } from 'src/app/model/equipe';
 import { Personnel } from 'src/app/model/personnel';
 import { PersonnelService } from 'src/app/services/personnel.service';
 
@@ -10,8 +12,13 @@ import { PersonnelService } from 'src/app/services/personnel.service';
 export class PersonnelListComponent implements OnInit {
   personnels: Personnel[] = [];
   filtre = '';
+  equipe!: Equipe;
+  personnel!: Personnel;
+  admin: boolean = false;
 
-  constructor(private personnelSrv: PersonnelService) {}
+  constructor(private personnelSrv: PersonnelService) {
+    this.equipe = this.compteEquipe;
+  }
 
   personnelFiltre() {
     return this.personnels.filter(
@@ -35,5 +42,20 @@ export class PersonnelListComponent implements OnInit {
     this.personnelSrv.deleteById(id).subscribe(() => {
       this.listPersonnels();
     });
+  }
+
+  get compteEquipe() {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).equipe;
+    }
+  }
+
+  public isAutorise(): boolean {
+    if (this.admin) {
+      return true;
+    } else if (this.equipe.id == this.compteEquipe.id) {
+      return true;
+    }
+    return false;
   }
 }

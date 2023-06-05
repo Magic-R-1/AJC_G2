@@ -21,6 +21,7 @@
       <td>{{ personnel.role_personnel }}</td>
       <td>
         <a
+          *ngIf="isAutorise()"
           class="btn btn-outline-primary"
           routerLink="/personnel/edit/{{ personnel.id }}"
           >Editer</a

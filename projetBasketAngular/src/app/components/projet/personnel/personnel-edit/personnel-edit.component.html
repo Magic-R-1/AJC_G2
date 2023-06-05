@@ -64,7 +64,7 @@
       <select
         id="equipe"
         name="equipe"
-        [(ngModel)]="personnel.equipe"
+        [(ngModel)]="equipeSelectionnee"
         class="form-control"
         [compareWith]="compareById"
         #equipeCtrl="ngModel"
@@ -73,6 +73,7 @@
           {{ equipe.franchise }}
         </option>
       </select>
+
       <div
         *ngIf="equipeCtrl.dirty && equipeCtrl.invalid"
         class="alert alert-danger"
@@ -88,6 +89,7 @@
         [(ngModel)]="personnel.role_personnel"
         class="form-control"
       >
+        <option value="">--Sélectionner un rôle--</option>
         <option value="ENTRAINEUR_PRINCIPAL">ENTRAINEUR_PRINCIPAL</option>
         <option value="ENTRAINEUR_ADJOINT">ENTRAINEUR_ADJOINT</option>
         <option value="PREPARATEUR_PHYSIQUE">PREPARATEUR_PHYSIQUE</option>

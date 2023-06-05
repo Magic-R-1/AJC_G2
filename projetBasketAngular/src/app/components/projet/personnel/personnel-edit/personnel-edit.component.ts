@@ -14,6 +14,7 @@ import { EquipeService } from 'src/app/services/equipe.service';
 export class PersonnelEditComponent implements OnInit {
   obsEquipes!: Observable<Equipe[]>;
   personnel: Personnel = new Personnel();
+  equipeSelectionnee!: Equipe;
 
   constructor(
     private personnelSrv: PersonnelService,
@@ -32,6 +33,7 @@ export class PersonnelEditComponent implements OnInit {
       }
     });
     this.obsEquipes = this.equipeSrv.getEquipes();
+    this.equipeSelectionnee = this.compteEquipe;
   }
 
   save() {
@@ -43,6 +45,12 @@ export class PersonnelEditComponent implements OnInit {
       this.personnelSrv.create(this.personnel).subscribe((res) => {
         this.router.navigateByUrl('/personnel');
       });
+    }
+  }
+
+  get compteEquipe() {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).equipe;
     }
   }
 

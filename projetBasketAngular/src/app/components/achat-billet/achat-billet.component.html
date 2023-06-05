@@ -89,8 +89,7 @@
                 [(ngModel)]="reservation.dateReservation"
                 class="form-control"
                 type="date"
-                [value]="getCurrentDate() | date : 'yyyy-MM-dd'"
-                readonly
+                [value]="getCurrentDate()"
                 disabled
               />
             </div>
@@ -115,14 +114,13 @@
             </div>
             <br />
             <div>
-              <td>
-                <button
-                  class="btn btn-primary"
-                  (click)="addToCart(selectedConfrontation)"
-                >
-                  Ajouter au panier
-                </button>
-              </td>
+              <button
+                type="submit"
+                [disabled]="form.invalid"
+                class="btn btn-outline-primary"
+              >
+                Enregistrer
+              </button>
             </div>
           </form>
         </div>

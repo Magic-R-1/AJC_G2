@@ -47,15 +47,15 @@ export class OngletsComponent {
   }
 
   get admin() {
-    return this.authSrv.isAdmin;
+    return this.authSrv.isAdmin();
   }
 
   get client() {
-    return this.authSrv.isClient;
+    return this.authSrv.isClient();
   }
 
   get gm() {
-    return this.authSrv.isGm;
+    return this.authSrv.isGm();
   }
 
   logoff() {
