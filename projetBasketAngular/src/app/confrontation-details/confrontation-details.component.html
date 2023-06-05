@@ -1,0 +1,13 @@
+<div class="about-container">
+  <h1>Détails de la Confrontation</h1>
+  <h2>
+    {{ confrontation?.equipe.ville }} {{ confrontation?.equipe.franchise }} vs
+    {{ confrontation?.equipeVisiteur.ville }}
+    {{ confrontation?.equipeVisiteur.franchise }}
+  </h2>
+  <p>Date : {{ confrontation?.dateConfrontation | date : "dd/MM/yyyy" }}</p>
+  <p>Durée : {{ confrontation?.duree }}</p>
+  <p>Score domicile : {{ confrontation?.scoreDomicile }}</p>
+  <p>Score visiteur : {{ confrontation?.scoreVisiteur }}</p>
+  <button (click)="reserveBillets()">Réserver un billet</button>
+</div>

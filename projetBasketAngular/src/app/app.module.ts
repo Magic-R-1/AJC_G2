@@ -38,6 +38,12 @@ import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equi
 import { EffectifComponent } from './components/projet/effectif/effectif.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { InscriptionConfirmationComponent } from './components/inscription/inscription-confirmation/inscription-confirmation.component';
+import { ConfrontationDetailsComponent } from './confrontation-details/confrontation-details.component';
+import { AchatBilletComponent } from './components/achat-billet/achat-billet.component';
+import { PanierComponent } from './components/panier/panier.component';
+import { OngletsComponent } from './components/onglets/onglets.component';
+import { CartListComponent } from './components/cart/cart-list/cart-list.component';
+import { CartEditComponent } from './components/cart/cart-edit/cart-edit.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +80,12 @@ import { InscriptionConfirmationComponent } from './components/inscription/inscr
     CustomComponent,
     EffectifComponent,
     InscriptionConfirmationComponent,
+    AchatBilletComponent,
+    ConfrontationDetailsComponent,
+    PanierComponent,
+    OngletsComponent,
+    CartListComponent,
+    CartEditComponent,
   ],
   imports: [
     HttpClientModule,
