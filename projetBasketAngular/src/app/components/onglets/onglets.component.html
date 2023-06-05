@@ -24,9 +24,9 @@
       role="tab"
       aria-controls="pills-admin"
       aria-selected="false"
-      (click)="showAdminMenu = !showAdminMenu"
+      (click)="onOutsideClick()"
     >
-      Espace Admin
+      Menu
     </button>
     <ul
       class="nav nav-pills sub-menu"
@@ -35,6 +35,7 @@
     >
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/stade"
           routerLinkActive="active"
@@ -45,6 +46,7 @@
       </li>
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/equipe"
           routerLinkActive="active"
@@ -53,8 +55,10 @@
           <i class="fa fa-shopping-cart"></i> Equipe
         </button>
       </li>
+
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/effectif"
           routerLinkActive="active"
@@ -63,8 +67,10 @@
           <i class="fa fa-shopping-cart"></i> Effectif
         </button>
       </li>
+
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/personnel"
           routerLinkActive="active"
@@ -73,8 +79,10 @@
           <i class="fa fa-shopping-cart"></i> Personnel
         </button>
       </li>
+
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/reservation"
           routerLinkActive="active"
@@ -85,6 +93,7 @@
       </li>
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/joueur"
           routerLinkActive="active"
@@ -95,6 +104,7 @@
       </li>
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/confrontation"
           routerLinkActive="active"
@@ -105,6 +115,7 @@
       </li>
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/arbitre"
           routerLinkActive="active"
@@ -115,6 +126,7 @@
       </li>
       <li class="nav-item" role="presentation">
         <button
+          (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/compte"
           routerLinkActive="active"
@@ -141,7 +153,7 @@
       <i class="fa fa-shopping-cart"></i> Achat
     </button>
   </li>
-  <li class="nav-item" role="presentation">
+  <li class="nav-item" role="presentation" *ngIf="!login">
     <button
       class="nav-link custom-button"
       id="pills-inscription-tab"
@@ -157,21 +169,6 @@
       <i class="fa fa-inscription-cart"></i> Inscription
     </button>
   </li>
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-about-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-about"
-      type="button"
-      role="tab"
-      aria-controls="pills-about"
-      aria-selected="false"
-      *ngIf="login"
-      (click)="logoff()"
-    >
-      Déconnexion
-    </button>
-  </li>
+
   <span *ngIf="login">bonjour {{ login }}</span>
 </ul>

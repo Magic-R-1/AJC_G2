@@ -15,7 +15,19 @@ export class MenuComponent {
 
   get login() {
     if (sessionStorage.getItem('compte')) {
-      return JSON.parse(sessionStorage.getItem('compte')!).username;
+      return JSON.parse(sessionStorage.getItem('compte')!).login;
+    }
+  }
+
+  get statutRole() {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).statutRole;
+    }
+  }
+
+  get prenom() {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).prenom;
     }
   }
 

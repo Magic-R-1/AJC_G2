@@ -10,7 +10,7 @@
       <img src="/assets/images/home.png" alt="Home" />
     </a>
   </li>
-  <li class="nav-item" role="presentation">
+  <li class="nav-item" role="presentation" *ngIf="!login">
     <a
       class="nav-link"
       id="pills-login-tab"
@@ -21,6 +21,7 @@
       <img src="/assets/images/login.png" alt="Login" />
     </a>
   </li>
+
   <li class="nav-item" role="presentation">
     <a
       class="nav-link"
