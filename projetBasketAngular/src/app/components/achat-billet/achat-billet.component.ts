@@ -1,12 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Compte } from 'src/app/model/compte';
 import { Confrontation } from 'src/app/model/confrontation';
 import { Reservation } from 'src/app/model/reservation';
-import { CompteService } from 'src/app/services/compte.service';
 import { ConfrontationService } from 'src/app/services/confrontation.service';
-import { PanierService } from 'src/app/services/panier.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
@@ -18,7 +15,6 @@ export class AchatBilletComponent {
   confrontations: Confrontation[] = [];
   reservations: Reservation[] = [];
   obsConfrontations!: Observable<Confrontation[]>;
-  obsComptes!: Observable<Compte[]>;
   reservation: Reservation = new Reservation();
   @ViewChild('myModal') myModal!: ElementRef;
   selectedConfrontation?: Confrontation;
@@ -26,10 +22,8 @@ export class AchatBilletComponent {
   constructor(
     private reservationSrv: ReservationService,
     private confrontationSrv: ConfrontationService,
-    private compteSrv: CompteService,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private panierService: PanierService
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -46,15 +40,12 @@ export class AchatBilletComponent {
       }
     });
     this.obsConfrontations = this.confrontationSrv.getConfrontations();
-    this.obsComptes = this.compteSrv.getComptes();
-
-    const currentDate = new Date();
-    this.reservation.dateReservation = currentDate;
+    this.reservation.dateReservation = new Date();
 
     this.obsConfrontations.subscribe((confrontations) => {
       if (confrontations.length > 0) {
         this.selectedConfrontation = confrontations[0];
-        this.reservation = new Reservation(); // Déplacer ici
+        this.reservation = new Reservation();
         this.reservation.confrontation = this.selectedConfrontation;
       }
     });
@@ -64,16 +55,11 @@ export class AchatBilletComponent {
     return new Date();
   }
 
-  isConfrontationPast(confrontation: Confrontation | undefined): boolean {
+  isConfrontationPast(confrontation: any): boolean {
     const currentDate = new Date();
-    const confrontationDate = confrontation?.dateConfrontation
-      ? new Date(confrontation.dateConfrontation)
-      : undefined;
-    return confrontationDate !== undefined && confrontationDate < currentDate;
-  }
+    const confrontationDate = new Date(confrontation.dateConfrontation); // Obtient la date de la confrontation
 
-  padNumber(number: number): string {
-    return number.toString().padStart(2, '0');
+    return confrontationDate < currentDate;
   }
 
   listConfrontations() {
@@ -113,6 +99,8 @@ export class AchatBilletComponent {
   }
 
   save() {
+    this.reservation.dateReservation = new Date();
+
     const request = this.reservation.id
       ? this.reservationSrv.update(this.reservation)
       : this.reservationSrv.create(this.reservation);
@@ -120,17 +108,5 @@ export class AchatBilletComponent {
     request.subscribe(() => {
       this.router.navigateByUrl('/reservation');
     });
-  }
-
-  addToCart(confrontation: Confrontation | undefined) {
-    if (confrontation) {
-      const reservation: Reservation = {
-        confrontation,
-        dateReservation: this.getCurrentDate(),
-        quantite: this.reservation.quantite,
-      };
-
-      this.panierService.addToCart(reservation);
-    }
   }
 }

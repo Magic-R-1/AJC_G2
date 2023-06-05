@@ -8,8 +8,8 @@ export class Compte {
     public nom?: string,
     public prenom?: string,
     public statutRole?: StatutRole,
-    public email?: string,
     public equipe?: Equipe,
+    public email?: string,
     public id?: number
   ) {}
 }

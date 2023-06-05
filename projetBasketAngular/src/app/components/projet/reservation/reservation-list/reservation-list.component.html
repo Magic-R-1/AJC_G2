@@ -14,10 +14,6 @@
     </tr>
 
     <ng-container *ngFor="let reservation of reservationFiltre()">
-      <span>test : {{ reservation.compte?.id }}</span>
-      <span>test : {{ compteID }}</span>
-      <span>troisième : {{ isAutorise() }}</span>
-
       <tr *ngIf="isAutorise()">
         <td>{{ reservation.id }}</td>
         <td>{{ reservation.prix }}</td>

@@ -34,12 +34,8 @@
     </a>
   </li>
   <li class="nav-item" role="presentation" *ngIf="login">
-    <button
-      class="nav-link custom-button"
-      id="pills-about-tab"
-      (click)="logoff()"
-    >
-      Déconnexion
+    <button class="nav-link" id="pills-about-tab" (click)="logoff()">
+      <img src="/assets/images/quitter.png" alt="Quit Cart" />
     </button>
   </li>
 </ul>

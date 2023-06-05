@@ -57,7 +57,11 @@ export class PersonnelListComponent implements OnInit {
   public isAutorise(): boolean {
     if (this.admin) {
       return true;
-    } else if (this.personnel.equipe?.id === this.compteEquipe.id) {
+    } else if (
+      this.personnel &&
+      this.personnel.equipe &&
+      this.personnel.equipe.id === this.compteEquipe.id
+    ) {
       return true;
     }
     return false;

@@ -1,5 +1,4 @@
 <div class="about-container">
-  <span>{{ getCurrentDate() | date : "dd/MM/yyyy" }}</span>
   <h1>Liste des Confrontations</h1>
   <table class="table">
     <tr>
@@ -82,7 +81,7 @@
                 Quantité obligatoire
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display: none">
               <label for="dateReservation">Date de réservation :</label>
               <input
                 id="dateReservation"
@@ -108,20 +107,19 @@
                   [ngValue]="confrontation"
                   *ngFor="let confrontation of obsConfrontations | async"
                 >
-                  {{ confrontation.id }}
+                  {{ confrontation.dateConfrontation }}
                 </option>
               </select>
             </div>
             <br />
             <div>
-              <td>
-                <button
-                  class="btn btn-primary"
-                  (click)="addToCart(selectedConfrontation)"
-                >
-                  Ajouter au panier
-                </button>
-              </td>
+              <button
+                type="submit"
+                [disabled]="form.invalid"
+                class="btn btn-outline-primary"
+              >
+                Enregistrer
+              </button>
             </div>
           </form>
         </div>
