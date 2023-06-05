@@ -24,6 +24,7 @@
         {{ confrontation.equipeVisiteur?.ville }}
         {{ confrontation.equipeVisiteur?.franchise }}
       </td>
+
       <td>
         {{ confrontation.arbitre?.prenom }} {{ confrontation.arbitre?.nom }}
       </td>
@@ -31,6 +32,7 @@
         <a
           class="btn btn-outline-primary"
           routerLink="/confrontation/edit/{{ confrontation.id }}"
+          *ngIf="admin"
           >Editer</a
         >
       </td>
@@ -38,13 +40,14 @@
         <button
           (click)="deleteConfrontation(confrontation.id!)"
           class="btn btn-outline-danger"
+          *ngIf="admin"
         >
           Supprimer
         </button>
       </td>
     </tr>
   </table>
-  <a class="btn btn-link" routerLink="/confrontation/edit"
+  <a class="btn btn-link" routerLink="/confrontation/edit" *ngIf="admin"
     >Nouvelle Confrontation</a
   >
 </div>

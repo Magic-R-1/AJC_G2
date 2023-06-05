@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Compte } from 'src/app/model/compte';
 import { Reservation } from 'src/app/model/reservation';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
@@ -10,8 +12,13 @@ import { ReservationService } from 'src/app/services/reservation.service';
 export class ReservationListComponent implements OnInit {
   reservations: Reservation[] = [];
   filtre = '';
+  reservation!: Reservation;
+  compte!: Compte;
 
-  constructor(private reservationSrv: ReservationService) {}
+  constructor(
+    private reservationSrv: ReservationService,
+    private authSrv: AuthentificationService
+  ) {}
 
   reservationFiltre() {
     return this.reservations.filter(
@@ -35,5 +42,28 @@ export class ReservationListComponent implements OnInit {
     this.reservationSrv.deleteById(id).subscribe(() => {
       this.listReservations();
     });
+  }
+
+  get admin() {
+    return this.authSrv.isAdmin();
+  }
+
+  get compteID() {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).id;
+    }
+  }
+
+  public isAutorise(): boolean {
+    if (this.admin) {
+      return true;
+    } else if (
+      this.reservation &&
+      this.reservation.compte &&
+      this.reservation.compte.id === this.compteID
+    ) {
+      return true;
+    }
+    return false;
   }
 }

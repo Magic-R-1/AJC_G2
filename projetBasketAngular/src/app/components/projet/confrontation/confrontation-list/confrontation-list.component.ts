@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Confrontation } from 'src/app/model/confrontation';
+import { Equipe } from 'src/app/model/equipe';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 import { ConfrontationService } from 'src/app/services/confrontation.service';
 
 @Component({
@@ -9,9 +11,13 @@ import { ConfrontationService } from 'src/app/services/confrontation.service';
 })
 export class ConfrontationListComponent implements OnInit {
   confrontations!: Confrontation[];
+  equipe!: Equipe;
   filtre = '';
 
-  constructor(private confrontationSrv: ConfrontationService) {}
+  constructor(
+    private confrontationSrv: ConfrontationService,
+    private authSrv: AuthentificationService
+  ) {}
 
   ngOnInit(): void {
     this.listConfrontations();
@@ -33,5 +39,9 @@ export class ConfrontationListComponent implements OnInit {
     return this.confrontations.filter((f) =>
       f.dateConfrontation?.toLocaleDateString().includes(this.filtre)
     );
+  }
+
+  get admin() {
+    return this.authSrv.isAdmin();
   }
 }

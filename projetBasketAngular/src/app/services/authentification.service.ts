@@ -1,3 +1,4 @@
+import { Equipe } from 'src/app/model/equipe';
 import { StatutRole } from './../model/statut-role';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -26,7 +27,7 @@ export class AuthentificationService {
       return false;
     }
     let compte = JSON.parse(sessionStorage.getItem('compte')!) as Compte;
-    return compte.statutRole === statutRole;
+    return compte.statutRole == statutRole;
   }
 
   public isAdmin(): boolean {

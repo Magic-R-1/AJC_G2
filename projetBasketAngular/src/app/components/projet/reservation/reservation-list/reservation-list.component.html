@@ -9,30 +9,45 @@
       <th>Prix:</th>
       <th>Quantité:</th>
       <th>Date de réservation:</th>
+      <th>Confrontation:</th>
       <th>Compte:</th>
     </tr>
-    <tr *ngFor="let reservation of reservationFiltre()">
-      <td>{{ reservation.id }}</td>
-      <td>{{ reservation.prix }}</td>
-      <td>{{ reservation.quantite }}</td>
-      <td>{{ reservation.dateReservation | date : "dd/MM/yyyy" }}</td>
-      <td>{{ reservation.compte?.prenom }} {{ reservation.compte?.nom }}</td>
-      <td>
-        <a
-          class="btn btn-outline-primary"
-          routerLink="/reservation/edit/{{ reservation.id }}"
-          >Éditer</a
-        >
-      </td>
-      <td>
-        <button
-          (click)="deleteReservation(reservation.id!)"
-          class="btn btn-outline-danger"
-        >
-          Supprimer
-        </button>
-      </td>
-    </tr>
+
+    <ng-container *ngFor="let reservation of reservationFiltre()">
+      <span>test : {{ reservation.compte?.id }}</span>
+      <span>test : {{ compteID }}</span>
+      <span>troisième : {{ isAutorise() }}</span>
+
+      <tr *ngIf="isAutorise()">
+        <td>{{ reservation.id }}</td>
+        <td>{{ reservation.prix }}</td>
+        <td>{{ reservation.quantite }}</td>
+        <td>{{ reservation.dateReservation | date : "dd/MM/yyyy" }}</td>
+        <td>
+          {{
+            reservation.confrontation?.dateConfrontation | date : "dd/MM/yyyy"
+          }}
+          {{ reservation.confrontation?.equipe?.franchise }} vs
+          {{ reservation.confrontation?.equipeVisiteur?.franchise }}
+        </td>
+        <td>{{ reservation.compte?.prenom }} {{ reservation.compte?.nom }}</td>
+        <td>
+          <a
+            class="btn btn-outline-primary"
+            routerLink="/reservation/edit/{{ reservation.id }}"
+            >Éditer</a
+          >
+        </td>
+        <td>
+          <button
+            (click)="deleteReservation(reservation.id!)"
+            class="btn btn-outline-danger"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </ng-container>
   </table>
   <a class="btn btn-link" routerLink="/reservation/edit"
     >Nouvelle réservation</a

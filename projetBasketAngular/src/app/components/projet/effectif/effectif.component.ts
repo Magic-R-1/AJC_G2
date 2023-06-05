@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Equipe } from 'src/app/model/equipe';
 import { Joueur } from 'src/app/model/joueur';
 import { EquipeService } from 'src/app/services/equipe.service';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-effectif',
@@ -19,7 +20,8 @@ export class EffectifComponent implements OnInit {
     private equipeSrv: EquipeService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private joueurSrv: JoueurService
+    private joueurSrv: JoueurService,
+    private authSrv: AuthentificationService
   ) {}
 
   ngOnInit(): void {
@@ -54,5 +56,32 @@ export class EffectifComponent implements OnInit {
     }
 
     return age;
+  }
+
+  get admin() {
+    return this.authSrv.isAdmin();
+  }
+
+  get client() {
+    return this.authSrv.isClient();
+  }
+
+  get gm() {
+    return this.authSrv.isGm();
+  }
+
+  get compteEquipe() {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).equipe;
+    }
+  }
+
+  public isAutorise(): boolean {
+    if (this.admin) {
+      return true;
+    } else if (this.equipe.id == this.compteEquipe.id) {
+      return true;
+    }
+    return false;
   }
 }

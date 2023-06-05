@@ -60,7 +60,7 @@ export class AchatBilletComponent {
     });
   }
 
-  getCurrentDate(): Date {
+  public getCurrentDate(): Date {
     return new Date();
   }
 
@@ -101,10 +101,15 @@ export class AchatBilletComponent {
   }
 
   compareById(
-    frsOptionActive: Confrontation,
-    frsSelect: Confrontation
+    confrontation1: Confrontation,
+    confrontation2: Confrontation
   ): boolean {
-    return frsSelect?.id === frsOptionActive?.id;
+    if (!confrontation1 && !confrontation2) {
+      return true;
+    } else if (!confrontation2) {
+      return false;
+    }
+    return confrontation1.id == confrontation2.id;
   }
 
   save() {

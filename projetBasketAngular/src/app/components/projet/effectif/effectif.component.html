@@ -61,6 +61,18 @@
       <td>{{ joueur.aptitudesPhysiques?.force }}</td>
       <td>{{ joueur.aptitudesPhysiques?.detente }}</td>
       <td>{{ joueur.aptitudesPhysiques?.agilite }}</td>
+
+      <button
+        *ngIf="isAutorise()"
+        class="btn btn-outline-danger"
+        routerLink="/joueur/edit/{{ joueur.id }}"
+      >
+        Éditer ✏️
+      </button>
+
+      <button *ngIf="isAutorise()" class="btn btn-outline-secondary">
+        Transférer ↔️
+      </button>
     </tr>
   </table>
 </div>

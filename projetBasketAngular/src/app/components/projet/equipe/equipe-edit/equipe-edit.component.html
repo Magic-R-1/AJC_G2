@@ -61,6 +61,7 @@
         <option [ngValue]="compte" *ngFor="let compte of obsComptes | async">
           {{ compte.nom }} {{ compte.prenom }}
         </option>
+        <option value=""></option>
       </select>
     </div>
     <br />

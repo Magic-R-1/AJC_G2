@@ -1,4 +1,6 @@
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <span *ngIf="login">Bonjour {{ prenom }} </span>
+
   <li class="nav-item" role="presentation">
     <button
       class="nav-link custom-button"
@@ -15,6 +17,7 @@
       About
     </button>
   </li>
+
   <li class="nav-item" role="presentation">
     <button
       class="nav-link custom-button"
@@ -33,48 +36,76 @@
       *ngIf="showAdminMenu"
       style="background-color: gold; padding: 10px"
     >
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" role="presentation" *ngIf="admin">
         <button
           (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
-          routerLink="/stade"
+          routerLink="/arbitre"
           routerLinkActive="active"
-          *ngIf="admin"
         >
-          <i class="fa fa-shopping-cart"></i> Stade
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button
-          (click)="showAdminMenu = !showAdminMenu"
-          class="nav-link custom-button"
-          routerLink="/equipe"
-          routerLinkActive="active"
-          *ngIf="admin"
-        >
-          <i class="fa fa-shopping-cart"></i> Equipe
+          <i class="fa fa-shopping-cart"></i> Arbitre
         </button>
       </li>
 
+      <li class="nav-item" role="presentation" *ngIf="admin">
+        <button
+          (click)="showAdminMenu = !showAdminMenu"
+          class="nav-link custom-button"
+          routerLink="/compte"
+          routerLinkActive="active"
+        >
+          <i class="fa fa-shopping-cart"></i> Compte
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button
+          (click)="showAdminMenu = !showAdminMenu"
+          class="nav-link custom-button"
+          routerLink="/confrontation"
+          routerLinkActive="active"
+        >
+          <i class="fa fa-shopping-cart"></i> Confrontation
+        </button>
+      </li>
       <li class="nav-item" role="presentation">
         <button
           (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/effectif"
           routerLinkActive="active"
-          *ngIf="admin"
         >
           <i class="fa fa-shopping-cart"></i> Effectif
         </button>
       </li>
+      <li class="nav-item" role="presentation" *ngIf="admin">
+        <button
+          (click)="showAdminMenu = !showAdminMenu"
+          class="nav-link custom-button"
+          routerLink="/equipe"
+          routerLinkActive="active"
+        >
+          <i class="fa fa-shopping-cart"></i> Equipe
+        </button>
+      </li>
 
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" role="presentation" *ngIf="admin">
+        <button
+          (click)="showAdminMenu = !showAdminMenu"
+          class="nav-link custom-button"
+          routerLink="/joueur"
+          routerLinkActive="active"
+        >
+          <i class="fa fa-shopping-cart"></i> Joueur
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation" *ngIf="admin || gm">
         <button
           (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
           routerLink="/personnel"
           routerLinkActive="active"
-          *ngIf="admin"
         >
           <i class="fa fa-shopping-cart"></i> Personnel
         </button>
@@ -86,53 +117,18 @@
           class="nav-link custom-button"
           routerLink="/reservation"
           routerLinkActive="active"
-          *ngIf="admin"
         >
           <i class="fa fa-shopping-cart"></i> Réservation
         </button>
       </li>
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" role="presentation" *ngIf="admin">
         <button
           (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"
-          routerLink="/joueur"
+          routerLink="/stade"
           routerLinkActive="active"
-          *ngIf="admin"
         >
-          <i class="fa fa-shopping-cart"></i> Joueur
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button
-          (click)="showAdminMenu = !showAdminMenu"
-          class="nav-link custom-button"
-          routerLink="/confrontation"
-          routerLinkActive="active"
-          *ngIf="admin"
-        >
-          <i class="fa fa-shopping-cart"></i> Confrontation
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button
-          (click)="showAdminMenu = !showAdminMenu"
-          class="nav-link custom-button"
-          routerLink="/arbitre"
-          routerLinkActive="active"
-          *ngIf="admin"
-        >
-          <i class="fa fa-shopping-cart"></i> Arbitre
-        </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button
-          (click)="showAdminMenu = !showAdminMenu"
-          class="nav-link custom-button"
-          routerLink="/compte"
-          routerLinkActive="active"
-          *ngIf="admin"
-        >
-          <i class="fa fa-shopping-cart"></i> Compte
+          <i class="fa fa-shopping-cart"></i> Stade
         </button>
       </li>
     </ul>
@@ -169,6 +165,4 @@
       <i class="fa fa-inscription-cart"></i> Inscription
     </button>
   </li>
-
-  <span *ngIf="login">bonjour {{ login }}</span>
 </ul>

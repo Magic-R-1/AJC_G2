@@ -1,5 +1,6 @@
 <div class="about-container">
   <h1>Liste du personnel</h1>
+
   <div>
     <input [(ngModel)]="filtre" class="form-control" />
   </div>
@@ -12,29 +13,32 @@
       <th>Équipe:</th>
       <th>Rôle:</th>
     </tr>
-    <tr *ngFor="let personnel of personnelFiltre()">
-      <td>{{ personnel.id }}</td>
-      <td>{{ personnel.nom }}</td>
-      <td>{{ personnel.prenom }}</td>
-      <td>{{ personnel.salaire }}</td>
-      <td>{{ personnel.equipe?.franchise }}</td>
-      <td>{{ personnel.role_personnel }}</td>
-      <td>
-        <a
-          class="btn btn-outline-primary"
-          routerLink="/personnel/edit/{{ personnel.id }}"
-          >Editer</a
-        >
-      </td>
-      <td>
-        <button
-          (click)="deletePersonnel(personnel.id!)"
-          class="btn btn-outline-danger"
-        >
-          Supprimer
-        </button>
-      </td>
-    </tr>
+
+    <ng-container *ngFor="let personnel of personnelFiltre()">
+      <tr *ngIf="isAutorise()">
+        <td>{{ personnel.id }}</td>
+        <td>{{ personnel.nom }}</td>
+        <td>{{ personnel.prenom }}</td>
+        <td>{{ personnel.salaire }}</td>
+        <td>{{ personnel.equipe?.ville }}</td>
+        <td>{{ personnel.role_personnel }}</td>
+        <td>
+          <a
+            class="btn btn-outline-primary"
+            routerLink="/personnel/edit/{{ personnel.id }}"
+            >Editer</a
+          >
+        </td>
+        <td>
+          <button
+            (click)="deletePersonnel(personnel.id!)"
+            class="btn btn-outline-danger"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </ng-container>
   </table>
   <a class="btn btn-link" routerLink="/personnel/edit">Nouvelle personne</a>
 </div>
