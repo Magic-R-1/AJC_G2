@@ -1,0 +1,142 @@
+<div class="about-container">
+  <h1>Liste des Confrontations</h1>
+  <table class="table">
+    <tr>
+      <th>Date</th>
+      <th>Équipe domicile</th>
+      <th>Score domicile</th>
+      <th>Score visiteur</th>
+      <th>Équipe visiteur</th>
+      <th>Arbitre</th>
+    </tr>
+    <tr *ngFor="let confrontation of confrontations">
+      <td>{{ confrontation.dateConfrontation | date : "dd/MM/yyyy" }}</td>
+      <td>
+        {{ confrontation.equipe?.ville }} {{ confrontation.equipe?.franchise }}
+      </td>
+      <td>
+        <ng-container *ngIf="isConfrontationPast(confrontation)">{{
+          confrontation.scoreDomicile
+        }}</ng-container>
+      </td>
+      <td>
+        <ng-container *ngIf="isConfrontationPast(confrontation)">{{
+          confrontation.scoreVisiteur
+        }}</ng-container>
+      </td>
+
+      <td>
+        {{ confrontation.equipeVisiteur?.ville }}
+        {{ confrontation.equipeVisiteur?.franchise }}
+      </td>
+      <td>
+        {{ confrontation.arbitre?.prenom }} {{ confrontation.arbitre?.nom }}
+      </td>
+      <td>
+        <button
+          class="btn btn-primary"
+          (click)="openModal()"
+          [disabled]="isConfrontationPast(confrontation)"
+        >
+          Réservation
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div #myModal class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Réservation</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="closeModal()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="about-container">
+          <h1></h1>
+          <form (ngSubmit)="save()" #form="ngForm">
+            <div class="form-group">
+              <label for="quantite">Quantité :</label>
+              <input
+                id="quantite"
+                name="quantite"
+                [(ngModel)]="reservation.quantite"
+                class="form-control"
+                required
+                #quantiteCtrl="ngModel"
+              />
+              <div
+                *ngIf="quantiteCtrl.dirty && quantiteCtrl.invalid"
+                class="alert alert-danger"
+              >
+                Quantité obligatoire
+              </div>
+            </div>
+            <div class="form-group" style="display: none">
+              <label for="dateReservation">Date de réservation :</label>
+              <input
+                id="dateReservation"
+                name="dateReservation"
+                [(ngModel)]="reservation.dateReservation"
+                class="form-control"
+                type="date"
+                [value]="getCurrentDate() | date : 'yyyy-MM-dd'"
+                readonly
+                disabled
+              />
+            </div>
+            <div class="form-group" style="display: none">
+              <label for="confrontation">Confrontation :</label>
+              <select
+                id="confrontation"
+                name="confrontation"
+                [(ngModel)]="reservation.confrontation"
+                class="form-control"
+                [compareWith]="compareById"
+                [value]="selectedConfrontation"
+                disabled
+              >
+                <option
+                  [ngValue]="confrontation"
+                  *ngFor="let confrontation of obsConfrontations | async"
+                >
+                  {{ confrontation.dateConfrontation | date : "dd/MM/yyyy" }}
+                </option>
+              </select>
+            </div>
+            <br />
+            <div>
+              <td>
+                <button
+                  class="btn btn-primary"
+                  (click)="addToCart(selectedConfrontation)"
+                >
+                  Ajouter au panier
+                </button>
+              </td>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="closeModal()"
+        >
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,41 @@
-.custom-button {
-  color: rgb(0, 0, 0);
-  font-weight: bold;
+.nav-pills {
+  display: flex;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  outline: none;
 }
 
 .nav-link.active {
-  background-color: darkgray;
-  color: white; /* Couleur du texte en blanc */
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 20px;
+  color: black;
+}
+
+.nav-link.active img {
+  filter: invert(100%);
+}
+
+.custom-button {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  outline: none;
+}
+
+.nav-link img {
+  width: 30px;
+}
+
+.nav-link.custom-button {
+  margin: 10px 5px; /* Ajouter une marge horizontale de 5px */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  outline: none;
 }

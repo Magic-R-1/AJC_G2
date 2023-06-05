@@ -1,0 +1,161 @@
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link custom-button"
+      id="pills-about-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#pills-about"
+      type="button"
+      role="tab"
+      aria-controls="pills-about"
+      aria-selected="false"
+      routerLink="/about"
+      routerLinkActive="active"
+    >
+      About
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link custom-button"
+      id="pills-admin-tab"
+      data-bs-toggle="pill"
+      type="button"
+      role="tab"
+      aria-controls="pills-admin"
+      aria-selected="false"
+      (click)="showAdminMenu = !showAdminMenu"
+    >
+      Espace Admin
+    </button>
+    <ul
+      class="nav nav-pills sub-menu"
+      *ngIf="showAdminMenu"
+      style="background-color: gold; padding: 10px"
+    >
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/stade"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Stade
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/equipe"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Equipe
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/effectif"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Effectif
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/personnel"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Personnel
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/reservation"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Réservation
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/joueur"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Joueur
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/confrontation"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Confrontation
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/arbitre"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Arbitre
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link custom-button"
+          routerLink="/compte"
+          routerLinkActive="active"
+          *ngIf="admin"
+        >
+          <i class="fa fa-shopping-cart"></i> Compte
+        </button>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link custom-button"
+      id="pills-about-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#pills-about"
+      type="button"
+      role="tab"
+      aria-controls="pills-about"
+      aria-selected="false"
+      routerLink="/achat-billet"
+      routerLinkActive="active"
+    >
+      <i class="fa fa-shopping-cart"></i> Achat
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link custom-button"
+      id="pills-about-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#pills-about"
+      type="button"
+      role="tab"
+      aria-controls="pills-about"
+      aria-selected="false"
+      *ngIf="login"
+      (click)="logoff()"
+    >
+      Déconnexion
+    </button>
+  </li>
+  <span *ngIf="login">bonjour {{ login }}</span>
+</ul>

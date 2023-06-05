@@ -1,0 +1,7 @@
+<h1>Panier</h1>
+<ul>
+  <li *ngFor="let reservation of reservations">
+    {{ reservation.confrontation?.dateConfrontation | date : "dd/MM/yyyy" }} -
+    Quantité : {{ reservation.quantite }}
+  </li>
+</ul>

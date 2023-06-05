@@ -24,6 +24,11 @@ import { PersonnelListComponent } from './components/projet/personnel/personnel-
 import { ReservationEditComponent } from './components/projet/reservation/reservation-edit/reservation-edit.component';
 import { ReservationListComponent } from './components/projet/reservation/reservation-list/reservation-list.component';
 import { EffectifComponent } from './components/projet/effectif/effectif.component';
+import { AchatBilletComponent } from './components/achat-billet/achat-billet.component';
+import { ConfrontationDetailsComponent } from './confrontation-details/confrontation-details.component';
+import { PanierComponent } from './components/panier/panier.component';
+import { CartListComponent } from './components/cart/cart-list/cart-list.component';
+import { CartEditComponent } from './components/cart/cart-edit/cart-edit.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -56,7 +61,12 @@ const routes: Routes = [
   { path: 'actualite/actualite1', component: Actualite1Component },
   { path: 'actualite/actualite2', component: Actualite2Component },
   { path: 'actualite/actualite3', component: Actualite3Component },
+  { path: 'achat-billet', component: AchatBilletComponent },
   { path: 'inscription', component: InscriptionComponent },
+  { path: 'achat/:id', component: ConfrontationDetailsComponent },
+  { path: 'cart', component: CartListComponent },
+  { path: 'cart/edit', component: CartEditComponent },
+  { path: 'cart/edit/:id', component: CartEditComponent },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
