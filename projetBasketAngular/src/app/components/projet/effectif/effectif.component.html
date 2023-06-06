@@ -63,14 +63,14 @@
       <td>{{ joueur.aptitudesPhysiques?.agilite }}</td>
 
       <button
-        *ngIf="isAutorise()"
+        *ngIf="isAutorise(equipe)"
         class="btn btn-outline-danger"
         routerLink="/joueur/edit/{{ joueur.id }}"
       >
         Éditer ✏️
       </button>
 
-      <button *ngIf="isAutorise()" class="btn btn-outline-secondary">
+      <button *ngIf="isAutorise(equipe)" class="btn btn-outline-secondary">
         Transférer ↔️
       </button>
     </tr>

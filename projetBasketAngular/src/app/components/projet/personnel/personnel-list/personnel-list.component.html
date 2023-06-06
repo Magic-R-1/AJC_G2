@@ -15,7 +15,7 @@
     </tr>
 
     <ng-container *ngFor="let personnel of personnelFiltre()">
-      <tr *ngIf="isAutorise()">
+      <tr *ngIf="isAutorise(personnel)">
         <td>{{ personnel.id }}</td>
         <td>{{ personnel.nom }}</td>
         <td>{{ personnel.prenom }}</td>

@@ -11,8 +11,6 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 export class ReservationListComponent implements OnInit {
   reservations: Reservation[] = [];
-  filtre = '';
-  reservation!: Reservation;
   compte!: Compte;
 
   constructor(
@@ -20,16 +18,10 @@ export class ReservationListComponent implements OnInit {
     private authSrv: AuthentificationService
   ) {}
 
-  reservationFiltre() {
-    return this.reservations.filter(
-      (r) =>
-        r.id?.toString().indexOf(this.filtre) !== -1 ||
-        r.prix?.toString().indexOf(this.filtre) !== -1
-    );
-  }
-
   ngOnInit(): void {
-    this.listReservations();
+    this.reservationSrv.getAll().subscribe((reservations: Reservation[]) => {
+      this.reservations = reservations;
+    });
   }
 
   listReservations() {
@@ -54,16 +46,13 @@ export class ReservationListComponent implements OnInit {
     }
   }
 
-  public isAutorise(): boolean {
+  public isAutorise(reservation: Reservation): boolean {
     if (this.admin) {
       return true;
-    } else if (
-      this.reservation &&
-      this.reservation.compte &&
-      this.reservation.compte.id === this.compteID
-    ) {
+    } else if (reservation?.compte?.id == this.compteID) {
       return true;
     }
+
     return false;
   }
 }

@@ -5,4 +5,5 @@ export class Stade {
     public ville?: string,
     public id?: number
   ) {}
+  isChecked: boolean = false;
 }

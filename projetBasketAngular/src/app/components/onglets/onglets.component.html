@@ -1,22 +1,8 @@
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <span *ngIf="login">Bonjour {{ prenom }} </span>
-
-  <li class="nav-item" role="presentation">
-    <button
-      class="nav-link custom-button"
-      id="pills-about-tab"
-      data-bs-toggle="pill"
-      data-bs-target="#pills-about"
-      type="button"
-      role="tab"
-      aria-controls="pills-about"
-      aria-selected="false"
-      routerLink="/about"
-      routerLinkActive="active"
-    >
-      About
-    </button>
-  </li>
+  <span *ngIf="login">
+    <span style="font-size: 20px">👋</span>
+    <span style="font-weight: bold">Bonjour {{ prenom }}</span>
+  </span>
 
   <li class="nav-item" role="presentation">
     <button

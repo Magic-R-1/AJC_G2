@@ -1,8 +1,5 @@
 <div class="about-container">
   <h1>Liste des réservations</h1>
-  <div>
-    <input [(ngModel)]="filtre" class="form-control" />
-  </div>
   <table class="table">
     <tr>
       <th>Id:</th>
@@ -13,8 +10,8 @@
       <th>Compte:</th>
     </tr>
 
-    <ng-container *ngFor="let reservation of reservationFiltre()">
-      <tr *ngIf="isAutorise()">
+    <ng-container *ngFor="let reservation of reservations">
+      <tr *ngIf="isAutorise(reservation)">
         <td>{{ reservation.id }}</td>
         <td>{{ reservation.prix }}</td>
         <td>{{ reservation.quantite }}</td>
