@@ -1,64 +1,63 @@
-<h1>Mon compte</h1>
+<div class="about-container">
+  <h1>Mon compte</h1>
 
-<div *ngIf="compte">
-  <h2>Informations personnelles</h2>
-  <p>Prenom: {{ compte.prenom }}</p>
-  <p>Nom: {{ compte.nom }}</p>
-  <p>Email: {{ compte.email }}</p>
-  <p>Login: {{ compte.login }}</p>
-  <!-- Ajoutez ici d'autres informations à afficher -->
+  <div *ngIf="compte">
+    <h2>Informations personnelles</h2>
+    <p>Prenom: {{ compte.prenom }}</p>
+    <p>Nom: {{ compte.nom }}</p>
+    <p>Email: {{ compte.email }}</p>
+    <p>Login: {{ compte.login }}</p>
 
-  <div *ngIf="!editMode">
-    <button (click)="toggleEditMode()">Modifier</button>
-  </div>
+    <div *ngIf="!editMode">
+      <button (click)="toggleEditMode()">Modifier ✏️</button>
+    </div>
 
-  <div *ngIf="editMode">
-    <h2>Modifier mes informations</h2>
-    <form (submit)="saveCompte()">
-      <label for="nomInput">Prenom:</label>
-      <input
-        type="text"
-        id="prenomInput"
-        name="prenomInput"
-        [(ngModel)]="compte.prenom"
-      /><br />
+    <div *ngIf="editMode">
+      <h2>Modifier mes informations</h2>
+      <form (submit)="saveCompte()">
+        <label for="nomInput">Prenom</label>
+        <input
+          type="text"
+          id="prenomInput"
+          name="prenomInput"
+          [(ngModel)]="compte.prenom"
+        /><br />
 
-      <label for="nomInput">Nom:</label>
-      <input
-        type="text"
-        id="nomInput"
-        name="nomInput"
-        [(ngModel)]="compte.nom"
-      /><br />
+        <label for="nomInput">Nom</label>
+        <input
+          type="text"
+          id="nomInput"
+          name="nomInput"
+          [(ngModel)]="compte.nom"
+        /><br />
 
-      <label for="emailInput">Email:</label>
-      <input
-        type="email"
-        id="emailInput"
-        name="emailInput"
-        [(ngModel)]="compte.email"
-      /><br />
+        <label for="emailInput">Email</label>
+        <input
+          type="email"
+          id="emailInput"
+          name="emailInput"
+          [(ngModel)]="compte.email"
+        /><br />
 
-      <label for="nomInput">Login</label>
-      <input
-        type="text"
-        id="loginInput"
-        name="loginInput"
-        [(ngModel)]="compte.login"
-      /><br />
+        <label for="nomInput">Login</label>
+        <input
+          type="text"
+          id="loginInput"
+          name="loginInput"
+          [(ngModel)]="compte.login"
+        /><br />
 
-      <label for="nomInput">Mot de passe :</label>
-      <input
-        type="password"
-        id="passwordInput"
-        name="passwordInput"
-        [(ngModel)]="compte.password"
-      /><br />
+        <label for="nomInput">Mot de passe</label>
+        <input
+          type="password"
+          id="passwordInput"
+          name="passwordInput"
+          [(ngModel)]="compte.password"
+        /><br />
 
-      <!-- Ajoutez ici d'autres champs de formulaire pour les informations à éditer -->
-
-      <button type="submit">Enregistrer</button>
-      <button type="button" (click)="toggleEditMode()">Annuler</button>
-    </form>
+        <button type="submit">Enregistrer</button>
+        <button type="button" (click)="toggleEditMode()">Annuler</button>
+      </form>
+    </div>
   </div>
 </div>
