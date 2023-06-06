@@ -5,12 +5,16 @@
   text-align: center;
   font-size: 11px;
   display: flex; /* Utilisation de flexbox */
-  justify-content: space-between; /* Alignement des sections */
+  justify-content: space-between;
+  position: fixed; /* Positionnement fixe */
+  bottom: 0; /* Alignement en bas de la page */
+  width: 100%; /* Largeur maximale */
 }
 
 .footer-section {
   width: 48%; /* Largeur fixe pour chaque section */
 }
+
 .footer-section h3 {
   margin-top: 0;
 }

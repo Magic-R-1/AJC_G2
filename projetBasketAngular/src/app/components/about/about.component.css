@@ -79,3 +79,12 @@ p {
   background-color: #e64a19; /* Couleur orange légèrement plus foncée au survol */
   border-color: #e64a19; /* Couleur orange légèrement plus foncée au survol */
 }
+
+.image-container {
+  display: flex;
+}
+
+.image-container img {
+  flex: 1;
+  margin: 5px;
+}

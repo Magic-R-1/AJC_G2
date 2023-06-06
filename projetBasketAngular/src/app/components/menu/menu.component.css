@@ -11,9 +11,9 @@
 
 .nav-link.active {
   background-color: transparent;
-  border: 2px solid black;
+  border: 2px solid rgb(255, 255, 255);
   border-radius: 20px;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .nav-link.active img {
@@ -21,13 +21,14 @@
 }
 
 .custom-button {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-weight: bold;
   outline: none;
 }
 
 .nav-link img {
   width: 30px;
+  filter: invert(100%);
 }
 
 .nav-link.custom-button {
@@ -37,14 +38,8 @@
   outline: none;
 }
 
-.custom-button {
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-}
-
 .nav-link.active {
-  background-color: darkgray;
-  color: white; /* Couleur du texte en blanc */
+  background-color: rgb(171, 38, 38);
 }
 
 .nav-pills {
@@ -61,13 +56,13 @@
 }
 
 .nav-pills.sub-menu li {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 .nav-pills.sub-menu button {
   width: 100%;
   text-align: left;
-  color: black;
+  color: rgb(255, 255, 255);
   background-color: transparent;
   border: none;
 }
@@ -75,11 +70,11 @@
 .nav-pills.sub-menu button:hover,
 .nav-pills.sub-menu button:focus {
   color: white;
-  background-color: #ffd700; /* Couleur gold plus foncée */
+  background-color: #e4003d; /* Couleur gold plus foncée */
 }
 
 .nav-pills.sub-menu button i {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 #pills-home-tab {
@@ -107,4 +102,37 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+.nav-link.dropdown-toggle {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-link.dropdown-toggle:hover {
+  background-color: #ddd;
+}
+
+.nav-link.dropdown-toggle:focus {
+  outline: none;
+}
+.sub-menu {
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  display: none;
+  z-index: 1;
+  margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.nav-item:hover .sub-menu {
+  display: block;
+}
+.message-container span:first-child {
+  filter: invert(100%);
 }

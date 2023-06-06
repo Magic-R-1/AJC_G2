@@ -1,85 +1,126 @@
-<div class="container">
-  <h1 class="title">Bienvenue sur notre site de basket</h1>
-  <div class="search-bar">
-    <input
-      type="text"
-      class="search-input"
-      placeholder="Rechercher..."
-      [(ngModel)]="searchTerm"
-    />
-    <button class="search-button" (click)="search()">Rechercher</button>
-  </div>
+<body>
+  <section class="hero-section">
+    <img src="/assets/images/jump.jpg" alt="Image" class="background-image" />
+    <div class="quote-container">
+      <h2 class="hero-quote">
+        <span
+          style="font-size: 32px; font-weight: bold; text-transform: uppercase"
+          >LE
+        </span>
+        <span
+          style="
+            font-size: 102px;
+            font-weight: bold;
+            font-family: 'Arial Black', sans-serif;
+          "
+        >
+          BASKETBALL,</span
+        >
+        <br />
+        <span style="font-size: 32px; font-family: 'Verdana', sans-serif">
+          une passion qui nous
+        </span>
+        <span
+          style="
+            font-size: 60px;
+            font-weight: bold;
+            font-family: 'Arial Black', sans-serif;
+          "
+        >
+          UNIT</span
+        >
+        <span
+          style="
+            font-size: 48px;
+            font-weight: bold;
+            font-family: 'Time New Roman', sans-serif;
+          "
+        >
+          une énergie qui nous</span
+        >
+        <span
+          style="
+            font-size: 80px;
+            font-weight: bold;
+            font-family: 'Time New Roman', sans-serif;
+          "
+        >
+          INSPIRE.</span
+        >
+      </h2>
 
-  <div class="breaking-news">
-    <h2 class="breaking-news-title">Breaking News</h2>
-    <div class="breaking-news-list">
-      <div class="breaking-news-item">
-        LeBron James signe un nouveau contrat avec les Lakers
+      <a class="btn btn-outline-primary" routerLink="/about"
+        >En savoir plus ...</a
+      >
+    </div>
+  </section>
+  <section class="articles">
+    <app-articles></app-articles>
+  </section>
+
+  <section class="matchs">
+    <div class="matchs-overlay"></div>
+    <div class="matchs-content">
+      <h2>Derniers scores</h2>
+      <div class="score-item">
+        <h3 class="score-title">Match 1</h3>
+        <p class="score-description">Équipe A vs Équipe B</p>
+        <p class="score-result">Résultat : Équipe A 90 - Équipe B 85</p>
       </div>
-      <div class="breaking-news-item">
-        Stephen Curry bat le record du plus grand nombre de tirs à trois points
-        en carrière
-      </div>
-      <div class="breaking-news-item">
-        "Breaking News: Stephen Curry bat le record du plus grand nombre de tirs
-        à trois points en carrière ! Le légendaire meneur des Golden State
-        Warriors a surpassé tous les précédents détenteurs du record en marquant
-        son 2 974e tir à trois points lors du match d'hier soir. Curry continue
-        d'écrire l'histoire de la NBA avec sa précision et son talent
-        exceptionnels derrière l'arc. Une performance qui restera gravée dans
-        les annales du basketball. Félicitations à Stephen Curry pour cette
-        réalisation historique ! #CurryOnFire"
+      <div class="score-item">
+        <h3 class="score-title">Match 2</h3>
+        <p class="score-description">Équipe C vs Équipe D</p>
+        <p class="score-result">Résultat : Équipe C 75 - Équipe D 80</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="last-scores">
-    <h2>Derniers scores</h2>
-    <div class="score-item">
-      <h3 class="score-title">Match 1</h3>
-      <p class="score-description">Équipe A vs Équipe B</p>
-      <p class="score-result">Résultat : Équipe A 90 - Équipe B 85</p>
-    </div>
-    <div class="score-item">
-      <h3 class="score-title">Match 2</h3>
-      <p class="score-description">Équipe C vs Équipe D</p>
-      <p class="score-result">Résultat : Équipe C 75 - Équipe D 80</p>
-    </div>
-    <!-- Ajoutez d'autres scores ici -->
-  </div>
-  <app-articles></app-articles>
-
-  <div class="videos">
-    <h2>Vidéos de performances</h2>
-    <div class="videos-list">
-      <div class="video-item">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/CXLM08fZO5o"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-        ></iframe>
-        <h3 class="video-title">NBA Epic Moments</h3>
-      </div>
-      <div class="video-item">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/51CHNtNlFR8"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-        ></iframe>
-        <h3 class="video-title">
-          100 LEGENDARY LeBron James Highlights & Moments 🐐 👑
-        </h3>
+  <section class="videos">
+    <div class="videos">
+      <h2>Vidéos de performances</h2>
+      <div class="videos-list">
+        <div class="video-item">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/CXLM08fZO5o"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+          <h3 class="video-title">NBA Epic Moments</h3>
+        </div>
+        <div class="video-item">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/51CHNtNlFR8"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+          <h3 class="video-title">
+            100 LEGENDARY LeBron James Highlights & Moments 🐐 👑
+          </h3>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="sondage-quiz">
-    <app-sondage-quiz></app-sondage-quiz>
-  </div>
-</div>
+  </section>
+  <section>
+    <div class="sondage-quiz">
+      <app-sondage-quiz></app-sondage-quiz>
+    </div>
+  </section>
+  <section>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+  </section>
+</body>
