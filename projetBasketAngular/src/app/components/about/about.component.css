@@ -4,13 +4,78 @@
   padding: 20px;
 }
 
+.about-container:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background-image: url("src\assets\images\bounce.gif"); /* GIF représentant un terrain de basket */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.about-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Couleur de superposition semi-transparente */
+  z-index: -1;
+}
+
 h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
+  color: #ff5722; /* Couleur orange vif */
+  text-transform: uppercase; /* Convertit le texte en majuscules */
 }
 
 p {
   text-align: justify;
   margin-bottom: 15px;
+  color: #ffffff;
+  line-height: 1.4; /* Espacement entre les lignes */
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333333; /* Couleur du texte plus foncée */
+}
+
+.card-text {
+  color: #666666; /* Couleur du texte plus claire */
+}
+
+.btn-primary {
+  background-color: #ff5722; /* Couleur orange vif */
+  border-color: #ff5722; /* Couleur orange vif */
+}
+
+.btn-primary:hover {
+  background-color: #e64a19; /* Couleur orange légèrement plus foncée au survol */
+  border-color: #e64a19; /* Couleur orange légèrement plus foncée au survol */
 }
