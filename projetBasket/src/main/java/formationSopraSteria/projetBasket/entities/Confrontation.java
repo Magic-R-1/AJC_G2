@@ -1,4 +1,4 @@
-package formationSopraSteria.projetBasket.entities;
+ package formationSopraSteria.projetBasket.entities;
 
 import java.time.LocalDate;
 import java.util.Objects;
