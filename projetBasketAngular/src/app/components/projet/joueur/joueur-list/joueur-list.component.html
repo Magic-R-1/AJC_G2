@@ -43,15 +43,18 @@
       <td>{{ joueur.aptitudesPhysiques?.agilite }}</td>
 
       <td>
-        <a
+        <button
+          *ngIf="admin"
           class="btn btn-outline-primary"
           routerLink="/joueur/edit/{{ joueur.id }}"
-          >Éditer ✏️</a
         >
+          Éditer ✏️
+        </button>
       </td>
 
       <td>
         <button
+          *ngIf="admin"
           (click)="deleteJoueur(joueur.id!)"
           class="btn btn-outline-danger"
         >
@@ -62,6 +65,7 @@
   </table>
 
   <button
+    *ngIf="admin"
     id="nouveau"
     type="button"
     class="btn btn-outline-success"

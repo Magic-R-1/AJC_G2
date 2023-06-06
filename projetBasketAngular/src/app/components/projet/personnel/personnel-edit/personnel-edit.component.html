@@ -71,9 +71,9 @@
         required
         #equipeCtrl="ngModel"
       >
-        <option value="undefined">FAIS CE QUE TU VEUX</option>
+        <option value="undefined">-- Sélectionner une équipe --</option>
         <option *ngFor="let equipe of obsEquipes" [ngValue]="equipe">
-          {{ equipe.id }}
+          {{ equipe.ville }} {{ equipe.franchise }}
         </option>
       </select>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Joueur } from 'src/app/model/joueur';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 import { JoueurService } from 'src/app/services/joueur.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { JoueurService } from 'src/app/services/joueur.service';
 export class JoueurListComponent implements OnInit {
   joueurs!: Joueur[];
 
-  constructor(private joueurSrv: JoueurService) {}
+  constructor(
+    private joueurSrv: JoueurService,
+    private authSrv: AuthentificationService
+  ) {}
 
   ngOnInit(): void {
     this.listJoueurs();
@@ -44,5 +48,9 @@ export class JoueurListComponent implements OnInit {
     }
 
     return age;
+  }
+
+  get admin() {
+    return this.authSrv.isAdmin();
   }
 }

@@ -1,35 +1,38 @@
 <div class="about-container">
+  <h1>Listes des stades</h1>
   <table class="table">
     <tr>
-      <th></th>
       <th>ID</th>
       <th>Nom</th>
       <th>Capacité</th>
       <th>Ville</th>
     </tr>
     <tr *ngFor="let stade of stadeFiltre()">
-      <td>
-        <input type="checkbox" [(ngModel)]="stade.isChecked" />
-      </td>
       <td>{{ stade.id }}</td>
       <td>{{ stade.nom }}</td>
       <td>{{ stade.capacite }}</td>
       <td>{{ stade.ville }}</td>
       <td>
-        <a
+        <button
           class="btn btn-outline-primary"
           routerLink="/stade/edit/{{ stade.id }}"
-          >Editer ✏️</a
         >
+          Editer ✏️
+        </button>
+      </td>
+      <td>
+        <button (click)="deleteStade(stade.id!)" class="btn btn-outline-danger">
+          Supprimer 🗑️
+        </button>
       </td>
     </tr>
   </table>
   <button
     id="nouveau"
     type="button"
-    class="btn btn-outline-danger"
-    (click)="deleteSelectedStades()"
+    class="btn btn-outline-success"
+    routerLink="/reservation/edit"
   >
-    Supprimer sélection 🗑️
+    Nouvelle réservation ➕
   </button>
 </div>

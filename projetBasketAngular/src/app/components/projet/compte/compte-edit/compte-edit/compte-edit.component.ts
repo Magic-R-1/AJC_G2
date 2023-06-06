@@ -33,6 +33,7 @@ export class CompteEditComponent {
         this.router.navigateByUrl('/compte');
       });
     } else {
+      this.compte.email = 'test@gmail';
       this.compteSrv.create(this.compte).subscribe((res) => {
         this.router.navigateByUrl('/compte');
       });

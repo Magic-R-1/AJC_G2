@@ -12,7 +12,7 @@
         readonly
       />
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="prix">Prix :</label>
       <input
         id="prix"
@@ -28,7 +28,7 @@
       >
         Prix obligatoire
       </div>
-    </div>
+    </div> -->
     <div class="form-group">
       <label for="quantite">Quantité :</label>
       <input
@@ -78,6 +78,10 @@
           *ngFor="let confrontation of obsConfrontations | async"
         >
           {{ confrontation.dateConfrontation }}
+          {{ confrontation.equipe?.ville }}
+          {{ confrontation.equipe?.franchise }} vs
+          {{ confrontation.equipeVisiteur?.ville }}
+          {{ confrontation.equipeVisiteur?.franchise }}
         </option>
       </select>
       <div
@@ -87,6 +91,7 @@
         Confrontation obligatoire
       </div>
     </div>
+
     <div class="form-group">
       <label for="compte">Compte :</label>
       <select
@@ -97,9 +102,11 @@
         [compareWith]="compareById"
         #compteCtrl="ngModel"
       >
-        <option [ngValue]="compte" *ngFor="let compte of obsComptes | async">
-          {{ compte.nom }} {{ compte.prenom }}
-        </option>
+        <ng-container *ngFor="let compte of obsComptes | async">
+          <option [ngValue]="compte" *ngIf="isAutorise(compte)">
+            {{ compte.nom }} {{ compte.prenom }}
+          </option>
+        </ng-container>
       </select>
       <div
         *ngIf="compteCtrl.dirty && compteCtrl.invalid"
@@ -108,6 +115,7 @@
         Compte obligatoire
       </div>
     </div>
+
     <br />
     <div>
       <button

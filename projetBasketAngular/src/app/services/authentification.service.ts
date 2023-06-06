@@ -22,7 +22,7 @@ export class AuthentificationService {
     });
   }
 
-  private checkRole(statutRole: StatutRole): boolean {
+  public checkRole(statutRole: StatutRole): boolean {
     if (!this.isLogged()) {
       return false;
     }

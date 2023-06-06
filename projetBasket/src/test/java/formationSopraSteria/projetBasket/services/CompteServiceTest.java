@@ -18,22 +18,11 @@ class CompteServiceTest {
 	
 	@Test
 	void testCreate() {
-		Compte c1 = new Compte("admin", "admin",StatutRole.ROLE_ADMIN);
+		Compte c1 = new Compte("admin1", "admin1","admin1","admin1","admin1@gmail.com",StatutRole.ROLE_ADMIN);
 		compteSrv.create(c1);
-		Compte c2 = new Compte("El-hafid", "YBRAHIMA",StatutRole.ROLE_GM);
-		compteSrv.create(c2);
-		Compte c3 = new Compte("Erwan", "admin",StatutRole.ROLE_GM);
-		compteSrv.create(c3);
-		Compte c4 = new Compte("Léa", "Simonet",StatutRole.ROLE_GM);
-		compteSrv.create(c4);
-		Compte c5 = new Compte("Bernadette", "admin",StatutRole.ROLE_GM);
-		compteSrv.create(c5);
-		Compte c6 = new Compte("Insaf", "admin",StatutRole.ROLE_CLIENT);
-		compteSrv.create(c6);
-		Compte c7 = new Compte("Jean", "Jean",StatutRole.ROLE_CLIENT);
-		compteSrv.create(c7);
-		Compte c8 = new Compte("Jordan", "Jordan",StatutRole.ROLE_CLIENT);
-		compteSrv.create(c8);
+
+		
+		
 	}
 	
 	@Test

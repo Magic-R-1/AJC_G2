@@ -84,7 +84,16 @@
           <i class="fa fa-shopping-cart"></i> Arbitre
         </button>
       </li>
-
+      <li class="nav-item" role="presentation" *ngIf="admin">
+        <button
+          (click)="showAdminMenu = !showAdminMenu"
+          class="nav-link custom-button"
+          routerLink="/compte"
+          routerLinkActive="active"
+        >
+          <i class="fa fa-shopping-cart"></i> Compte
+        </button>
+      </li>
       <li class="nav-item" role="presentation">
         <button
           (click)="showAdminMenu = !showAdminMenu"
@@ -126,19 +135,7 @@
           <i class="fa fa-shopping-cart"></i> Joueur
         </button>
       </li>
-
-      <li class="nav-item" role="presentation" *ngIf="admin || gm">
-        <button
-          (click)="showAdminMenu = !showAdminMenu"
-          class="nav-link custom-button"
-          routerLink="/personnel"
-          routerLinkActive="active"
-        >
-          <i class="fa fa-personnel"></i> Personnel
-        </button>
-      </li>
-
-      <li class="nav-item" role="presentation" *ngIf="admin || gm">
+      <li class="nav-item" role="presentation" *ngIf="!client">
         <button
           (click)="showAdminMenu = !showAdminMenu"
           class="nav-link custom-button"

@@ -17,9 +17,9 @@ public class ArbitreServiceTest {
 	
 	@Test
 	void testCreate () {
-		Arbitre A1 = new Arbitre("John", "Gill", 10, "Allemand"); 
+		Arbitre A1 = new Arbitre("Gill", "John", 10, "Allemand"); 
 		arbitreSrv.create(A1);
-		Arbitre A2 = new Arbitre("Carole", "Delauné", 11, "française "); 
+		Arbitre A2 = new Arbitre("Delauné", "Carole", 11, "française "); 
 		arbitreSrv.create(A2);
 		Arbitre A3 = new Arbitre("Collin ", "Jean-Charles", 15, "France "); 
 		arbitreSrv.create(A3);

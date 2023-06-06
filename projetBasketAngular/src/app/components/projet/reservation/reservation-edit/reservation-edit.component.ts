@@ -7,6 +7,7 @@ import { Confrontation } from 'src/app/model/confrontation';
 import { Compte } from 'src/app/model/compte';
 import { ConfrontationService } from 'src/app/services/confrontation.service';
 import { CompteService } from 'src/app/services/compte.service';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-reservation-edit',
@@ -20,6 +21,7 @@ export class ReservationEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.reservation = new Reservation();
+    this.reservation.prix = 15;
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
         this.reservationSrv
@@ -38,7 +40,8 @@ export class ReservationEditComponent implements OnInit {
     private confrontationSrv: ConfrontationService,
     private compteSrv: CompteService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private authSrv: AuthentificationService
   ) {}
 
   save() {
@@ -79,5 +82,25 @@ export class ReservationEditComponent implements OnInit {
     this.myModal.nativeElement.classList.remove('show');
     this.myModal.nativeElement.style.display = 'none';
     document.body.classList.remove('modal-open');
+  }
+
+  get admin() {
+    return this.authSrv.isAdmin();
+  }
+
+  get compteID() {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).id;
+    }
+  }
+
+  public isAutorise(compte: Compte): boolean {
+    if (this.admin) {
+      return true;
+    } else if (compte?.id == this.compteID) {
+      return true;
+    }
+
+    return false;
   }
 }

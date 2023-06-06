@@ -42,7 +42,7 @@ public class Compte implements UserDetails  {
 	
 	@NotBlank(message = "*ne doit pas Ãªtre vide")
 	@Column(name="account_password",nullable = false)
-	//@JsonView(JsonViews.Base.class)
+	@JsonView(JsonViews.Base.class)
 	protected String password;	
 	
 	@Column(name="account_last_name")

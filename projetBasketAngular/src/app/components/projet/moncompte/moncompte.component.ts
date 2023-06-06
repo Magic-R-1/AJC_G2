@@ -16,6 +16,7 @@ export class MoncompteComponent implements OnInit {
 
   ngOnInit(): void {
     this.compte = JSON.parse(sessionStorage.getItem('compte')!);
+    this.compte.password = '';
   }
 
   toggleEditMode() {
@@ -24,10 +25,17 @@ export class MoncompteComponent implements OnInit {
 
   saveCompte() {
     // Utilisez le service compte pour enregistrer les modifications du compte
+    console.log(this.compte);
     this.compteSrv.update(this.compte).subscribe(
       () => {
         //this.editMode = false;
-        this.router.navigateByUrl('/home');
+        sessionStorage.setItem('compte', JSON.stringify(this.compte));
+        sessionStorage.setItem(
+          'token',
+          'Basic ' + btoa(this.compte.login + ':' + this.compte.password)
+        );
+        this.editMode = false;
+        // this.router.navigateByUrl('/home');
       },
       (error) => {
         console.error('Erreur lors de la mise à jour du compte :', error);
