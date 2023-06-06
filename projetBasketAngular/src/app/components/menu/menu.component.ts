@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Compte } from 'src/app/model/compte';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class MenuComponent {
   get login() {
     if (sessionStorage.getItem('compte')) {
       return JSON.parse(sessionStorage.getItem('compte')!).username;
+    } else {
+      return false;
     }
   }
 
@@ -31,6 +34,11 @@ export class MenuComponent {
     return this.authSrv.isGm;
   }
 
+  logon(): boolean {
+    if (sessionStorage.getItem('compte') != null) {
+      return true;
+    } else return false;
+  }
   logoff() {
     sessionStorage.clear();
     this.router.navigateByUrl('/home');

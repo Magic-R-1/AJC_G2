@@ -74,4 +74,11 @@ public class CompteRestController {
 		compteSrv.delete(id);
 	}
 	
+	@GetMapping("/{login}/{email}")
+    public boolean checkDoublon(@PathVariable String login, @PathVariable String email) {
+        return compteSrv.checkDoublon(login, email);
+    }
+	
+	
+	
 }

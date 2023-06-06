@@ -1,6 +1,7 @@
 package formationSopraSteria.projetBasket.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -47,9 +48,10 @@ public class CompteService {
 	
 	public Compte update(Compte compte) {
 		Compte compteEnBase = getById(compte.getId());
+	
 		checkCompte(compte);
 		compteEnBase.setLogin(compte.getLogin());
-		compteEnBase.setPassword(compte.getPassword());
+		compteEnBase.setPassword(passwordEncoder.encode(compte.getPassword()));
 		compteEnBase.setNom(compte.getNom());
 		compteEnBase.setPrenom(compte.getPrenom());
 		compteEnBase.setEmail(compte.getEmail());
@@ -98,6 +100,11 @@ public class CompteService {
 		});
 	}
 	
+	public Compte getByEmail(String email) {
+		return compteRepo.findByEmail(email).orElseThrow(() -> {
+			throw new UsernameNotFoundException("compte inconnu");
+		});
+	}
 	
 	public Compte createAdmin(String login,String password) {
 		return create(new Compte(login, password, StatutRole.ROLE_ADMIN));
@@ -111,6 +118,21 @@ public class CompteService {
 		return create(new Compte(login, password, StatutRole.ROLE_GM));
 	}
 	
+	public boolean checkDoublon(String login, String email) {
+	    // Vérification du doublon du login
+	    Optional<Compte> compteByLogin = compteRepo.findByLogin(login);
+	    if (compteByLogin.isPresent()) {
+	        return true; // Doublon trouvé pour le login
+	    }
+
+	    // Vérification du doublon de l'email
+	    Optional<Compte> compteByEmail = compteRepo.findByEmail(email);
+	    if (compteByEmail.isPresent()) {
+	        return true; // Doublon trouvé pour l'email
+	    }
+
+	    return false; // Aucun doublon trouvé
+	}
 	
 	
 }

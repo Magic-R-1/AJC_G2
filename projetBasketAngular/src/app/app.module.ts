@@ -38,6 +38,7 @@ import { EquipeEditComponent } from './components/projet/equipe/equipe-edit/equi
 import { EffectifComponent } from './components/projet/effectif/effectif.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { InscriptionConfirmationComponent } from './components/inscription/inscription-confirmation/inscription-confirmation.component';
+import { MoncompteComponent } from './components/projet/moncompte/moncompte.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { InscriptionConfirmationComponent } from './components/inscription/inscr
     CustomComponent,
     EffectifComponent,
     InscriptionConfirmationComponent,
+    MoncompteComponent,
   ],
   imports: [
     HttpClientModule,

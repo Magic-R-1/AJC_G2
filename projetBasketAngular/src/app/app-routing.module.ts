@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { AboutComponent } from './components/about/about.component';
@@ -25,6 +25,7 @@ import { ReservationEditComponent } from './components/projet/reservation/reserv
 import { ReservationListComponent } from './components/projet/reservation/reservation-list/reservation-list.component';
 import { EffectifComponent } from './components/projet/effectif/effectif.component';
 import { InscriptionConfirmationComponent } from './components/inscription/inscription-confirmation/inscription-confirmation.component';
+import { MoncompteComponent } from './components/projet/moncompte/moncompte.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -57,13 +58,15 @@ const routes: Routes = [
   { path: 'actualite/actualite1', component: Actualite1Component },
   { path: 'actualite/actualite2', component: Actualite2Component },
   { path: 'actualite/actualite3', component: Actualite3Component },
-  { path: 'inscription', component: InscriptionComponent },
+  { path: 'monCompte', component: MoncompteComponent },
+
   {
     path: 'inscription/confirmation',
     component: InscriptionConfirmationComponent,
   },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'inscription', component: InscriptionComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
