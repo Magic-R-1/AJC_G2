@@ -41,7 +41,6 @@ import { InscriptionConfirmationComponent } from './components/inscription/inscr
 import { ConfrontationDetailsComponent } from './confrontation-details/confrontation-details.component';
 import { AchatBilletComponent } from './components/achat-billet/achat-billet.component';
 import { PanierComponent } from './components/panier/panier.component';
-import { OngletsComponent } from './components/onglets/onglets.component';
 import { CartListComponent } from './components/cart/cart-list/cart-list.component';
 import { CartEditComponent } from './components/cart/cart-edit/cart-edit.component';
 import { MoncompteComponent } from './components/projet/moncompte/moncompte.component';
@@ -84,7 +83,6 @@ import { MoncompteComponent } from './components/projet/moncompte/moncompte.comp
     AchatBilletComponent,
     ConfrontationDetailsComponent,
     PanierComponent,
-    OngletsComponent,
     CartListComponent,
     CartEditComponent,
     MoncompteComponent,
