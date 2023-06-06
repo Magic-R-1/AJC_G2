@@ -80,15 +80,19 @@ public class EquipeServiceTest {
 	@Disabled
 	void testCreateEquipe() {
 		
-		Set<Joueur> joueurs = new HashSet<>();
-		joueurs.add(new Joueur("nom1", "prenom1"));
-		joueurs.add(new Joueur("nom2", "prenom2"));
+	
 
 		
 		
 		
-		Equipe equipe = new Equipe("franchise", "ville", joueurs, null,null,  stade, null, compte);
-				equipeSrv.create(equipe);
+		Equipe LAL = new Equipe("LAKERS", "Los Angeles", null, null,null,  stade, null, compte);
+				equipeSrv.create(LAL);
+		Equipe GS = new Equipe("WARRIORS", "San Fransisco", null, null,null,  stade, null, compte);
+				equipeSrv.create(GS);
+		Equipe OKC = new Equipe("THUNDER", "Oklahoma City", null, null,null,  stade, null, compte);
+				equipeSrv.create(OKC);
+		Equipe BOS = new Equipe("CELTICS", "Boston", null, null,null,  stade, null, compte);
+				equipeSrv.create(BOS);
 
 	}
 

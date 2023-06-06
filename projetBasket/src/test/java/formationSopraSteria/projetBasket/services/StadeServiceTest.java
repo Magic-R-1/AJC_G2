@@ -26,6 +26,9 @@ class StadeServiceTest {
 	@Test
 	void testCreate() {
 		stadeSrv.create("Staples Center", 20000, "Los Angeles");
+		stadeSrv.create("Chase Center", 25000, "San Fransisco");
+		stadeSrv.create("Paycom Center", 22000, "Oklahoma City");
+		stadeSrv.create("TD Garden", 30000, "Boston");
 	}
 	
 	@Test

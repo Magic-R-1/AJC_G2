@@ -1,5 +1,7 @@
 package formationSopraSteria.projetBasket.services;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import formationSopraSteria.projetBasket.entities.Joueur;
 import formationSopraSteria.projetBasket.entities.Poste;
+import formationSopraSteria.projetBasket.entities.Statut;
 
 @SpringBootTest
 class JoueurServiceTest {
@@ -23,9 +26,17 @@ class JoueurServiceTest {
 	@Test
 	@Disabled
 	void create() {
-		Joueur joueur = new Joueur("Bryant", "Kobe");
-		joueurSrv.create(joueur);
-	}
+		
+		
+		Joueur joueur1 = new Joueur("Rudy", "Gobert",2.16,117,LocalDate.parse("26/06/1992"),27,35688000,Statut.Titulaire,Poste.Pivot,null,null);
+		joueurSrv.create(joueur1);
+		
+		
+		
+		
+		
+		
+		}
 	
 	@Test
 	@Disabled
