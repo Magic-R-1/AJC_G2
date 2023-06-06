@@ -1,13 +1,13 @@
 <div class="about-container">
-  <h1>Liste des réservations</h1>
+  <h1>Listes des réservations</h1>
   <table class="table">
     <tr>
-      <th>Id:</th>
-      <th>Prix:</th>
-      <th>Quantité:</th>
-      <th>Date de réservation:</th>
-      <th>Confrontation:</th>
-      <th>Compte:</th>
+      <th>ID</th>
+      <th>Prix</th>
+      <th>Quantité</th>
+      <th>Date de réservation</th>
+      <th>Confrontation</th>
+      <th>Compte</th>
     </tr>
 
     <ng-container *ngFor="let reservation of reservations">
@@ -28,7 +28,7 @@
           <a
             class="btn btn-outline-primary"
             routerLink="/reservation/edit/{{ reservation.id }}"
-            >Éditer</a
+            >Éditer ✏️</a
           >
         </td>
         <td>
@@ -36,13 +36,18 @@
             (click)="deleteReservation(reservation.id!)"
             class="btn btn-outline-danger"
           >
-            Supprimer
+            Supprimer 🗑️
           </button>
         </td>
       </tr>
     </ng-container>
   </table>
-  <a class="btn btn-link" routerLink="/reservation/edit"
-    >Nouvelle réservation</a
+  <button
+    id="nouveau"
+    type="button"
+    class="btn btn-outline-success"
+    routerLink="/reservation/edit"
   >
+    Nouvelle réservation ➕
+  </button>
 </div>

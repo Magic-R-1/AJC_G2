@@ -1,12 +1,12 @@
 <div class="about-container">
-  <h1>Liste des Arbitres</h1>
+  <h1>Listes des Arbitres</h1>
   <table class="table">
     <tr>
-      <th>Id :</th>
-      <th>Nom :</th>
-      <th>Prenom :</th>
-      <th>Anciennete :</th>
-      <th>Nationalite :</th>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Anciennete</th>
+      <th>Nationalite</th>
     </tr>
     <tr *ngFor="let arbitre of arbitres">
       <td>{{ arbitre.id }}</td>
@@ -18,7 +18,7 @@
         <a
           class="btn btn-outline-primary"
           routerLink="/arbitre/edit/{{ arbitre.id }}"
-          >Editer</a
+          >Editer ✏️</a
         >
       </td>
       <td>
@@ -26,10 +26,17 @@
           (click)="deleteArbitre(arbitre.id!)"
           class="btn btn-outline-danger"
         >
-          Supprimer
+          Supprimer 🗑️
         </button>
       </td>
     </tr>
   </table>
-  <a class="btn btn-link" routerLink="/arbitre/edit">Nouvel arbitre</a>
+  <button
+    id="nouveau"
+    type="button"
+    class="btn btn-outline-success"
+    routerLink="/arbitre/edit"
+  >
+    Nouvel arbitre ➕
+  </button>
 </div>

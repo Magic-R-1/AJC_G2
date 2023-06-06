@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Compte } from 'src/app/model/compte';
 import { CompteService } from 'src/app/services/compte.service';
 
@@ -12,11 +12,7 @@ export class MoncompteComponent implements OnInit {
   compte!: Compte;
   editMode: boolean = false;
 
-  constructor(
-    private compteSrv: CompteService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private compteSrv: CompteService, private router: Router) {}
 
   ngOnInit(): void {
     this.compte = JSON.parse(sessionStorage.getItem('compte')!);
@@ -30,7 +26,8 @@ export class MoncompteComponent implements OnInit {
     // Utilisez le service compte pour enregistrer les modifications du compte
     this.compteSrv.update(this.compte).subscribe(
       () => {
-        this.editMode = false;
+        //this.editMode = false;
+        this.router.navigateByUrl('/home');
       },
       (error) => {
         console.error('Erreur lors de la mise à jour du compte :', error);

@@ -2,11 +2,11 @@
   <h1>Listes des équipes</h1>
   <table class="table">
     <tr>
-      <th>Id :</th>
-      <th>Franchise :</th>
-      <th>Ville :</th>
-      <th>Stade :</th>
-      <th>Compte :</th>
+      <th>ID</th>
+      <th>Franchise</th>
+      <th>Ville</th>
+      <th>Stade</th>
+      <th>Compte</th>
     </tr>
     <tr *ngFor="let e of equipeFiltre()">
       <td>{{ e.id }}</td>
@@ -17,15 +17,22 @@
 
       <td>
         <a class="btn btn-outline-primary" routerLink="/equipe/edit/{{ e.id }}"
-          >Editer</a
+          >Editer ✏️</a
         >
       </td>
       <td>
         <button (click)="deleteEquipe(e.id!)" class="btn btn-outline-danger">
-          Supprimer
+          Supprimer 🗑️
         </button>
       </td>
     </tr>
   </table>
-  <a class="btn btn-link" routerLink="/equipe/edit">Nouvelle équipe</a>
+  <button
+    id="nouveau"
+    type="button"
+    class="btn btn-outline-success"
+    routerLink="/equipe/edit"
+  >
+    Nouvelle équipe ➕
+  </button>
 </div>

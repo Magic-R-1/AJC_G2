@@ -1,15 +1,13 @@
 <div class="about-container">
-  <h1>La listes des comptes</h1>
+  <h1>Listes des comptes</h1>
   <div><input [(ngModel)]="filtre" class="form-control" /></div>
   <table class="table">
     <tr>
-      <th>Id:</th>
-      <th>Login:</th>
-      <th>Nom:</th>
-      <th>Prenom:</th>
-      <th>Statut Role:</th>
-      <th></th>
-      <th></th>
+      <th>ID</th>
+      <th>Login</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Statut Role</th>
     </tr>
     <tr *ngFor="let compte of compteFiltre()">
       <td>{{ compte.id }}</td>
@@ -21,7 +19,7 @@
         <a
           class="btn btn-outline-primary"
           routerLink="/compte/edit/{{ compte.id }}"
-          >Editer</a
+          >Editer ✏️</a
         >
       </td>
       <td>
@@ -29,10 +27,17 @@
           (click)="deleteCompte(compte.id!)"
           class="btn btn-outline-danger"
         >
-          Supprimer
+          Supprimer 🗑️
         </button>
       </td>
     </tr>
   </table>
-  <a class="btn btn-link" routerLink="/compte/edit">Nouveau compte</a>
+  <button
+    id="nouveau"
+    type="button"
+    class="btn btn-outline-success"
+    routerLink="/compte/edit"
+  >
+    Nouveau compte ➕
+  </button>
 </div>

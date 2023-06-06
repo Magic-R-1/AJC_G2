@@ -32,8 +32,11 @@ public class SecurityConfig {
 							.antMatchers("/api/stade/**").hasAnyRole("ADMIN","CLIENT","GM")
 							.antMatchers("/api/reservation/**").hasAnyRole("ADMIN","CLIENT","GM")
 							.antMatchers("/api/personnel/**").hasAnyRole("ADMIN","GM")
+							.antMatchers("/api/compte/**").hasAnyRole("ADMIN","GM","CLIENT")
 							.anyRequest().hasAnyRole("ADMIN")
+
 							//.anyRequest().permitAll()
+
 						.and()
 						.httpBasic()
 						.and()

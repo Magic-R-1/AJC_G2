@@ -2,10 +2,10 @@
   <table class="table">
     <tr>
       <th></th>
-      <th>Id :</th>
-      <th>Nom :</th>
-      <th>Capacité :</th>
-      <th>Ville :</th>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Capacité</th>
+      <th>Ville</th>
     </tr>
     <tr *ngFor="let stade of stadeFiltre()">
       <td>
@@ -19,12 +19,17 @@
         <a
           class="btn btn-outline-primary"
           routerLink="/stade/edit/{{ stade.id }}"
-          >Editer</a
+          >Editer ✏️</a
         >
       </td>
     </tr>
   </table>
-  <button class="btn btn-outline-danger" (click)="deleteSelectedStades()">
-    Supprimer sélection
+  <button
+    id="nouveau"
+    type="button"
+    class="btn btn-outline-danger"
+    (click)="deleteSelectedStades()"
+  >
+    Supprimer sélection 🗑️
   </button>
 </div>
