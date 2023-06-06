@@ -1,9 +1,61 @@
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <span *ngIf="login">
-    <span style="font-size: 20px">👋</span>
-    <span style="font-weight: bold">Bonjour {{ prenom }}</span>
-  </span>
-
+  <li class="nav-item" *ngIf="login">
+    <span class="message-container">
+      <span class="message">
+        <span style="font-size: 20px">👋</span>
+        <span style="font-weight: bold">Bonjour {{ prenom }}</span>
+      </span>
+    </span>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link custom-button"
+      id="pills-about-tab"
+      data-bs-toggle="pill"
+      data-bs-target="#pills-about"
+      type="button"
+      role="tab"
+      aria-controls="pills-about"
+      aria-selected="false"
+      routerLink="/about"
+      routerLinkActive="active"
+    >
+      About
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a
+      class="nav-link active"
+      id="pills-home-tab"
+      role="tab"
+      routerLink="/home"
+      routerLinkActive="active"
+    >
+      <img src="/assets/images/home.png" alt="Home" />
+    </a>
+  </li>
+  <li class="nav-item" role="presentation" *ngIf="!login">
+    <a
+      class="nav-link"
+      id="pills-login-tab"
+      role="tab"
+      routerLink="/signup"
+      routerLinkActive="active"
+    >
+      <img src="/assets/images/login.png" alt="Login" *ngIf="!login" />
+    </a>
+  </li>
+  <li class="nav-item" role="presentation" *ngIf="login">
+    <a
+      class="nav-link"
+      id="pills-login-tab"
+      role="tab"
+      routerLink="/monCompte"
+      routerLinkActive="active"
+    >
+      Mon compte
+    </a>
+  </li>
   <li class="nav-item" role="presentation" *ngIf="login">
     <button
       class="nav-link custom-button"
@@ -15,7 +67,7 @@
       aria-selected="false"
       (click)="onOutsideClick()"
     >
-      Menu
+      <img src="/assets/images/liste.png" alt="Liste" />
     </button>
     <ul
       class="nav nav-pills sub-menu"
@@ -129,32 +181,7 @@
       </li>
     </ul>
   </li>
-</ul>
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a
-      class="nav-link active"
-      id="pills-home-tab"
-      role="tab"
-      routerLink="/home"
-      routerLinkActive="active"
-    >
-      <img src="/assets/images/home.png" alt="Home" />
-    </a>
-  </li>
-  <li class="nav-item" role="presentation" *ngIf="!login">
-    <a
-      class="nav-link"
-      id="pills-login-tab"
-      role="tab"
-      routerLink="/signup"
-      routerLinkActive="active"
-    >
-      <img src="/assets/images/login.png" alt="Login" />
-    </a>
-  </li>
-
-  <li class="nav-item" role="presentation">
+  <li class="nav-item" role="presentation" *ngIf="login">
     <a
       class="nav-link"
       id="pills-shopping-cart-tab"

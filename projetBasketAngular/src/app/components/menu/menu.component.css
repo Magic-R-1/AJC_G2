@@ -1,7 +1,3 @@
-.nav-pills {
-  display: flex;
-}
-
 .nav-link {
   display: flex;
   align-items: center;
@@ -50,6 +46,13 @@
   background-color: darkgray;
   color: white; /* Couleur du texte en blanc */
 }
+
+.nav-pills {
+  display: flex;
+  justify-content: flex-start; /* Alignement des onglets à gauche */
+  align-items: center; /* Alignement vertical au centre des onglets */
+}
+
 .nav-pills.sub-menu {
   position: absolute;
   background-color: #ffe680; /* Couleur gold pastel */
@@ -84,4 +87,24 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+}
+
+.message-container {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.message {
+  display: inline-block;
+  animation: scrollMessage 10s linear infinite;
+}
+
+@keyframes scrollMessage {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
