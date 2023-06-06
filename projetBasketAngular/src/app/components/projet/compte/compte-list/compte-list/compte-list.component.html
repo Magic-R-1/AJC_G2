@@ -12,8 +12,9 @@
     <tr *ngFor="let compte of compteFiltre()">
       <td>{{ compte.id }}</td>
       <td>{{ compte.login }}</td>
-      <td>{{ compte.nom }}</td>
       <td>{{ compte.prenom }}</td>
+      <td>{{ compte.nom }}</td>
+      <td>{{ compte.email }}</td>
       <td>{{ compte.statutRole }}</td>
       <td>
         <a
