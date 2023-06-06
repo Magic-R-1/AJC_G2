@@ -5,7 +5,6 @@ export class Arbitre {
     public prenom?: string,
     public anciennete?: number,
     public nationalite?: string,
-    public confrontation?: Confrontation,
     public id?: number
   ) {}
 }

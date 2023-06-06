@@ -28,6 +28,8 @@ export class MenuComponent {
   get prenom() {
     if (sessionStorage.getItem('compte')) {
       return JSON.parse(sessionStorage.getItem('compte')!).prenom;
+    } else {
+      return false;
     }
   }
 
@@ -43,6 +45,11 @@ export class MenuComponent {
     return this.authSrv.isGm;
   }
 
+  logon(): boolean {
+    if (sessionStorage.getItem('compte') != null) {
+      return true;
+    } else return false;
+  }
   logoff() {
     sessionStorage.clear();
     this.router.navigateByUrl('/home');
