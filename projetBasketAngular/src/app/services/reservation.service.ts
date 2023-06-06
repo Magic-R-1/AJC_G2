@@ -2,18 +2,26 @@ import { Injectable } from '@angular/core';
 import { Reservation } from '../model/reservation';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Compte } from '../model/compte';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReservationService {
-
-  private static URL: string = 'http://localhost:8080/projetbasket/api/reservation';
+  private static URL: string =
+    'http://localhost:8080/projetbasket/api/reservation';
 
   constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<[Reservation]> {
     return this.httpClient.get<[Reservation]>(ReservationService.URL);
+  }
+
+  public getAllByCompte(compte: Compte): Observable<[Reservation]> {
+    return this.httpClient.post<[Reservation]>(
+      `${ReservationService.URL}/connected`,
+      compte
+    );
   }
 
   public deleteById(id: number): Observable<void> {

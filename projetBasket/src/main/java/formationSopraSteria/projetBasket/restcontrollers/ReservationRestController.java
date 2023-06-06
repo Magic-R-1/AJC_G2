@@ -22,6 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import formationSopraSteria.projetBasket.entities.Compte;
 import formationSopraSteria.projetBasket.entities.Reservation;
 import formationSopraSteria.projetBasket.entities.jsonviews.JsonViews;
 import formationSopraSteria.projetBasket.services.ReservationService;
@@ -48,6 +49,13 @@ public class ReservationRestController {
 	public Reservation getById(@PathVariable("id") Long id) {
 		return ReservationSrv.getById(id);
 	}
+	
+	@PostMapping("/connected")
+	@JsonView(JsonViews.Reservation.class)
+	public List<Reservation> getAllByCompte( @RequestBody Compte compte) {
+		return ReservationSrv.findByCompteId(compte);
+	}
+	
 	
 	@GetMapping("/dateReservation/{dateReservation}")
 	@JsonView(JsonViews.Reservation .class)

@@ -1,6 +1,12 @@
+import { Reservation } from './../../../model/reservation';
 import { Component, OnInit } from '@angular/core';
-import { Cart } from 'src/app/model/cart';
-import { CartService } from 'src/app/services/cart.service';
+
+import { ReservationService } from 'src/app/services/reservation.service';
+
+import { Router, ActivatedRoute } from '@angular/router';
+import { Compte } from 'src/app/model/compte';
+import { AuthentificationService } from 'src/app/services/authentification.service';
+import { CompteService } from 'src/app/services/compte.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -8,45 +14,60 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-list.component.css'],
 })
 export class CartListComponent implements OnInit {
-  carts: Cart[] = [
-    {
-      confrontation: {
-        /* détails de la confrontation */
-      },
-      quantite: 2,
-      date: '2023-06-04',
-      price: 10.99,
-      id: 1,
-    },
-    {
-      confrontation: {
-        /* détails de la confrontation */
-      },
-      quantite: 1,
-      date: '2023-06-05',
-      price: 9.99,
-      id: 2,
-    },
-  ];
+  reservations: Reservation[] = [];
+
   filtre = '';
 
-  constructor(private cartSrv: CartService) {}
-  cartFiltre() {
-    return this.carts.filter((f) => f.date?.indexOf(this.filtre) != -1);
-  }
+  constructor(
+    private reservationSrv: ReservationService,
+    private compteSrv: CompteService,
+    private authService: AuthentificationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
   ngOnInit(): void {
-    this.listCarts();
+    this.listReservations();
   }
 
-  listCarts() {
-    this.cartSrv.getCarts().subscribe((resultat) => {
-      this.carts = resultat;
+  reservationFiltre() {
+    return this.reservations.filter(
+      (r) =>
+        r.id?.toString().indexOf(this.filtre) !== -1 ||
+        r.prix?.toString().indexOf(this.filtre) !== -1
+    );
+  }
+
+  listReservations() {
+    // const connectedAccountId = this.authService.compteSrv.getById();
+    let compte: Compte = JSON.parse(sessionStorage.getItem('compte')!);
+    this.reservationSrv.getAll().subscribe((resultat) => {
+      this.reservations = resultat;
+      //.filter((r) => r.compte?.id === connectedAccountId);
     });
   }
 
-  deleteCart(id: number) {
-    this.cartSrv.deleteById(id).subscribe(() => {
-      this.listCarts();
+  deleteReservation(id: number) {
+    this.reservationSrv.deleteById(id).subscribe(() => {
+      this.listReservations();
+    });
+  }
+
+  incrementQuantity(reservation: Reservation) {
+    reservation.quantite!++;
+    this.updateReservation(reservation);
+  }
+
+  decrementQuantity(reservation: Reservation) {
+    if (reservation.quantite! > 1) {
+      reservation.quantite!--;
+      this.updateReservation(reservation);
+    }
+  }
+
+  updateReservation(reservation: Reservation) {
+    this.reservationSrv.update(reservation).subscribe(() => {
+      this.listReservations();
     });
   }
 }

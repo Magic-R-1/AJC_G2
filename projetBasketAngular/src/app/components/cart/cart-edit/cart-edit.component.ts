@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Cart } from 'src/app/model/cart';
+import { Compte } from 'src/app/model/compte';
+import { Confrontation } from 'src/app/model/confrontation';
+import { Reservation } from 'src/app/model/reservation';
 import { CartService } from 'src/app/services/cart.service';
+import { CompteService } from 'src/app/services/compte.service';
+import { ConfrontationService } from 'src/app/services/confrontation.service';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-cart-edit',
@@ -11,33 +18,43 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartEditComponent implements OnInit {
   cart!: Cart;
   paymentSuccess = false;
+  obsConfrontations!: Observable<Confrontation[]>;
+  obsComptes!: Observable<Compte[]>;
+  reservation: Reservation = new Reservation();
 
   constructor(
-    private cartSrv: CartService,
+    private reservationSrv: ReservationService,
+    private confrontationSrv: ConfrontationService,
+    private compteSrv: CompteService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.cart = new Cart();
-
+    this.reservation = new Reservation();
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) {
-        this.cartSrv.getById(params['id']).subscribe((res) => {
-          this.cart = res;
-        });
+        this.reservationSrv
+          .getById(params['id'])
+          .subscribe((reservationJson) => {
+            this.reservation = reservationJson;
+          });
       }
     });
+    this.obsConfrontations = this.confrontationSrv.getConfrontations();
+    this.obsComptes = this.compteSrv.getComptes();
   }
 
   save() {
-    if (this.cart.id) {
-      this.cartSrv.update(this.cart).subscribe((res) => {
-        this.router.navigateByUrl('/cart');
+    if (this.reservation.id) {
+      this.reservationSrv.update(this.reservation).subscribe((res) => {
+        //console.log('bien passé ici 2');
+        this.router.navigateByUrl('/reservation');
       });
     } else {
-      this.cartSrv.create(this.cart).subscribe((res) => {
-        this.router.navigateByUrl('/cart');
+      this.reservationSrv.create(this.reservation).subscribe((res) => {
+        //console.log('bien passé ici 3');
+        this.router.navigateByUrl('/reservation');
       });
     }
     this.paymentSuccess = true;
@@ -48,5 +65,14 @@ export class CartEditComponent implements OnInit {
 
   closeModal() {
     this.paymentSuccess = false;
+  }
+  compareById(
+    frsOptionActive: Confrontation,
+    frsSelect: Confrontation
+  ): boolean {
+    if (frsSelect && frsOptionActive) {
+      return frsOptionActive.id === frsSelect.id;
+    }
+    return false;
   }
 }
