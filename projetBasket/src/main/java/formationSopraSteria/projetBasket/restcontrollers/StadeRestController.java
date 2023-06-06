@@ -95,5 +95,9 @@ public class StadeRestController {
 		stadeSrv.delete(id);
 	}
 	
-	
+	@DeleteMapping("/{ids}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void deleteMultiple(@PathVariable("ids") List<Long> ids) {
+	    stadeSrv.deleteMultiple(ids);
+	}
 }

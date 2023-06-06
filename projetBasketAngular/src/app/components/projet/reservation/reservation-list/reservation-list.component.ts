@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Compte } from 'src/app/model/compte';
 import { Reservation } from 'src/app/model/reservation';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
@@ -9,20 +11,17 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 export class ReservationListComponent implements OnInit {
   reservations: Reservation[] = [];
-  filtre = '';
+  compte!: Compte;
 
-  constructor(private reservationSrv: ReservationService) {}
-
-  reservationFiltre() {
-    return this.reservations.filter(
-      (r) =>
-        r.id?.toString().indexOf(this.filtre) !== -1 ||
-        r.prix?.toString().indexOf(this.filtre) !== -1
-    );
-  }
+  constructor(
+    private reservationSrv: ReservationService,
+    private authSrv: AuthentificationService
+  ) {}
 
   ngOnInit(): void {
-    this.listReservations();
+    this.reservationSrv.getAll().subscribe((reservations: Reservation[]) => {
+      this.reservations = reservations;
+    });
   }
 
   listReservations() {
@@ -35,5 +34,25 @@ export class ReservationListComponent implements OnInit {
     this.reservationSrv.deleteById(id).subscribe(() => {
       this.listReservations();
     });
+  }
+
+  get admin() {
+    return this.authSrv.isAdmin();
+  }
+
+  get compteID() {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).id;
+    }
+  }
+
+  public isAutorise(reservation: Reservation): boolean {
+    if (this.admin) {
+      return true;
+    } else if (reservation?.compte?.id == this.compteID) {
+      return true;
+    }
+
+    return false;
   }
 }

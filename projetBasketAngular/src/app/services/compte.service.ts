@@ -33,4 +33,13 @@ export class CompteService {
   public deleteById(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${CompteService.URL}/${id}`);
   }
+
+  checkDoublon(login: string, email: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(
+      `${CompteService.URL}/${login}/${email}`
+    );
+    // return this.httpClient.get<boolean>(
+    //   `/compte?login=${login}&email=${email}`
+    // );
+  }
 }

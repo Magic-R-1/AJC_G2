@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { AboutComponent } from './components/about/about.component';
@@ -27,9 +27,9 @@ import { EffectifComponent } from './components/projet/effectif/effectif.compone
 import { InscriptionConfirmationComponent } from './components/inscription/inscription-confirmation/inscription-confirmation.component';
 import { AchatBilletComponent } from './components/achat-billet/achat-billet.component';
 import { ConfrontationDetailsComponent } from './confrontation-details/confrontation-details.component';
-import { PanierComponent } from './components/panier/panier.component';
 import { CartListComponent } from './components/cart/cart-list/cart-list.component';
 import { CartEditComponent } from './components/cart/cart-edit/cart-edit.component';
+import { MoncompteComponent } from './components/projet/moncompte/moncompte.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -64,6 +64,8 @@ const routes: Routes = [
   { path: 'actualite/actualite3', component: Actualite3Component },
   { path: 'achat-billet', component: AchatBilletComponent },
   { path: 'inscription', component: InscriptionComponent },
+  { path: 'monCompte', component: MoncompteComponent },
+
   {
     path: 'inscription/confirmation',
     component: InscriptionConfirmationComponent,
@@ -74,6 +76,7 @@ const routes: Routes = [
   { path: 'cart/edit/:id', component: CartEditComponent },
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'inscription', component: InscriptionComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

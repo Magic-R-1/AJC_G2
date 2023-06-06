@@ -102,5 +102,13 @@
         S'inscrire
       </button>
     </div>
+
+    <div *ngIf="inscriptionValide" class="alert alert-danger">
+      Votre inscription est validée!
+    </div>
+
+    <div *ngIf="erreurDoublon" class="alert alert-danger">
+      Veuillez changer votre login ou email!
+    </div>
   </form>
 </div>

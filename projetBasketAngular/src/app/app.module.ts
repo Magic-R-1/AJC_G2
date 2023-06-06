@@ -44,6 +44,7 @@ import { PanierComponent } from './components/panier/panier.component';
 import { OngletsComponent } from './components/onglets/onglets.component';
 import { CartListComponent } from './components/cart/cart-list/cart-list.component';
 import { CartEditComponent } from './components/cart/cart-edit/cart-edit.component';
+import { MoncompteComponent } from './components/projet/moncompte/moncompte.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { CartEditComponent } from './components/cart/cart-edit/cart-edit.compone
     OngletsComponent,
     CartListComponent,
     CartEditComponent,
+    MoncompteComponent,
   ],
   imports: [
     HttpClientModule,

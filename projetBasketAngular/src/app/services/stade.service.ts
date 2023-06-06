@@ -27,6 +27,11 @@ export class StadeService {
     return this.httpClient.delete<void>(`${StadeService.URL}/${id}`);
   }
 
+  public deleteByIds(ids: number[]): Observable<void> {
+    const idsString = ids.join(',');
+    return this.httpClient.delete<void>(`${StadeService.URL}/${idsString}`);
+  }
+
   public create(stade: Stade): Observable<Stade> {
     return this.httpClient.post<Stade>(StadeService.URL, stade);
   }

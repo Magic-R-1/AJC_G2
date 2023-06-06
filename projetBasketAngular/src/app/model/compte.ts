@@ -1,3 +1,4 @@
+import { Equipe } from './equipe';
 import { StatutRole } from './statut-role';
 
 export class Compte {
@@ -7,6 +8,7 @@ export class Compte {
     public nom?: string,
     public prenom?: string,
     public statutRole?: StatutRole,
+    public equipe?: Equipe,
     public email?: string,
     public id?: number
   ) {}

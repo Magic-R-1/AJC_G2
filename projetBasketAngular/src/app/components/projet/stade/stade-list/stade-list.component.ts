@@ -41,4 +41,15 @@ export class StadeListComponent implements OnInit {
       this.listStades();
     });
   }
+
+  deleteSelectedStades() {
+    const selectedStades = this.stades.filter((stade) => stade.isChecked);
+
+    const selectedStadeIds = selectedStades
+      .map((stade) => stade.id!)
+      .filter(Boolean);
+    this.stadeSrv.deleteByIds(selectedStadeIds).subscribe(() => {
+      this.listStades();
+    });
+  }
 }

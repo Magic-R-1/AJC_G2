@@ -1,16 +1,16 @@
 <div class="about-container">
-  <h1>Listes des stades</h1>
-  <div class="about-container">
-    <input [(ngModel)]="filtre" class="form-control" />
-  </div>
   <table class="table">
     <tr>
+      <th></th>
       <th>Id :</th>
       <th>Nom :</th>
       <th>Capacité :</th>
       <th>Ville :</th>
     </tr>
     <tr *ngFor="let stade of stadeFiltre()">
+      <td>
+        <input type="checkbox" [(ngModel)]="stade.isChecked" />
+      </td>
       <td>{{ stade.id }}</td>
       <td>{{ stade.nom }}</td>
       <td>{{ stade.capacite }}</td>
@@ -22,12 +22,9 @@
           >Editer</a
         >
       </td>
-      <td>
-        <button (click)="deleteStade(stade.id!)" class="btn btn-outline-danger">
-          Supprimer
-        </button>
-      </td>
     </tr>
   </table>
-  <a class="btn btn-link" routerLink="/stade/edit">Nouveau stade</a>
+  <button class="btn btn-outline-danger" (click)="deleteSelectedStades()">
+    Supprimer sélection
+  </button>
 </div>

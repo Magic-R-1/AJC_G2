@@ -31,22 +31,15 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" visible="false">
       <label for="duree">Durée:</label>
       <input
         id="duree"
         name="duree"
         [(ngModel)]="confrontation.duree"
         class="form-control"
-        required
         #dureeCtrl="ngModel"
       />
-      <div
-        *ngIf="dureeCtrl.dirty && dureeCtrl.invalid"
-        class="alert alert-danger"
-      >
-        Durée obligatoire
-      </div>
     </div>
 
     <div class="form-group">
@@ -72,15 +65,8 @@
         type="number"
         [(ngModel)]="confrontation.scoreDomicile"
         class="form-control"
-        required
         #scoreDomicileCtrl="ngModel"
       />
-      <div
-        *ngIf="scoreDomicileCtrl.dirty && scoreDomicileCtrl.invalid"
-        class="alert alert-danger"
-      >
-        Score domicile obligatoire
-      </div>
     </div>
 
     <div class="form-group">
@@ -91,15 +77,8 @@
         type="number"
         [(ngModel)]="confrontation.scoreVisiteur"
         class="form-control"
-        required
         #scoreVisiteurCtrl="ngModel"
       />
-      <div
-        *ngIf="scoreVisiteurCtrl.dirty && scoreVisiteurCtrl.invalid"
-        class="alert alert-danger"
-      >
-        Score visiteur obligatoire
-      </div>
     </div>
 
     <div class="form-group">

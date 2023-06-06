@@ -1,5 +1,6 @@
 <div class="about-container">
   <h1>Edition personnel</h1>
+
   <form (ngSubmit)="save()" #form="ngForm">
     <div class="form-group">
       <label for="id">ID :</label>
@@ -66,13 +67,16 @@
         name="equipe"
         [(ngModel)]="personnel.equipe"
         class="form-control"
-        [compareWith]="compareById"
+        [compareWith]="compare"
+        required
         #equipeCtrl="ngModel"
       >
-        <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
-          {{ equipe.franchise }}
+        <option value="undefined">FAIS CE QUE TU VEUX</option>
+        <option *ngFor="let equipe of obsEquipes" [ngValue]="equipe">
+          {{ equipe.id }}
         </option>
       </select>
+
       <div
         *ngIf="equipeCtrl.dirty && equipeCtrl.invalid"
         class="alert alert-danger"
@@ -95,6 +99,7 @@
       </select>
     </div>
     <br />
+
     <div>
       <button
         type="submit"

@@ -99,6 +99,13 @@ public class StadeService {
 		equipeRepo.setStadeToNull(stadeEnBase);
 		stadeRepo.delete(stadeEnBase);
 	}
+
+	public void deleteMultiple(List<Long> ids) {
+	    for (Long id : ids) {
+	        stadeRepo.deleteById(id);
+	    }
+	}
+
 	
 
 }

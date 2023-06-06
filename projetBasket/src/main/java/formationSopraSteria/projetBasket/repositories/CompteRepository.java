@@ -18,7 +18,9 @@ public interface CompteRepository extends JpaRepository<Compte, Long> {
 	List<Compte> findByNom(String nom);
 	List<Compte> findByNomContaining(String nom);
 	
+	
 	Optional<Compte>findByLogin(String login);
+	Optional<Compte>findByEmail(String email);
 	
 	Optional<Compte> findByStatutRole(StatutRole statutRole);
 

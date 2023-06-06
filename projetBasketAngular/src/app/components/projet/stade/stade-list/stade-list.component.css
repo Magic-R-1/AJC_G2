@@ -3,3 +3,12 @@
   margin: 0 auto;
   padding: 20px;
 }
+.table th:first-child,
+.table td:first-child {
+  width: 30px;
+  text-align: center;
+}
+
+.btn-outline-danger {
+  margin-top: 10px;
+}
