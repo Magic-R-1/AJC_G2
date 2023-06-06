@@ -57,4 +57,9 @@ export class MenuComponent {
 
   // Dans votre composant TypeScript
   showAdminMenu: boolean = false;
+
+  onOutsideClick() {
+    // Gérez les actions supplémentaires lors d'un clic sur l'élément parent lui-même
+    this.showAdminMenu = !this.showAdminMenu;
+  }
 }
