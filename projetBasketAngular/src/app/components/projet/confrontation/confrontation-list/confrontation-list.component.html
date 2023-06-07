@@ -14,7 +14,6 @@
     <tr *ngFor="let confrontation of confrontations">
       <td>{{ confrontation.id }}</td>
       <td>{{ confrontation.dateConfrontation | date : "dd/MM/yyyy" }}</td>
-      <td>{{ confrontation.duree }}</td>
       <td>
         {{ confrontation.equipe?.ville }} {{ confrontation.equipe?.franchise }}
       </td>

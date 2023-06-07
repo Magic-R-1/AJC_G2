@@ -96,7 +96,7 @@
         [compareWith]="compareById"
       >
         <option [ngValue]="equipe" *ngFor="let equipe of obsEquipes | async">
-          {{ equipe.franchise }} {{ equipe.ville }}
+          {{ equipe.ville }} {{ equipe.franchise }}
         </option>
       </select>
     </div>

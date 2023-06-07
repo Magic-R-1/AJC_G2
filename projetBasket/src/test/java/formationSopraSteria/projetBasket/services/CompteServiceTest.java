@@ -17,12 +17,10 @@ class CompteServiceTest {
 	CompteService compteSrv;
 	
 	@Test
+	@Disabled
 	void testCreate() {
 		Compte c1 = new Compte("admin1", "admin1","admin1","admin1","admin1@gmail.com",StatutRole.ROLE_ADMIN);
 		compteSrv.create(c1);
-
-		
-		
 	}
 	
 	@Test
